@@ -1,4 +1,24 @@
 ---
 import Base from '../layouts/Base.astro';
+import SignatureLine from '../components/SignatureLine.astro';
+import Hero from '../components/sections/Hero.astro';
+import Leistungen from '../components/sections/Leistungen.astro';
+import Lieblingsstile from '../components/sections/Lieblingsstile.astro';
+import Ueber from '../components/sections/Ueber.astro';
+import GutZuWissen from '../components/sections/GutZuWissen.astro';
+import Galerie from '../components/sections/Galerie.astro';
+import Anfahrt from '../components/sections/Anfahrt.astro';
+import { site } from '../lib/site';
+import { nailSalonSchema } from '../lib/schema';
 ---
-<Base><div class="container-nova py-20"><h1 class="text-4xl font-bold">Nova Nails</h1></div></Base>
+<Base schema={nailSalonSchema(Astro.site)}>
+  <Hero />
+  <SignatureLine class="-mt-px bg-white" />
+  <Leistungen />
+  <Lieblingsstile />
+  <Ueber />
+  <GutZuWissen />
+  {site.schalter.showGallery && <Galerie />}
+  <SignatureLine class="bg-white" />
+  <Anfahrt />
+</Base>

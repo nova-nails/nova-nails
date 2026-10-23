@@ -13,7 +13,10 @@ interface Props {
   schema?: object;
   minimalHeader?: boolean;
 }
-const { title, description = site.seo.beschreibung, noindex = false, schema, minimalHeader = false } = Astro.props;
+const standardBeschreibung = site.schalter.showOpeningBanner
+  ? `${site.seo.beschreibung} Eröffnung ${site.eroeffnung}.`
+  : site.seo.beschreibung;
+const { title, description = standardBeschreibung, noindex = false, schema, minimalHeader = false } = Astro.props;
 const fullTitle = title ? `${title} – ${site.name}` : site.seo.titel;
 const path = pagePath(Astro.url.pathname);
 const canonical = new URL(path, Astro.site).href.replace(/\/$/, '');
