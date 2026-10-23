@@ -1,0 +1,9 @@
+# Einheitliche Zeilenenden auf Windows und Mac
+* text=auto eol=lf
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.webp binary
+*.avif binary
+*.woff2 binary
+*.ico binary

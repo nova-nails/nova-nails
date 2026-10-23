@@ -1,0 +1,25 @@
+{
+  "name": "nova-nails",
+  "type": "module",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "astro dev --port 4324",
+    "build": "astro build",
+    "preview": "astro preview --port 4325",
+    "check": "astro check",
+    "assets": "node scripts/build-assets.mjs"
+  },
+  "dependencies": {
+    "@astrojs/sitemap": "^3.7.4",
+    "@fontsource-variable/comfortaa": "^5.3.0",
+    "@fontsource-variable/figtree": "^5.3.0",
+    "@tailwindcss/vite": "^4.3.3",
+    "astro": "^7.4.2",
+    "tailwindcss": "^4.3.3"
+  },
+  "devDependencies": {
+    "potrace": "^2.1.8",
+    "sharp": "^0.35.5"
+  }
+}
