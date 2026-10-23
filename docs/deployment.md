@@ -1,0 +1,53 @@
+# Deployment und Übergabe – Nova Nails
+
+Grundsatz: Alle Konten gehören Julia Tellenbach. Peter & Co wird nur eingeladen. Keine kostenpflichtigen Dienste.
+
+## 1. GitHub
+1. Julia legt ein GitHub-Konto an (Gratis, ihre E-Mail-Adresse).
+2. Repo `raxmon04/nova-nails` an sie übertragen: GitHub → Settings → Danger Zone → Transfer ownership → ihr Benutzername. Repo bleibt privat.
+3. Julia lädt `raxmon04` als Collaborator (Write) ein.
+4. Lokal Remote anpassen: `git remote set-url origin https://github.com/<julia>/nova-nails.git`
+
+## 2. Netlify
+1. Julia legt ein Netlify-Konto an (Free, Login mit GitHub).
+2. «Add new site» → «Import from Git» → GitHub → `nova-nails`. Build-Einstellungen kommen aus `netlify.toml` (`npm run build`, `dist`, Node 24).
+3. Peter & Co als Team-Mitglied einladen (Free-Plan: nur falls verfügbar, sonst Deploy über GitHub-Push).
+4. Keine Umgebungsvariablen nötig.
+
+## 3. Domain
+1. Verfügbarkeit prüfen: `novanails.ch`, Alternative `nova-nails.ch` (z. B. bei Infomaniak oder Hostpoint, ca. CHF 10–20/Jahr).
+2. Auf Julias Namen und Adresse registrieren.
+3. In Netlify: Domain management → Add domain → DNS beim Registrar setzen (A-Record bzw. CNAME `www` laut Netlify-Anleitung). HTTPS aktiviert Netlify automatisch.
+4. Falls die Domain nicht `www.novanails.ch` ist: `site` in `astro.config.mjs` anpassen (Canonical, Sitemap, OG-Bild).
+5. Optional E-Mail-Adresse über den Registrar (z. B. `hallo@novanails.ch`) → in `content/site.json` bei `email` eintragen.
+
+## 4. Online-Buchung (Cal.com)
+Empfehlung: **Cal.com Free** auf Julias Konto, Region **EU** beim Anlegen wählen.
+1. Konto mit Julias E-Mail anlegen, Zeitzone Europe/Zurich.
+2. Verfügbarkeit: Mo–Fr 09:00–19:00.
+3. Event-Typen (Dauer aus `content/preise.json`): Gelnägel neues Set 120 Min., Auffüllen 90, Nagelverstärkung 60, Shellac/Gel-Lack 30, Maniküre 30, Entfernen 30. Nail-Art erst, wenn Dauer feststeht.
+4. Buchungsfragen: Name, Telefon (für Rückfragen), optional Wunsch-Design. Bestätigung per E-Mail.
+5. Absageregel in die Beschreibung: kostenlos bis 24 Std. vorher, danach CHF 50.
+6. Profil-Link (z. B. `https://cal.com/novanails`) in `content/site.json` → `booking.url`. Danach führt «Termin buchen» dorthin (neuer Tab) und die Datenschutzerklärung zeigt den Cal.com-Abschnitt automatisch.
+
+Einbindung nur als Link, kein Embed (keine Cookies, kein Banner).
+
+Alternativen geprüft: SimplyBook.me (Free bis 50 Buchungen/Monat, aber Branding und Werbung), Calendly (Free nur 1 Event-Typ, USA). Keine ist besser als Cal.com Free mit EU-Region.
+
+Solange `booking.url` leer ist: «Termin buchen» öffnet WhatsApp mit vorausgefülltem Text, daneben «Anrufen».
+
+## 5. Vor dem Livegang
+- `docs/todo-inhaberin.md` abarbeiten
+- Logo-SVG ersetzen, sobald Original aus Canva da ist (`brand/`, dann `npm run assets` anpassen)
+- Datenschutzerklärung: Netlify-Angaben (Adresse, Garantien USA) vor Livegang kurz prüfen
+- Abschluss-Checkliste im Vault: `10-Projekte/nova-nails/website-abschluss.md`
+
+## 6. Schalter (alle in `content/site.json`)
+| Schalter | Wirkung |
+|---|---|
+| `schalter.preisphase` | `"ausbildung"` = Hinweis «Zahl, was es dir wert ist» + reguläre Preise; `"regulaer"` = nur Preisliste |
+| `schalter.showOpeningBanner` | Hinweis «Eröffnung November 2026» im Hero und in der Meta-Beschreibung |
+| `schalter.showGallery` | Galerie ein/aus (nur Fotos mit `freigegeben: true` aus `content/galerie.json`) |
+| `booking.url` | Buchungslink; leer = WhatsApp-Fallback |
+| `social.instagram`, `social.tiktok` | Links; leer = ausgeblendet |
+| `kursabschluss` | Datum; Preis-Label «Preis ab …» statt «Preis nach Ausbildung» |

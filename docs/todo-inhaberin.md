@@ -1,0 +1,25 @@
+# Offene Punkte für Julia
+
+Hallo Julia! Deine Website ist fast fertig. Damit sie online gehen kann, brauche ich noch diese Sachen von dir. Stichworte reichen.
+
+## Für die Website
+1. **Logo als Datei:** Lade dein Logo in Canva als SVG oder als PNG mit transparentem Hintergrund herunter und schick es mir.
+2. **E-Mail-Adresse:** Welche E-Mail darf auf die Website? Die braucht es fürs Impressum und fürs Buchungstool. Tipp: Mit deiner Domain bekommst du eine eigene Adresse, z. B. hallo@novanails.ch.
+3. **Ende deiner Ausbildung:** Ab wann gelten deine normalen Preise? Bis dahin steht auf der Website «Zahl, was es dir wert ist».
+4. **Nail-Art:** Wie lange dauert Nail-Art ungefähr und was kostet sie (oder wie viel Aufpreis)?
+5. **Bushaltestelle:** Wie heisst die Haltestelle in der Nähe deines Studios?
+6. **Fotos:** Dein Porträt in voller Grösse (das aus der Canva-Grafik ist zu klein) und später 6–12 Fotos deiner Nägel, direkt vom Handy (Originale). Nur Fotos, die online dürfen.
+7. **Kursanbieter:** Schreibt man «Lynis Nail Academy» so?
+8. **Rechtsform:** Meldest du ein Einzelunternehmen an? Dann schreibe ich das ins Impressum.
+9. **Texte prüfen:** Lies bitte die Texte oben auf der Seite («Deine Wohlfühl-Auszeit für die Hände»), bei den Leistungen und die drei Kästchen neben «Über mich». Passt alles so?
+
+## Konten (machen wir zusammen, ca. 30 Minuten)
+Damit die Website dir gehört, läuft alles auf deinen Namen. Alles ist gratis, ausser der Domain.
+10. **Domain** (deine Internet-Adresse): novanails.ch oder nova-nails.ch, ca. CHF 10–20 pro Jahr.
+11. **GitHub** (hier liegt der «Bauplan» deiner Website): Gratis-Konto.
+12. **Netlify** (hier ist die Website online): Gratis-Konto, Login mit GitHub.
+13. **Cal.com** (Online-Buchung, deine Kundinnen wählen selbst einen freien Termin): Gratis-Konto. Braucht deine E-Mail-Adresse.
+
+## Später
+14. **Instagram / TikTok:** Schick mir die Namen, sobald es die Konten gibt. Dann erscheinen die Links auf der Website.
+15. **Google-Unternehmensprofil** (damit du bei Google Maps erscheinst): Entscheidest du später.
