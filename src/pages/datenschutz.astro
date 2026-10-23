@@ -1,0 +1,48 @@
+---
+import LegalPage from '../components/LegalPage.astro';
+import { site, telHref } from '../lib/site';
+const stand = 'Oktober 2026';
+---
+<LegalPage title="Datenschutz" description="Datenschutzerklärung von Nova Nails nach dem Schweizer Datenschutzgesetz (DSG).">
+  <p>Diese Datenschutzerklärung informiert dich darüber, welche Personendaten beim Besuch dieser Website bearbeitet werden. Sie richtet sich nach dem Schweizer Datenschutzgesetz (DSG).</p>
+
+  <h2>Verantwortliche</h2>
+  <address>
+    {site.inhaberin}, {site.name}<br />
+    {site.adresse.strasse}, {site.adresse.plz} {site.adresse.ort}<br />
+    Telefon: <a href={telHref}>{site.telefon.anzeige}</a>
+    {site.email && <><br />E-Mail: <a href={`mailto:${site.email}`}>{site.email}</a></>}
+  </address>
+
+  <h2>Kurz zusammengefasst</h2>
+  <ul>
+    <li>Keine Cookies, kein Tracking, keine Analyse-Tools, keine Werbung.</li>
+    <li>Schriften und Bilder liegen auf demselben Server wie die Website. Es werden keine Daten an Google Fonts o. ä. übertragen.</li>
+    <li>Karten, WhatsApp{site.booking.url && ' und die Online-Buchung'} sind nur als Links eingebunden. Daten fliessen erst, wenn du einen solchen Link anklickst.</li>
+  </ul>
+
+  <h2>Hosting</h2>
+  <p>Diese Website wird bei Netlify, Inc., 101 2nd Street, San Francisco, CA 94105, USA, gehostet. Beim Aufruf der Website speichert Netlify technisch notwendige Daten in Server-Logfiles, zum Beispiel IP-Adresse, Datum und Uhrzeit, aufgerufene Seite, Browser und Betriebssystem. Diese Daten dienen dem sicheren und stabilen Betrieb der Website und werden nicht mit anderen Daten zusammengeführt.</p>
+  <p>Dabei können Daten in die USA übermittelt werden. Netlify stützt die Übermittlung auf geeignete Garantien wie Standardvertragsklauseln. Weitere Informationen: <a href="https://www.netlify.com/privacy/">Datenschutzerklärung von Netlify</a>.</p>
+
+  {site.booking.url && (
+    <>
+      <h2>Online-Buchung (Cal.com)</h2>
+      <p>Für die Online-Buchung verlinke ich auf Cal.com (Cal.com, Inc., USA; Datenhaltung in der EU). Wenn du einen Termin buchst, gibst du dort deinen Namen, deine Kontaktangaben und den gewünschten Termin an. Diese Daten nutze ich nur, um deinen Termin zu planen und dich bei Bedarf zu kontaktieren. Es gilt zusätzlich die <a href="https://cal.com/privacy">Datenschutzerklärung von Cal.com</a>.</p>
+    </>
+  )}
+
+  <h2>Kontakt per Telefon oder WhatsApp</h2>
+  <p>Wenn du mich anrufst oder mir schreibst, bearbeite ich deine Angaben (z. B. Name, Telefonnummer, Nachricht, Terminwunsch), um deine Anfrage zu beantworten und Termine zu vereinbaren. WhatsApp wird von WhatsApp Ireland Ltd. (Meta) betrieben; dabei gelten deren Datenschutzbestimmungen. Wenn du das nicht möchtest, ruf mich gerne an.</p>
+
+  <h2>Externe Links</h2>
+  <p>Links zu Google Maps, Apple Karten{site.social.instagram && ', Instagram'}{site.social.tiktok && ', TikTok'} und WhatsApp öffnen die Angebote der jeweiligen Anbieter. Erst dann gelten deren Datenschutzbestimmungen.</p>
+
+  <h2>Aufbewahrung</h2>
+  <p>Ich bewahre Personendaten nur so lange auf, wie es für den jeweiligen Zweck nötig ist oder das Gesetz es verlangt.</p>
+
+  <h2>Deine Rechte</h2>
+  <p>Du kannst jederzeit Auskunft über deine Personendaten verlangen und sie berichtigen oder löschen lassen. Melde dich dafür bei mir über die oben genannten Kontaktangaben. Du hast zudem das Recht, dich beim Eidgenössischen Datenschutz- und Öffentlichkeitsbeauftragten (EDÖB) zu beschweren.</p>
+
+  <p class="mt-10 text-sm text-muted">Stand: {stand}</p>
+</LegalPage>

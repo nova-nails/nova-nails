@@ -46,8 +46,8 @@
   "antwortzeit": "Ich antworte in der Regel innerhalb von 2–3 Stunden.",
   "email": "",
   "_email": "[TODO: E-Mail-Adresse der Inhaberin, z. B. über die neue Domain]",
-  "rechtsform": "Einzelunternehmen (geplant)",
-  "_rechtsform": "[TODO: Rechtsform bestätigen]",
+  "rechtsform": "",
+  "_rechtsform": "[TODO: Rechtsform bestätigen – aktuell keine, geplant Einzelunternehmen. Leer = Zeile ausgeblendet]",
   "uid": "",
   "hero": {
     "titel": "Deine Wohlfühl-Auszeit für die Hände",

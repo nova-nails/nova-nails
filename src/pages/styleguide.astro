@@ -67,14 +67,14 @@ const paare = [
         ))}
       </ul>
       <h3 class="mt-10 text-xl font-bold">Kontraste (gerechnet, AA Text ≥ 4.5:1)</h3>
-      <div class="mt-4 overflow-x-auto">
+      <div class="mt-4 overflow-x-auto" tabindex="0" role="region" aria-label="Kontrasttabelle">
         <table class="w-full min-w-[34rem] text-left text-sm">
           <thead><tr class="border-b border-nova-300"><th class="py-2">Vordergrund</th><th>Hintergrund</th><th>Beispiel</th><th>Kontrast</th><th>AA</th></tr></thead>
           <tbody>
             {paare.map((p) => (
               <tr class="border-b border-nova-100">
                 <td class="py-2">{p.fg}</td><td>{p.bg}</td>
-                <td><span class="rounded px-2 py-1" style={`color:${p.f};background:${p.b}`}>Nova Nails</span></td>
+                <td>{p.fg.includes('Deko') ? <span class="inline-block h-5 w-16 rounded" style={`background:linear-gradient(90deg,${p.f} 50%,${p.b} 50%)`} title="nur Deko, kein Text"></span> : <span class="rounded px-2 py-1" style={`color:${p.f};background:${p.b}`}>Nova Nails</span>}</td>
                 <td class="font-mono">{p.r.toFixed(2)}:1</td>
                 <td>{p.r >= 4.5 ? 'ja' : p.fg.includes('Deko') ? 'nur Deko' : 'nein'}</td>
               </tr>

@@ -3,7 +3,7 @@ import HerzLinie from './HerzLinie.astro';
 import { site, telHref, whatsappHref, socials, adresseEinzeilig } from '../lib/site';
 const jahr = new Date().getFullYear();
 ---
-<footer class="bg-nova-950 text-nova-100">
+<footer class="footer-dunkel bg-nova-950 text-nova-100">
   <div class="container-nova grid gap-10 py-14 md:grid-cols-3">
     <div>
       <HerzLinie class="h-14 w-auto text-nova-400" />
@@ -39,3 +39,7 @@ const jahr = new Date().getFullYear();
     </div>
   </div>
 </footer>
+<style>
+  /* Fokusring auf dunklem Grund hell */
+  .footer-dunkel :global(:focus-visible) { outline-color: var(--color-nova-100); }
+</style>

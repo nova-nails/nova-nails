@@ -1,0 +1,20 @@
+---
+import Base from '../layouts/Base.astro';
+interface Props { title: string; description: string }
+const { title, description } = Astro.props;
+---
+<Base title={title} description={description}>
+  <div class="bg-nova-200">
+    <div class="container-nova py-12 sm:py-16"><h1 class="text-4xl font-bold sm:text-5xl">{title}</h1></div>
+  </div>
+  <article class="legal container-nova max-w-3xl py-12 sm:py-16">
+    <slot />
+  </article>
+</Base>
+<style>
+  .legal :global(h2) { margin-top: 2.5rem; font-size: 1.5rem; font-weight: 700; }
+  .legal :global(h3) { margin-top: 1.5rem; font-size: 1.15rem; font-weight: 700; }
+  .legal :global(p), .legal :global(ul), .legal :global(address) { margin-top: 0.75rem; }
+  .legal :global(ul) { list-style: disc; padding-left: 1.25rem; }
+  .legal :global(address) { font-style: normal; }
+</style>

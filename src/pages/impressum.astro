@@ -1,0 +1,29 @@
+---
+import LegalPage from '../components/LegalPage.astro';
+import { site, telHref } from '../lib/site';
+---
+<LegalPage title="Impressum" description="Impressum von Nova Nails by Julia Tellenbach, Buochs.">
+  <h2>Verantwortlich für den Inhalt</h2>
+  <address>
+    {site.name}<br />
+    {site.inhaberin}<br />
+    {site.adresse.strasse}<br />
+    {site.adresse.plz} {site.adresse.ort}<br />
+    Schweiz
+  </address>
+  <p>
+    Telefon: <a href={telHref}>{site.telefon.anzeige}</a>
+    {site.email && <><br />E-Mail: <a href={`mailto:${site.email}`}>{site.email}</a></>}
+  </p>
+  {site.rechtsform && <p>Rechtsform: {site.rechtsform}</p>}
+  {site.uid && <p>UID: {site.uid}</p>}
+
+  <h2>Haftung</h2>
+  <p>Die Inhalte dieser Website werden mit Sorgfalt erstellt. Für die Richtigkeit, Vollständigkeit und Aktualität kann keine Gewähr übernommen werden. Für Inhalte externer Links sind ausschliesslich deren Betreiber verantwortlich.</p>
+
+  <h2>Urheberrecht</h2>
+  <p>Texte, Logo und Bilder auf dieser Website gehören {site.inhaberin} bzw. {site.name}. Eine Verwendung ist nur mit vorheriger Zustimmung erlaubt.</p>
+
+  <h2>Gestaltung</h2>
+  <p><a href={site.gestaltung.url}>{site.gestaltung.name}</a></p>
+</LegalPage>

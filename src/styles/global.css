@@ -52,7 +52,7 @@
     letter-spacing: -0.01em;
     text-wrap: balance;
   }
-  a { color: var(--color-nova-800); text-underline-offset: 0.2em; }
+  a { color: var(--color-nova-800); text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 0.2em; }
   a:hover { color: var(--color-nova-900); }
   :focus-visible {
     outline: 3px solid var(--color-nova-900);
