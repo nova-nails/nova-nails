@@ -1,0 +1,4 @@
+{
+  "_hinweis": "Nur Fotos mit freigegeben: true erscheinen. Alt-Text Pflicht, sonst bricht der Build ab. Dateien in src/assets/galerie/ (vorher auf ~2400 px verkleinern).",
+  "fotos": []
+}

@@ -1,0 +1,43 @@
+---
+// Signature: die durchgehende Linie aus dem Logo verbindet Abschnitte und wird beim Scrollen gezeichnet.
+// pathLength="1" + dasharray, darum bewusst OHNE vector-effect: non-scaling-stroke (Learning 2026-10-21).
+interface Props { class?: string }
+const { class: cls = '' } = Astro.props;
+---
+<div class:list={['signature-wrap', cls]} aria-hidden="true">
+  <svg class="signature" viewBox="0 0 1000 140" fill="none" focusable="false">
+    <path
+      pathLength="1"
+      d="M0 92 C150 92 250 62 360 70 C430 76 462 100 500 120 C470 102 438 82 446 58 C454 36 486 36 500 58 C514 36 546 36 554 58 C562 82 530 102 500 120 C538 100 570 76 640 70 C750 62 850 92 1000 92"
+    />
+  </svg>
+</div>
+<style>
+  .signature-wrap { width: 100%; max-width: 40rem; margin-inline: auto; padding-block: 0.5rem; }
+  .signature { display: block; width: 100%; height: auto; overflow: visible; }
+  .signature path {
+    stroke: var(--color-signal);
+    stroke-width: 2.5;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-dasharray: 1;
+    stroke-dashoffset: 0;
+  }
+  @media (max-width: 40rem) { .signature path { stroke-width: 4.5; } }
+  :global(html.js) .signature path { stroke-dashoffset: 1; transition: stroke-dashoffset 1.8s cubic-bezier(.45,0,.2,1); }
+  :global(html.js) .signature-wrap.is-drawn .signature path { stroke-dashoffset: 0; }
+  @media (prefers-reduced-motion: reduce) {
+    :global(html.js) .signature path { stroke-dashoffset: 0; transition: none; }
+  }
+</style>
+<script>
+  const els = document.querySelectorAll('.signature-wrap:not(.is-drawn)');
+  if ('IntersectionObserver' in window) {
+    const io = new IntersectionObserver((entries) => {
+      for (const e of entries) if (e.isIntersecting) { e.target.classList.add('is-drawn'); io.unobserve(e.target); }
+    }, { rootMargin: '0px 0px -15% 0px' });
+    els.forEach((el) => io.observe(el));
+  } else {
+    els.forEach((el) => el.classList.add('is-drawn'));
+  }
+</script>

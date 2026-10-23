@@ -1,0 +1,9 @@
+---
+// Herz-Linie aus dem Logo (potrace-Entwurf), Farbe über currentColor. Rein dekorativ.
+import herz from '../assets/brand/herz-path.json';
+interface Props { class?: string }
+const { class: cls = '' } = Astro.props;
+---
+<svg class={cls} viewBox={herz.viewBox} fill="currentColor" aria-hidden="true" focusable="false">
+  <path fill-rule="evenodd" d={herz.d} />
+</svg>

@@ -1,0 +1,18 @@
+{
+  "titel": "Über mich",
+  "_quelle": "Wörtlich aus Über_mich.jpeg der Inhaberin (nur Emoji weggelassen)",
+  "absaetze": [
+    "Ich bin Julia Tellenbach, 21 Jahre alt, und das Herz von Nova Nails.",
+    "Kreativität ist für mich nicht nur ein Wort, sondern pure Lebensfreude.",
+    "Ob dezente Eleganz, aufregende Nail Art oder dein ganz persönlicher Wunsch-Look – bei mir wird jede Modellage mit ganz viel Liebe zum Detail umgesetzt.",
+    "Mein absoluter Favorit? Alles, was glänzt, funkelt und vor allem in meinen Lieblingsfarben Pink oder Rosa strahlt! Bei mir im Studio sollst du nicht einfach nur «schöne Nägel» bekommen, sondern eine echte Wohlfühl-Auszeit. Mach es dir bequem, schnapp dir (genau wie ich) am besten einen leckeren Iced Coffee, lehn dich zurück und lass uns deine Hände zum Strahlen bringen.",
+    "Ich freue mich riesig darauf, dich kennenzulernen und deine Nagelträume wahr werden zu lassen!"
+  ],
+  "fakten": [
+    { "titel": "Wie ich dazu kam", "text": "Ich wollte schon immer etwas Kreatives machen. Die Leidenschaft fürs Nägelmachen habe ich durch meine Schwester entdeckt." },
+    { "titel": "Erfahrung", "text": "Ich mache seit 2 Jahren Nägel und bilde mich aktuell im Online-Kurs der Lynis Nail Academy weiter.", "_todo": "[TODO: Schreibweise Kursanbieter bestätigen]" },
+    { "titel": "Das ist mir wichtig", "text": "Hygiene, Zeit für jede Kundin, eine schonende Behandlung und kreative Designs." }
+  ],
+  "_fakten": "Entwurf aus dem Fragebogen, von der Inhaberin bestätigen lassen",
+  "bildAlt": "Julia Tellenbach, Inhaberin von Nova Nails"
+}

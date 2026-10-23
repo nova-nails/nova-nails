@@ -1,0 +1,19 @@
+---
+import HerzLinie from './HerzLinie.astro';
+import { site } from '../lib/site';
+interface Props { size?: 'sm' | 'lg'; as?: 'div' | 'h1'; tone?: 'beere' | 'hell' }
+const { size = 'sm', as: Tag = 'div', tone = 'beere' } = Astro.props;
+const farbe = tone === 'hell' ? 'text-nova-100' : 'text-nova-800';
+---
+{size === 'sm' ? (
+  <span class="flex items-center gap-2.5">
+    <HerzLinie class={`h-8 w-auto sm:h-9 ${farbe}`} />
+    <span class={`whitespace-nowrap font-display text-base font-bold leading-none sm:text-lg ${farbe}`}>{site.name}</span>
+  </span>
+) : (
+  <Tag class="flex flex-col items-center text-center">
+    <HerzLinie class="h-auto w-44 text-signal sm:w-56" />
+    <span class="mt-5 block font-display text-5xl font-bold leading-none text-nova-800 sm:text-6xl">{site.name}</span>
+    <span class="mt-3 block font-display text-lg font-normal text-nova-900">{site.untertitel}</span>
+  </Tag>
+)}

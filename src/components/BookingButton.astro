@@ -1,0 +1,10 @@
+---
+// «Termin buchen»: Buchungstool (booking.url) oder Fallback WhatsApp. Ziel nur hier festgelegt.
+import { booking } from '../lib/site';
+interface Props { variant?: 'primary' | 'secondary'; class?: string; label?: string }
+const { variant = 'primary', class: cls = '', label = 'Termin buchen' } = Astro.props;
+const hinweis = booking.viaTool ? '(Online-Buchung, öffnet in neuem Tab)' : '(per WhatsApp, öffnet in neuem Tab)';
+---
+<a href={booking.href} target="_blank" rel="noopener" class:list={['btn', `btn-${variant}`, cls]}>
+  {label}<span class="sr-only"> {hinweis}</span>
+</a>

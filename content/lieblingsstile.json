@@ -1,0 +1,9 @@
+{
+  "titel": "Meine Lieblingsstile",
+  "text": "French und Glitzer: klassisch klar oder mit ganz viel Funkeln. Und natürlich alles in Pink und Rosa.",
+  "stile": [
+    { "name": "French", "text": "Zeitlos, sauber, elegant." },
+    { "name": "Glitzer", "text": "Alles, was glänzt und funkelt." }
+  ],
+  "_entwurf": "Entwurf, Stile laut Fragebogen"
+}

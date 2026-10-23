@@ -1,0 +1,116 @@
+---
+import Base from '../layouts/Base.astro';
+import BookingButton from '../components/BookingButton.astro';
+import ServiceCard from '../components/ServiceCard.astro';
+import PreisphaseHinweis from '../components/PreisphaseHinweis.astro';
+import SignatureLine from '../components/SignatureLine.astro';
+import Logo from '../components/Logo.astro';
+import { kontrast } from '../lib/kontrast';
+
+const skala = [
+  { name: 'nova-50', hex: '#fcf1f1', quelle: 'abgeleitet', rolle: 'Ruhefläche' },
+  { name: 'nova-100', hex: '#f8e2e1', quelle: 'abgeleitet', rolle: 'Fläche' },
+  { name: 'nova-200', hex: '#f3cfce', quelle: 'Blush (Logo, Farbfeld 5)', rolle: 'grosse Flächen, Hero' },
+  { name: 'nova-300', hex: '#efadb8', quelle: 'Rosa 3 (Farbfeld 4)', rolle: 'Rahmen' },
+  { name: 'nova-400', hex: '#ee9cae', quelle: 'Rosa 2 (Farbfeld 3)', rolle: 'Deko' },
+  { name: 'nova-500', hex: '#ed839f', quelle: 'Rosa 1 (Farbfeld 2)', rolle: 'Deko' },
+  { name: 'nova-600', hex: '#ec6a8f', quelle: 'Pink (Logo-Schrift, Farbfeld 1)', rolle: 'Deko' },
+  { name: 'signal', hex: '#ff5e8f', quelle: 'Pink kräftig (Logo-Linie)', rolle: 'Linien-Signature' },
+  { name: 'nova-700', hex: '#c2335f', quelle: 'abgeleitet', rolle: 'Deko auf Beere' },
+  { name: 'nova-800', hex: '#a8264f', quelle: 'abgeleitet (Beere)', rolle: 'Buttons, Links, Titel' },
+  { name: 'nova-900', hex: '#8a1d41', quelle: 'abgeleitet', rolle: 'Hover, Fokus' },
+  { name: 'nova-950', hex: '#3d1f28', quelle: 'abgeleitet (Rosa-Braun)', rolle: 'Fliesstext, Footer' },
+  { name: 'muted', hex: '#6e4250', quelle: 'abgeleitet', rolle: 'Nebentext' },
+];
+const hell = (h: string) => kontrast(h, '#3d1f28') > kontrast(h, '#ffffff');
+const paare = [
+  ['Fliesstext nova-950', '#3d1f28', 'Weiss', '#ffffff'],
+  ['Fliesstext nova-950', '#3d1f28', 'Blush nova-200', '#f3cfce'],
+  ['Nebentext muted', '#6e4250', 'Weiss', '#ffffff'],
+  ['Nebentext muted', '#6e4250', 'nova-50', '#fcf1f1'],
+  ['Nebentext muted', '#6e4250', 'Blush nova-200', '#f3cfce'],
+  ['Titel/Link nova-800', '#a8264f', 'Weiss', '#ffffff'],
+  ['Titel/Link nova-800', '#a8264f', 'nova-50', '#fcf1f1'],
+  ['Titel/Link nova-800', '#a8264f', 'Blush nova-200', '#f3cfce'],
+  ['Hover nova-900', '#8a1d41', 'Blush nova-200', '#f3cfce'],
+  ['Button-Text Weiss', '#ffffff', 'Button nova-800', '#a8264f'],
+  ['Hinweis nova-100', '#f8e2e1', 'Beere nova-800', '#a8264f'],
+  ['Footer nova-100', '#f8e2e1', 'Footer nova-950', '#3d1f28'],
+  ['Pink nova-600 (nur Deko)', '#ec6a8f', 'Weiss', '#ffffff'],
+  ['Signal (nur Deko)', '#ff5e8f', 'Blush nova-200', '#f3cfce'],
+].map(([fg, f, bg, b]) => ({ fg, f, bg, b, r: kontrast(f, b) }));
+---
+<Base title="Styleguide" noindex>
+  <div class="container-nova space-y-16 py-14">
+    <header>
+      <p class="eyebrow">Intern · noindex</p>
+      <h1 class="mt-2 text-4xl font-bold">Styleguide Nova Nails</h1>
+      <p class="mt-3 max-w-2xl text-muted">Modern & schlicht: Comfortaa aus dem Logo, flächiges Blush, Beere für Text und Buttons, die Logo-Linie als einziges Motiv.</p>
+    </header>
+
+    <section aria-labelledby="sg-logo">
+      <h2 id="sg-logo" class="text-2xl font-bold">Logo (Entwurf)</h2>
+      <div class="mt-6 grid gap-6 sm:grid-cols-2">
+        <div class="rounded-[var(--radius-card)] bg-nova-200 p-10"><Logo size="lg" /></div>
+        <div class="flex items-center justify-center rounded-[var(--radius-card)] bg-nova-950 p-10 text-nova-100"><Logo tone="hell" /></div>
+      </div>
+    </section>
+
+    <section aria-labelledby="sg-farben">
+      <h2 id="sg-farben" class="text-2xl font-bold">Farbskala</h2>
+      <ul class="mt-6 grid grid-cols-2 gap-3 sm:grid-cols-4 lg:grid-cols-7">
+        {skala.map((c) => (
+          <li class="overflow-hidden rounded-2xl border border-nova-200">
+            <div class="flex h-20 items-end p-2 font-mono text-xs" style={`background:${c.hex};color:${hell(c.hex) ? '#3d1f28' : '#ffffff'}`}>{c.hex}</div>
+            <div class="p-2 text-xs"><strong>{c.name}</strong><br /><span class="text-muted">{c.quelle}</span><br />{c.rolle}</div>
+          </li>
+        ))}
+      </ul>
+      <h3 class="mt-10 text-xl font-bold">Kontraste (gerechnet, AA Text ≥ 4.5:1)</h3>
+      <div class="mt-4 overflow-x-auto">
+        <table class="w-full min-w-[34rem] text-left text-sm">
+          <thead><tr class="border-b border-nova-300"><th class="py-2">Vordergrund</th><th>Hintergrund</th><th>Beispiel</th><th>Kontrast</th><th>AA</th></tr></thead>
+          <tbody>
+            {paare.map((p) => (
+              <tr class="border-b border-nova-100">
+                <td class="py-2">{p.fg}</td><td>{p.bg}</td>
+                <td><span class="rounded px-2 py-1" style={`color:${p.f};background:${p.b}`}>Nova Nails</span></td>
+                <td class="font-mono">{p.r.toFixed(2)}:1</td>
+                <td>{p.r >= 4.5 ? 'ja' : p.fg.includes('Deko') ? 'nur Deko' : 'nein'}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section aria-labelledby="sg-schrift">
+      <h2 id="sg-schrift" class="text-2xl font-bold">Schriften</h2>
+      <div class="mt-6 grid gap-6 md:grid-cols-2">
+        <div class="card p-6">
+          <p class="eyebrow">Titel · Comfortaa (aus dem Logo)</p>
+          <p class="mt-3 font-display text-4xl font-bold text-nova-800">Hände zum Strahlen</p>
+          <p class="mt-2 font-display text-xl text-nova-800">Wohlfühl-Auszeit in Buochs</p>
+        </div>
+        <div class="card p-6">
+          <p class="eyebrow">Text · Figtree</p>
+          <p class="mt-3">Figtree ist eine ruhige, geometrische Sans mit offenen Formen. Sie passt zu den runden Comfortaa-Titeln, bleibt in kleinen Grössen sehr gut lesbar und ist klar etwas anderes als DM Sans.</p>
+        </div>
+      </div>
+    </section>
+
+    <section aria-labelledby="sg-komp" class="space-y-8">
+      <h2 id="sg-komp" class="text-2xl font-bold">Komponenten</h2>
+      <div class="flex flex-wrap gap-3"><BookingButton /><BookingButton variant="secondary" label="Anrufen" /></div>
+      <PreisphaseHinweis />
+      <ul class="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+        <ServiceCard name="Gelnägel neues Set" beschreibung="Beispielkarte (Daten aus preise.json)" dauer="2 Std." preis={120} />
+        <ServiceCard name="Nail-Art" beschreibung="Karte ohne bestätigten Preis" dauer={null} preis={null} />
+      </ul>
+      <div>
+        <p class="eyebrow">Linien-Signature (beim Scrollen gezeichnet)</p>
+        <SignatureLine class="mt-4" />
+      </div>
+    </section>
+  </div>
+</Base>

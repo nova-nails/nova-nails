@@ -10,5 +10,8 @@ export default defineConfig({
   trailingSlash: 'never',
   build: { format: 'file' },
   integrations: [sitemap({ filter: (page) => !page.includes('/styleguide') })],
+  // Dev-Port 4324 (4321–4323 belegt durch andere Projekte)
+  server: { port: 4324 },
+  devToolbar: { enabled: false },
   vite: { plugins: [tailwindcss()] },
 });

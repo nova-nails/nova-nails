@@ -1,0 +1,62 @@
+{
+  "_hinweis": "Zentrale Schalter und Stammdaten. Felder mit leerem Wert werden auf der Website ausgeblendet.",
+  "schalter": {
+    "preisphase": "ausbildung",
+    "_preisphase": "\"ausbildung\" = Zahl, was es dir wert ist (reguläre Preise darunter) | \"regulaer\" = nur Preisliste",
+    "showOpeningBanner": true,
+    "showGallery": false
+  },
+  "booking": {
+    "url": "",
+    "_url": "[TODO: Cal.com-Link der Inhaberin eintragen. Leer = «Termin buchen» führt zu WhatsApp/Anruf]"
+  },
+  "social": {
+    "instagram": "",
+    "tiktok": "",
+    "_social": "Vollständige Profil-URL eintragen, sobald vorhanden. Leer = ausgeblendet."
+  },
+  "name": "Nova Nails",
+  "inhaberin": "Julia Tellenbach",
+  "untertitel": "by Julia Tellenbach",
+  "eroeffnung": "November 2026",
+  "kursabschluss": "",
+  "_kursabschluss": "[TODO: Datum Kursabschluss, z. B. «1. März 2027». Leer = «nach meiner Ausbildung»]",
+  "adresse": {
+    "strasse": "Beckenriederstrasse 28",
+    "plz": "6374",
+    "ort": "Buochs",
+    "kanton": "NW",
+    "region": "Nidwalden"
+  },
+  "anreise": [
+    "1 Parkplatz direkt beim Studio",
+    "Bushaltestelle ca. 5 Minuten zu Fuss"
+  ],
+  "_anreise": "[TODO: Name der Bushaltestelle ergänzen]",
+  "zeiten": {
+    "text": "Montag bis Freitag, 09:00–19:00 Uhr",
+    "hinweis": "Nur nach Vereinbarung",
+    "schema": [{ "tage": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"], "von": "09:00", "bis": "19:00" }]
+  },
+  "telefon": { "anzeige": "079 282 33 99", "e164": "+41792823399" },
+  "whatsapp": {
+    "nummer": "41792823399",
+    "text": "Hallo Julia, ich möchte gerne einen Termin bei Nova Nails buchen."
+  },
+  "antwortzeit": "Ich antworte in der Regel innerhalb von 2–3 Stunden.",
+  "email": "",
+  "_email": "[TODO: E-Mail-Adresse der Inhaberin, z. B. über die neue Domain]",
+  "rechtsform": "Einzelunternehmen (geplant)",
+  "_rechtsform": "[TODO: Rechtsform bestätigen]",
+  "uid": "",
+  "hero": {
+    "titel": "Deine Wohlfühl-Auszeit für die Hände",
+    "text": "Gelnägel, Auffüllen, Shellac und Maniküre in Buochs. Mach es dir bequem, ich bringe deine Nägel zum Strahlen.",
+    "_entwurf": "Entwurf aus der Stimmung des Über-mich-Texts, von der Inhaberin bestätigen lassen"
+  },
+  "seo": {
+    "titel": "Nova Nails – Nagelstudio in Buochs",
+    "beschreibung": "Nova Nails by Julia Tellenbach: Gelnägel, Auffüllen, Shellac und Maniküre in Buochs, Nidwalden. Eröffnung November 2026. Termin online buchen."
+  },
+  "gestaltung": { "name": "Peter & Co Webdesign", "url": "https://peterco.ch" }
+}

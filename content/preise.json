@@ -1,0 +1,21 @@
+{
+  "_hinweis": "Einzige Quelle für Leistungen und Preise. preis/dauer null = «folgt».",
+  "leistungen": [
+    { "name": "Gelnägel neues Set", "beschreibung": "Komplett neue Gelnägel, Form und Länge nach deinem Wunsch.", "dauer": "2 Std.", "dauerMin": 120, "preis": 120 },
+    { "name": "Auffüllen", "beschreibung": "Nachwachsende Lücke auffüllen und neu gestalten. Auch bei Nägeln aus einem anderen Studio.", "dauer": "1.5 Std.", "dauerMin": 90, "preis": 100 },
+    { "name": "Nagelverstärkung", "beschreibung": "Gel auf deinen Naturnägeln für mehr Halt.", "dauer": "1 Std.", "dauerMin": 60, "preis": 90 },
+    { "name": "Shellac / Gel-Lack", "beschreibung": "Farbe mit Glanz, die lange hält.", "dauer": "30 Min.", "dauerMin": 30, "preis": 60 },
+    { "name": "Maniküre", "beschreibung": "Pflege für deine Hände und Nägel.", "dauer": "30 Min.", "dauerMin": 30, "preis": 40 },
+    { "name": "Entfernen (Gel/Lack)", "beschreibung": "Schonendes Entfernen von Gel oder Gel-Lack.", "dauer": "30 Min.", "dauerMin": 30, "preis": 40 },
+    { "name": "Nail-Art", "beschreibung": "Designs nach deinem Wunsch, von dezent bis Glitzer.", "dauer": null, "dauerMin": null, "preis": null, "_todo": "[TODO: Dauer und Preis/Aufpreis Nail-Art]" }
+  ],
+  "aufpreise": [{ "name": "Entfernen von Fremdarbeit", "preis": 10 }],
+  "hinweise": [
+    "Auffüllen empfehle ich alle 3–4 Wochen.",
+    "Auffüllen geht auch bei Nägeln aus einem anderen Studio."
+  ],
+  "ausbildung": {
+    "titel": "Zahl, was es dir wert ist",
+    "text": "Während meiner Ausbildung zahlst du, was es dir wert ist. Die regulären Preise unten gelten danach."
+  }
+}

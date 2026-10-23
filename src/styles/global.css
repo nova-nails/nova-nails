@@ -1,0 +1,90 @@
+@import 'tailwindcss';
+
+/*
+  Nova Nails – Design-Tokens
+  Palette der Inhaberin (Logo + Farbfeld): signal, 600, 500, 400, 300, 200 (Blush).
+  Abgeleitet (gleicher Farbton, nur für Text/Buttons/Flächen): 50, 100, 700–950, muted.
+  Kontraste (WCAG, gerechnet): siehe /styleguide.
+*/
+@theme {
+  --color-nova-50: #fcf1f1;   /* abgeleitet: Ruhefläche */
+  --color-nova-100: #f8e2e1;  /* abgeleitet */
+  --color-nova-200: #f3cfce;  /* Blush – Logo-Hintergrund, Farbfeld 5 */
+  --color-nova-300: #efadb8;  /* Rosa 3 – Farbfeld 4 */
+  --color-nova-400: #ee9cae;  /* Rosa 2 – Farbfeld 3 */
+  --color-nova-500: #ed839f;  /* Rosa 1 – Farbfeld 2 */
+  --color-nova-600: #ec6a8f;  /* Pink – Logo-Schrift, Farbfeld 1 */
+  --color-nova-700: #c2335f;  /* abgeleitet: Beere hell */
+  --color-nova-800: #a8264f;  /* abgeleitet: Beere – Buttons, Links, Titel */
+  --color-nova-900: #8a1d41;  /* abgeleitet: Beere dunkel – Hover, Fokus */
+  --color-nova-950: #3d1f28;  /* abgeleitet: Rosa-Braun – Fliesstext */
+  --color-signal: #ff5e8f;    /* Pink kräftig – Logo-Linie, nur Deko */
+  --color-muted: #6e4250;     /* abgeleitet: Nebentext */
+  --color-white: #ffffff;
+
+  --font-display: 'Comfortaa Variable', 'Comfortaa', ui-rounded, system-ui, sans-serif;
+  --font-body: 'Figtree Variable', 'Figtree', ui-sans-serif, system-ui, sans-serif;
+
+  --radius-card: 1.5rem;
+  --radius-pill: 999px;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 5rem;
+    -webkit-text-size-adjust: 100%;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+  }
+  body {
+    background: var(--color-white);
+    color: var(--color-nova-950);
+    font-family: var(--font-body);
+    font-size: 1.0625rem;
+    line-height: 1.65;
+  }
+  h1, h2, h3 {
+    font-family: var(--font-display);
+    color: var(--color-nova-800);
+    line-height: 1.2;
+    letter-spacing: -0.01em;
+    text-wrap: balance;
+  }
+  a { color: var(--color-nova-800); text-underline-offset: 0.2em; }
+  a:hover { color: var(--color-nova-900); }
+  :focus-visible {
+    outline: 3px solid var(--color-nova-900);
+    outline-offset: 3px;
+    border-radius: 0.5rem;
+  }
+  ::selection { background: var(--color-nova-200); color: var(--color-nova-950); }
+}
+
+@layer components {
+  .container-nova { width: 100%; max-width: 68rem; margin-inline: auto; padding-inline: 1.25rem; }
+  @media (min-width: 48rem) { .container-nova { padding-inline: 2rem; } }
+
+  .btn {
+    display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem;
+    min-height: 3rem; padding: 0.75rem 1.5rem;
+    border-radius: var(--radius-pill);
+    font-family: var(--font-display); font-weight: 700; font-size: 1rem; line-height: 1.2;
+    text-decoration: none; white-space: nowrap; transition: background-color .2s, color .2s, border-color .2s;
+  }
+  .btn-primary { background: var(--color-nova-800); color: var(--color-white); }
+  .btn-primary:hover { background: var(--color-nova-900); color: var(--color-white); }
+  .btn-secondary { background: transparent; color: var(--color-nova-800); border: 2px solid var(--color-nova-800); }
+  .btn-secondary:hover { background: var(--color-nova-800); color: var(--color-white); }
+
+  .eyebrow {
+    font-family: var(--font-display); font-weight: 700; font-size: 0.8125rem;
+    letter-spacing: 0.12em; text-transform: uppercase; color: var(--color-nova-800);
+  }
+  .card {
+    background: var(--color-white);
+    border: 1px solid var(--color-nova-300);
+    border-radius: var(--radius-card);
+  }
+}
