@@ -7,26 +7,26 @@ import { site, preisphase, chf } from '../../lib/site';
 const preisLabel =
   preisphase === 'ausbildung' ? (site.kursabschluss ? `Preis ab ${site.kursabschluss}` : 'Preis nach Ausbildung') : 'Preis';
 ---
-<section id="leistungen" class="bg-white py-16 sm:py-24" aria-labelledby="leistungen-titel">
+<section id="leistungen" class="bg-hell py-16 sm:py-24" aria-labelledby="leistungen-titel">
   <div class="container-nova">
-    <SectionHead id="leistungen-titel" eyebrow="Leistungen" titel="Leistungen & Preise">
-      <p class="mt-4 text-lg">Alles für gepflegte, glänzende Nägel. Dauer und Preis auf einen Blick.</p>
+    <SectionHead id="leistungen-titel" eyebrow="Leistungen" titel="Leistungen & Preise" farbe="text-akzent">
+      <p class="mt-4 text-lg text-akzent">Alles für gepflegte, glänzende Nägel. Dauer und Preis auf einen Blick.</p>
     </SectionHead>
     {preisphase === 'ausbildung' && <div class="mt-10"><PreisphaseHinweis /></div>}
     <ul class="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
       {preise.leistungen.map((l) => (
-        <ServiceCard name={l.name} beschreibung={l.beschreibung} dauer={l.dauer} preis={l.preis} preisLabel={preisLabel} />
+        <ServiceCard name={l.name} beschreibung={l.beschreibung} dauer={l.dauer} preisVon={l.preisVon} preisBis={l.preisBis} preisLabel={preisLabel} />
       ))}
     </ul>
-    <div class="mt-8 grid gap-4 rounded-[var(--radius-card)] bg-nova-50 p-6 sm:grid-cols-2 sm:p-8">
+    <div class="mt-8 grid gap-4 rounded-[var(--radius-card)] bg-akzent p-6 text-hell sm:grid-cols-2 sm:p-8">
       <div>
-        <h3 class="text-lg font-bold">Aufpreis</h3>
+        <h3 class="text-lg font-bold text-zart">Aufpreis</h3>
         <ul class="mt-2 space-y-1">
           {preise.aufpreise.map((a) => <li>{a.name}: <strong class="font-semibold">+ {chf(a.preis)}</strong></li>)}
         </ul>
       </div>
       <div>
-        <h3 class="text-lg font-bold">Hinweise</h3>
+        <h3 class="text-lg font-bold text-zart">Hinweise</h3>
         <ul class="mt-2 space-y-1">
           {preise.hinweise.map((h) => <li>{h}</li>)}
         </ul>

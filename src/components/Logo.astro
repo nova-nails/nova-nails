@@ -1,14 +1,16 @@
 ---
 import HerzLinie from './HerzLinie.astro';
 import { site } from '../lib/site';
-interface Props { size?: 'sm' | 'lg'; as?: 'div' | 'h1'; tone?: 'beere' | 'hell' }
+interface Props { size?: 'sm' | 'lg'; as?: 'div' | 'h1'; tone?: 'beere' | 'hell' | 'akzent' }
 const { size = 'sm', as: Tag = 'div', tone = 'beere' } = Astro.props;
-const farbe = tone === 'hell' ? 'text-nova-100' : 'text-nova-800';
+// akzent: Herz bleibt Beere, Wortmarke #EC698F (Header)
+const farbe = tone === 'hell' ? 'text-hell' : 'text-nova-800';
+const schrift = tone === 'akzent' ? 'text-akzent' : farbe;
 ---
 {size === 'sm' ? (
   <span class="flex items-center gap-2.5">
     <HerzLinie class={`h-8 w-auto sm:h-9 ${farbe}`} />
-    <span class={`whitespace-nowrap font-display text-base font-bold leading-none sm:text-lg ${farbe}`}>{site.name}</span>
+    <span class={`whitespace-nowrap font-display text-base font-bold leading-none sm:text-lg ${schrift}`}>{site.name}</span>
   </span>
 ) : (
   <Tag class="flex flex-col items-center text-center">

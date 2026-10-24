@@ -22,6 +22,11 @@
   --color-muted: #6e4250;     /* abgeleitet: Nebentext */
   --color-white: #ffffff;
 
+  /* Farbcode der Kundin (Anpassungen Runde 1, 2026-10-24) – exakt so, Kontraste bewusst gewollt */
+  --color-akzent: #ec698f;    /* blau markiert: Text, Buttons, Kastenflächen */
+  --color-hell: #f3cfce;      /* rot markiert: Flächen, Text auf Akzent */
+  --color-zart: #f09caf;      /* gelb markiert: Titel in Kästen, Beschreibungen */
+
   --font-display: 'Comfortaa Variable', 'Comfortaa', ui-rounded, system-ui, sans-serif;
   --font-body: 'Figtree Variable', 'Figtree', ui-sans-serif, system-ui, sans-serif;
 
@@ -55,7 +60,7 @@
   a { color: var(--color-nova-800); text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 0.2em; }
   a:hover { color: var(--color-nova-900); }
   :focus-visible {
-    outline: 3px solid var(--color-nova-900);
+    outline: 3px solid var(--color-nova-950); /* auf allen Flächen sichtbar */
     outline-offset: 3px;
     border-radius: 0.5rem;
   }
@@ -73,10 +78,14 @@
     font-family: var(--font-display); font-weight: 700; font-size: 1rem; line-height: 1.2;
     text-decoration: none; white-space: nowrap; transition: background-color .2s, color .2s, border-color .2s;
   }
-  .btn-primary { background: var(--color-nova-800); color: var(--color-white); }
-  .btn-primary:hover { background: var(--color-nova-900); color: var(--color-white); }
-  .btn-secondary { background: transparent; color: var(--color-nova-800); border: 2px solid var(--color-nova-800); }
-  .btn-secondary:hover { background: var(--color-nova-800); color: var(--color-white); }
+  /* Hover: Akzent leicht abgedunkelt (12 % Beere), bleibt in der Palette */
+  .btn-primary { background: var(--color-akzent); color: var(--color-hell); }
+  .btn-primary:hover { background: color-mix(in oklab, var(--color-akzent) 88%, var(--color-nova-900)); color: var(--color-hell); }
+  .btn-secondary { background: transparent; color: var(--color-akzent); border: 2px solid var(--color-akzent); }
+  .btn-secondary:hover { background: var(--color-akzent); color: var(--color-hell); }
+  /* Auf Akzent-Kästen (Anfahrt): helle Fläche, zarter Rand */
+  .btn-hell { background: var(--color-hell); color: var(--color-akzent); border: 2px solid var(--color-zart); }
+  .btn-hell:hover { background: var(--color-white); color: var(--color-akzent); }
 
   .eyebrow {
     font-family: var(--font-display); font-weight: 700; font-size: 0.8125rem;

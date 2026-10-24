@@ -10,13 +10,13 @@ const nav = [
   { href: '/#anfahrt', label: 'Anfahrt' },
 ];
 ---
-<header class="sticky top-0 z-40 border-b border-nova-200 bg-white/95 backdrop-blur">
+<header class="sticky top-0 z-40 border-b border-nova-300 bg-hell">
   <div class="container-nova flex h-16 items-center justify-between gap-4">
-    <a href="/" class="rounded-full no-underline" aria-label="Nova Nails, zur Startseite"><Logo /></a>
+    <a href="/" class="rounded-full no-underline" aria-label="Nova Nails, zur Startseite"><Logo tone="akzent" /></a>
     {!minimal && (
       <nav aria-label="Hauptnavigation" class="hidden md:block">
         <ul class="flex items-center gap-7">
-          {nav.map((n) => <li><a href={n.href} class="font-medium text-nova-950 no-underline hover:text-nova-800 hover:underline">{n.label}</a></li>)}
+          {nav.map((n) => <li><a href={n.href} class="font-medium text-akzent no-underline hover:text-akzent hover:underline">{n.label}</a></li>)}
         </ul>
       </nav>
     )}
@@ -24,12 +24,12 @@ const nav = [
       <BookingButton class="!min-h-11 !px-5 !text-[0.95rem]" />
       {!minimal && (
         <details class="nav-mobile relative md:hidden">
-          <summary class="flex h-11 w-11 cursor-pointer list-none items-center justify-center rounded-full border-2 border-nova-800 text-nova-800" aria-label="Menü">
+          <summary class="flex h-11 w-11 cursor-pointer list-none items-center justify-center rounded-full border-2 border-akzent text-akzent" aria-label="Menü">
             <svg viewBox="0 0 24 24" class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16" /></svg>
           </summary>
-          <nav aria-label="Mobile Navigation" class="absolute right-0 mt-3 w-56 rounded-[var(--radius-card)] border border-nova-300 bg-white p-2">
+          <nav aria-label="Mobile Navigation" class="absolute right-0 mt-3 w-56 rounded-[var(--radius-card)] border border-zart bg-hell p-2">
             <ul>
-              {nav.map((n) => <li><a href={n.href} class="block rounded-xl px-4 py-3 font-medium text-nova-950 no-underline hover:bg-nova-50">{n.label}</a></li>)}
+              {nav.map((n) => <li><a href={n.href} class="block rounded-xl px-4 py-3 font-medium text-akzent no-underline hover:bg-white hover:text-akzent">{n.label}</a></li>)}
             </ul>
           </nav>
         </details>

@@ -28,7 +28,8 @@ export const socials = [
   { name: 'TikTok', url: site.social.tiktok },
 ].filter((s) => s.url);
 
-export const chf = (n: number) => `CHF ${n}`;
+/** «CHF 120» oder als Spanne «CHF 60–90». */
+export const chf = (von: number, bis?: number | null) => (bis != null ? `CHF ${von}–${bis}` : `CHF ${von}`);
 
 /**
  * Pfad ohne .html und ohne Schrägstrich am Ende.

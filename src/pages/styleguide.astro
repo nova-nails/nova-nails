@@ -22,6 +22,12 @@ const skala = [
   { name: 'nova-950', hex: '#3d1f28', quelle: 'abgeleitet (Rosa-Braun)', rolle: 'Fliesstext, Footer' },
   { name: 'muted', hex: '#6e4250', quelle: 'abgeleitet', rolle: 'Nebentext' },
 ];
+// Farbcode der Kundin (Runde 1, 2026-10-24): bestimmt die Startseite
+const kundin = [
+  { name: 'akzent', hex: '#ec698f', quelle: 'Kundin, blau markiert', rolle: 'Text, Buttons, Kastenflächen, Footer' },
+  { name: 'hell', hex: '#f3cfce', quelle: 'Kundin, rot markiert', rolle: 'Flächen, Header, Text auf Akzent' },
+  { name: 'zart', hex: '#f09caf', quelle: 'Kundin, gelb markiert', rolle: 'Titel in Kästen, Beschreibungen' },
+];
 const hell = (h: string) => kontrast(h, '#3d1f28') > kontrast(h, '#ffffff');
 const paare = [
   ['Fliesstext nova-950', '#3d1f28', 'Weiss', '#ffffff'],
@@ -35,9 +41,20 @@ const paare = [
   ['Hover nova-900', '#8a1d41', 'Blush nova-200', '#f3cfce'],
   ['Button-Text Weiss', '#ffffff', 'Button nova-800', '#a8264f'],
   ['Hinweis nova-100', '#f8e2e1', 'Beere nova-800', '#a8264f'],
-  ['Footer nova-100', '#f8e2e1', 'Footer nova-950', '#3d1f28'],
+  ['Hell nova-100', '#f8e2e1', 'Dunkel nova-950', '#3d1f28'],
   ['Pink nova-600 (nur Deko)', '#ec6a8f', 'Weiss', '#ffffff'],
   ['Signal (nur Deko)', '#ff5e8f', 'Blush nova-200', '#f3cfce'],
+].map(([fg, f, bg, b]) => ({ fg, f, bg, b, r: kontrast(f, b) }));
+// Bewusst unter AA: Entscheid der Kundin, mit Ramon abgesprochen
+const paareKundin = [
+  ['Text akzent', '#ec698f', 'Fläche hell', '#f3cfce'],
+  ['Text akzent', '#ec698f', 'Weiss (Karten, Pille)', '#ffffff'],
+  ['Beschreibung zart', '#f09caf', 'Weiss (Karten)', '#ffffff'],
+  ['Titel zart', '#f09caf', 'Fläche hell', '#f3cfce'],
+  ['Text hell', '#f3cfce', 'Kasten/Button akzent', '#ec698f'],
+  ['Titel zart', '#f09caf', 'Kasten akzent', '#ec698f'],
+  ['Fokusring nova-950', '#3d1f28', 'Kasten akzent', '#ec698f'],
+  ['Fokusring nova-950', '#3d1f28', 'Fläche hell', '#f3cfce'],
 ].map(([fg, f, bg, b]) => ({ fg, f, bg, b, r: kontrast(f, b) }));
 ---
 <Base title="Styleguide" noindex>
@@ -45,14 +62,14 @@ const paare = [
     <header>
       <p class="eyebrow">Intern · noindex</p>
       <h1 class="mt-2 text-4xl font-bold">Styleguide Nova Nails</h1>
-      <p class="mt-3 max-w-2xl text-muted">Modern & schlicht: Comfortaa aus dem Logo, flächiges Blush, Beere für Text und Buttons, die Logo-Linie als einziges Motiv.</p>
+      <p class="mt-3 max-w-2xl text-muted">Modern & schlicht: Comfortaa aus dem Logo, flächiges Blush, die Logo-Linie als einziges Motiv. Seit Runde 1 (2026-10-24) bestimmt der Farbcode der Kundin die Startseite: Akzent <code>#EC698F</code>, Hell <code>#F3CFCE</code>, Zart <code>#F09CAF</code>.</p>
     </header>
 
     <section aria-labelledby="sg-logo">
       <h2 id="sg-logo" class="text-2xl font-bold">Logo (Entwurf)</h2>
       <div class="mt-6 grid gap-6 sm:grid-cols-2">
         <div class="rounded-[var(--radius-card)] bg-nova-200 p-10"><Logo size="lg" /></div>
-        <div class="flex items-center justify-center rounded-[var(--radius-card)] bg-nova-950 p-10 text-nova-100"><Logo tone="hell" /></div>
+        <div class="flex flex-col items-center justify-center gap-6 rounded-[var(--radius-card)] bg-akzent p-10"><Logo tone="hell" /><span class="rounded-full bg-hell px-4 py-2"><Logo tone="akzent" /></span></div>
       </div>
     </section>
 
@@ -84,6 +101,35 @@ const paare = [
       </div>
     </section>
 
+    <section aria-labelledby="sg-kundin">
+      <h2 id="sg-kundin" class="text-2xl font-bold">Farbcode der Kundin</h2>
+      <ul class="mt-6 grid grid-cols-1 gap-3 sm:grid-cols-3">
+        {kundin.map((c) => (
+          <li class="overflow-hidden rounded-2xl border border-nova-200">
+            <div class="flex h-20 items-end p-2 font-mono text-xs" style={`background:${c.hex};color:#3d1f28`}>{c.hex}</div>
+            <div class="p-2 text-xs"><strong>{c.name}</strong><br /><span class="text-muted">{c.quelle}</span><br />{c.rolle}</div>
+          </li>
+        ))}
+      </ul>
+      <h3 class="mt-10 text-xl font-bold">Kontraste Farbcode Kundin</h3>
+      <p class="mt-2 max-w-2xl text-muted">Bewusster Entscheid der Kundin, mit Ramon abgesprochen: diese Kombinationen erreichen kein WCAG AA und werden trotzdem genau so umgesetzt. Fokus, Semantik, Alt-Texte und Tastatur bleiben Pflicht; der Fokusring (nova-950) ist auf allen Flächen sichtbar.</p>
+      <div class="mt-4 overflow-x-auto" tabindex="0" role="region" aria-label="Kontrasttabelle Farbcode Kundin">
+        <table class="w-full min-w-[34rem] text-left text-sm">
+          <thead><tr class="border-b border-nova-300"><th class="py-2">Vordergrund</th><th>Hintergrund</th><th>Beispiel</th><th>Kontrast</th><th>AA</th></tr></thead>
+          <tbody>
+            {paareKundin.map((p) => (
+              <tr class="border-b border-nova-100">
+                <td class="py-2">{p.fg}</td><td>{p.bg}</td>
+                <td><span class="rounded px-2 py-1" style={`color:${p.f};background:${p.b}`}>Nova Nails</span></td>
+                <td class="font-mono">{p.r.toFixed(2)}:1</td>
+                <td>{p.r >= 4.5 ? 'ja' : p.fg.startsWith('Fokus') ? (p.r >= 3 ? 'ja (≥ 3:1 Fokus)' : 'nein') : 'nein (gewollt)'}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </section>
+
     <section aria-labelledby="sg-schrift">
       <h2 id="sg-schrift" class="text-2xl font-bold">Schriften</h2>
       <div class="mt-6 grid gap-6 md:grid-cols-2">
@@ -102,10 +148,12 @@ const paare = [
     <section aria-labelledby="sg-komp" class="space-y-8">
       <h2 id="sg-komp" class="text-2xl font-bold">Komponenten</h2>
       <div class="flex flex-wrap gap-3"><BookingButton /><BookingButton variant="secondary" label="Anrufen" /></div>
+      <div class="flex flex-wrap gap-3 rounded-[var(--radius-card)] bg-akzent p-6"><BookingButton variant="hell" /><span class="self-center text-sm text-hell">Button «hell» auf Akzent-Kasten (Anfahrt)</span></div>
       <PreisphaseHinweis />
       <ul class="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-        <ServiceCard name="Gelnägel neues Set" beschreibung="Beispielkarte (Daten aus preise.json)" dauer="2 Std." preis={120} />
-        <ServiceCard name="Nail-Art" beschreibung="Karte ohne bestätigten Preis" dauer={null} preis={null} />
+        <ServiceCard name="Gelnägel neues Set" beschreibung="Beispielkarte (Daten aus preise.json)" dauer="2 Std." preisVon={120} />
+        <ServiceCard name="Nagelverstärkung" beschreibung="Karte mit Preisspanne" dauer="30 Min.–1 Std." preisVon={60} preisBis={90} />
+        <ServiceCard name="Beispiel" beschreibung="Karte ohne bestätigten Preis" dauer={null} preisVon={null} />
       </ul>
       <div>
         <p class="eyebrow">Linien-Signature (beim Scrollen gezeichnet)</p>

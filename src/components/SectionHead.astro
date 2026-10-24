@@ -1,9 +1,10 @@
 ---
-interface Props { id: string; eyebrow?: string; titel: string; center?: boolean }
-const { id, eyebrow, titel, center = false } = Astro.props;
+// farbe: Textfarbe für Eyebrow und Titel, z. B. 'text-akzent'
+interface Props { id: string; eyebrow?: string; titel: string; center?: boolean; farbe?: string }
+const { id, eyebrow, titel, center = false, farbe = '' } = Astro.props;
 ---
 <div class:list={['max-w-2xl', center && 'mx-auto text-center']}>
-  {eyebrow && <p class="eyebrow">{eyebrow}</p>}
-  <h2 id={id} class="mt-2 text-3xl font-bold sm:text-4xl">{titel}</h2>
+  {eyebrow && <p class:list={['eyebrow', farbe]}>{eyebrow}</p>}
+  <h2 id={id} class:list={['mt-2 text-3xl font-bold sm:text-4xl', farbe]}>{titel}</h2>
   <slot />
 </div>

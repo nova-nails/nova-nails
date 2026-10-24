@@ -25,7 +25,7 @@ Grundsatz: Alle Konten gehören Julia Tellenbach. Peter & Co wird nur eingeladen
 Empfehlung: **Cal.com Free** auf Julias Konto, Region **EU** beim Anlegen wählen.
 1. Konto mit Julias E-Mail anlegen, Zeitzone Europe/Zurich.
 2. Verfügbarkeit: Mo–Fr 09:00–19:00.
-3. Event-Typen (Dauer aus `content/preise.json`): Gelnägel neues Set 120 Min., Auffüllen 90, Nagelverstärkung 60, Shellac/Gel-Lack 30, Maniküre 30, Entfernen 30. Nail-Art erst, wenn Dauer feststeht.
+3. Event-Typen (Dauer aus `content/preise.json`): Gelnägel neues Set 120 Min., Auffüllen Gelnägel 90, Nagelverstärkung 60 (Spanne 30 Min.–1 Std., CHF 60–90: Event-Typ mit der längeren Dauer anlegen, damit nichts überbucht wird), Maniküre 30, Entfernen (Gel/Lack) 30.
 4. Buchungsfragen: Name, Telefon (für Rückfragen), optional Wunsch-Design. Bestätigung per E-Mail.
 5. Absageregel in die Beschreibung: kostenlos bis 24 Std. vorher, danach CHF 50.
 6. Profil-Link (z. B. `https://cal.com/novanails`) in `content/site.json` → `booking.url`. Danach führt «Termin buchen» dorthin (neuer Tab) und die Datenschutzerklärung zeigt den Cal.com-Abschnitt automatisch.

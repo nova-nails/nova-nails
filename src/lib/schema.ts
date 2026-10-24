@@ -4,7 +4,9 @@ import preise from '../../content/preise.json';
 
 export function nailSalonSchema(siteUrl: URL | undefined) {
   const base = siteUrl?.href.replace(/\/$/, '') ?? '';
-  const betraege = preise.leistungen.map((l) => l.preis).filter((p): p is number => p != null);
+  const betraege = preise.leistungen
+    .flatMap((l) => [l.preisVon, l.preisBis])
+    .filter((p): p is number => p != null);
   return {
     '@context': 'https://schema.org',
     '@type': 'NailSalon',

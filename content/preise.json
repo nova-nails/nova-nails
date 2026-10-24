@@ -1,13 +1,11 @@
 {
-  "_hinweis": "Einzige Quelle für Leistungen und Preise. preis/dauer null = «folgt».",
+  "_hinweis": "Einzige Quelle für Leistungen und Preise. preisVon/dauerMinVon null = «folgt». preisBis/dauerMinBis nur bei Spannen, sonst null.",
   "leistungen": [
-    { "name": "Gelnägel neues Set", "beschreibung": "Komplett neue Gelnägel, Form und Länge nach deinem Wunsch.", "dauer": "2 Std.", "dauerMin": 120, "preis": 120 },
-    { "name": "Auffüllen", "beschreibung": "Nachwachsende Lücke auffüllen und neu gestalten. Auch bei Nägeln aus einem anderen Studio.", "dauer": "1.5 Std.", "dauerMin": 90, "preis": 100 },
-    { "name": "Nagelverstärkung", "beschreibung": "Gel auf deinen Naturnägeln für mehr Halt.", "dauer": "1 Std.", "dauerMin": 60, "preis": 90 },
-    { "name": "Shellac / Gel-Lack", "beschreibung": "Farbe mit Glanz, die lange hält.", "dauer": "30 Min.", "dauerMin": 30, "preis": 60 },
-    { "name": "Maniküre", "beschreibung": "Pflege für deine Hände und Nägel.", "dauer": "30 Min.", "dauerMin": 30, "preis": 40 },
-    { "name": "Entfernen (Gel/Lack)", "beschreibung": "Schonendes Entfernen von Gel oder Gel-Lack.", "dauer": "30 Min.", "dauerMin": 30, "preis": 40 },
-    { "name": "Nail-Art", "beschreibung": "Designs nach deinem Wunsch, von dezent bis Glitzer.", "dauer": null, "dauerMin": null, "preis": null, "_todo": "[TODO: Dauer und Preis/Aufpreis Nail-Art]" }
+    { "name": "Gelnägel neues Set", "beschreibung": "Komplett neue Gelnägel, Form, Länge und Design nach deinem Wunsch.", "dauer": "2 Std.", "dauerMinVon": 120, "dauerMinBis": null, "preisVon": 120, "preisBis": null },
+    { "name": "Auffüllen Gelnägel", "beschreibung": "Nachwachsende Lücke auffüllen und neu gestalten. Auch bei Nägeln aus einem anderen Studio.", "dauer": "1.5 Std.", "dauerMinVon": 90, "dauerMinBis": null, "preisVon": 100, "preisBis": null },
+    { "name": "Nagelverstärkung", "beschreibung": "Verstärkung mit oder ohne Design.", "dauer": "30 Min.–1 Std.", "dauerMinVon": 30, "dauerMinBis": 60, "preisVon": 60, "preisBis": 90 },
+    { "name": "Maniküre", "beschreibung": "Pflege für deine Hände und Nägel.", "dauer": "30 Min.", "dauerMinVon": 30, "dauerMinBis": null, "preisVon": 40, "preisBis": null },
+    { "name": "Entfernen (Gel/Lack)", "beschreibung": "Schonendes Entfernen von Gelnägeln oder Gel-Lack.", "dauer": "30 Min.", "dauerMinVon": 30, "dauerMinBis": null, "preisVon": 40, "preisBis": null }
   ],
   "aufpreise": [{ "name": "Entfernen von Fremdarbeit", "preis": 10 }],
   "hinweise": [

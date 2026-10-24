@@ -5,12 +5,12 @@ import HerzLinie from './HerzLinie.astro';
 import { preisphase } from '../lib/site';
 ---
 {preisphase === 'ausbildung' && (
-  <aside class="relative overflow-hidden rounded-[var(--radius-card)] bg-nova-800 p-6 text-white sm:p-8" aria-labelledby="preisphase-titel">
-    <HerzLinie class="pointer-events-none absolute -right-6 -bottom-8 w-40 text-nova-700 sm:w-48" />
+  <aside class="relative overflow-hidden rounded-[var(--radius-card)] bg-akzent p-6 text-hell sm:p-8" aria-labelledby="preisphase-titel">
+    <HerzLinie class="pointer-events-none absolute -right-6 -bottom-8 w-40 text-zart sm:w-48" />
     <div class="relative max-w-xl">
-      <p class="eyebrow !text-nova-100">Während meiner Ausbildung</p>
-      <h3 id="preisphase-titel" class="mt-2 text-2xl font-bold !text-white sm:text-3xl">{preise.ausbildung.titel}</h3>
-      <p class="mt-3 text-white">{preise.ausbildung.text}</p>
+      <p class="eyebrow text-hell">Während meiner Ausbildung</p>
+      <h3 id="preisphase-titel" class="mt-2 text-2xl font-bold text-hell sm:text-3xl">{preise.ausbildung.titel}</h3>
+      <p class="mt-3 text-hell">{preise.ausbildung.text}</p>
     </div>
   </aside>
 )}

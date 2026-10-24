@@ -1,4 +1,16 @@
-# Qualität (Stand 2026-10-23, Build lokal)
+# Qualität
+
+## Runde 1 Anpassungen (Stand 2026-10-24, Build lokal, Lighthouse 12.8)
+
+| Prüfung | Ergebnis |
+|---|---|
+| Lighthouse mobil `/` | Performance 100, Barrierefreiheit 96, Best Practices 100, SEO 100, CLS 0 |
+| Lighthouse desktop `/` | 100 / 96 / 100 / 100, CLS 0 |
+| Lighthouse mobil / desktop `/impressum` | 100 / 95 / 100 / 100, CLS 0 |
+| Barrierefreiheit | einziger Befund `color-contrast` (gewollter Farbcode der Kundin, siehe `docs/design-system.md`); keine weiteren axe-Befunde |
+| Tastatur | Fokusring 3 px `nova-950` auf Hell, Weiss und Akzent sichtbar; Mobilmenü: Enter öffnet, Tab in Links, Escape schliesst und fokussiert den Menü-Button |
+
+## Erstabnahme (Stand 2026-10-23, Build lokal)
 
 | Prüfung | Ergebnis |
 |---|---|

@@ -2,9 +2,8 @@
 import { Image } from 'astro:assets';
 import ueber from '../../../content/ueber.json';
 import julia from '../../assets/julia/julia-tellenbach.png';
-import HerzLinie from '../HerzLinie.astro';
 ---
-<section id="ueber-mich" class="bg-nova-200 py-16 sm:py-24" aria-labelledby="ueber-titel">
+<section id="ueber-mich" class="bg-hell py-16 sm:py-24" aria-labelledby="ueber-titel">
   <div class="container-nova grid items-start gap-12 md:grid-cols-[0.8fr_1.2fr]">
     <div class="flex justify-center md:sticky md:top-28">
       <!-- [TODO: Originalfoto in voller Auflösung bei der Inhaberin anfragen] -->
@@ -18,21 +17,16 @@ import HerzLinie from '../HerzLinie.astro';
       />
     </div>
     <div>
-      <p class="eyebrow">Julia Tellenbach</p>
-      <h2 id="ueber-titel" class="mt-2 text-3xl font-bold sm:text-4xl">{ueber.titel}</h2>
-      <div class="mt-6 space-y-4 text-lg">
-        {ueber.absaetze.map((a, i) => (
-          <p>
-            {a}
-            {i === ueber.absaetze.length - 1 && <HerzLinie class="ml-1 inline-block h-6 w-auto align-[-0.3em] text-nova-800" />}
-          </p>
-        ))}
+      <p class="eyebrow text-akzent">Julia Tellenbach</p>
+      <h2 id="ueber-titel" class="mt-2 text-3xl font-bold text-akzent sm:text-4xl">{ueber.titel}</h2>
+      <div class="mt-6 space-y-4 text-lg text-akzent">
+        {ueber.absaetze.map((a) => <p>{a}</p>)}
       </div>
       <ul class="mt-10 grid gap-4">
         {ueber.fakten.map((f) => (
-          <li class="rounded-[var(--radius-card)] bg-white p-5">
-            <h3 class="text-base font-bold">{f.titel}</h3>
-            <p class="mt-1 text-[0.95rem] text-muted">{f.text}</p>
+          <li class="rounded-[var(--radius-card)] bg-akzent p-5">
+            <h3 class="text-base font-bold text-zart">{f.titel}</h3>
+            <p class="mt-1 text-[0.95rem] text-hell">{f.text}</p>
           </li>
         ))}
       </ul>

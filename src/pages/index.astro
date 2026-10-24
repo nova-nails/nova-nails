@@ -3,7 +3,6 @@ import Base from '../layouts/Base.astro';
 import SignatureLine from '../components/SignatureLine.astro';
 import Hero from '../components/sections/Hero.astro';
 import Leistungen from '../components/sections/Leistungen.astro';
-import Lieblingsstile from '../components/sections/Lieblingsstile.astro';
 import Ueber from '../components/sections/Ueber.astro';
 import GutZuWissen from '../components/sections/GutZuWissen.astro';
 import Galerie from '../components/sections/Galerie.astro';
@@ -13,12 +12,10 @@ import { nailSalonSchema } from '../lib/schema';
 ---
 <Base schema={nailSalonSchema(Astro.site)}>
   <Hero />
-  <SignatureLine class="-mt-px bg-white" />
+  <div class="-mt-px bg-hell"><SignatureLine /></div>
   <Leistungen />
-  <Lieblingsstile />
   <Ueber />
   <GutZuWissen />
   {site.schalter.showGallery && <Galerie />}
-  <SignatureLine class="bg-white" />
   <Anfahrt />
 </Base>
