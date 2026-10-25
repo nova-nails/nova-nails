@@ -3,7 +3,7 @@ import preise from '../../../content/preise.json';
 import SectionHead from '../SectionHead.astro';
 import ServiceCard from '../ServiceCard.astro';
 import PreisphaseHinweis from '../PreisphaseHinweis.astro';
-import { site, preisphase, chf } from '../../lib/site';
+import { site, preisphase, chf, bookingEventHref } from '../../lib/site';
 const preisLabel =
   preisphase === 'ausbildung' ? (site.kursabschluss ? `Preis ab ${site.kursabschluss}` : 'Preis nach Ausbildung') : 'Preis';
 ---
@@ -15,18 +15,18 @@ const preisLabel =
     {preisphase === 'ausbildung' && <div class="mt-10"><PreisphaseHinweis /></div>}
     <ul class="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
       {preise.leistungen.map((l) => (
-        <ServiceCard name={l.name} beschreibung={l.beschreibung} dauer={l.dauer} preisVon={l.preisVon} preisBis={l.preisBis} preisLabel={preisLabel} />
+        <ServiceCard name={l.name} beschreibung={l.beschreibung} dauer={l.dauer} preisVon={l.preisVon} preisBis={l.preisBis} preisLabel={preisLabel} buchenHref={bookingEventHref(l.name)} />
       ))}
     </ul>
-    <div class="mt-8 grid gap-4 rounded-[var(--radius-card)] bg-akzent p-6 text-hell sm:grid-cols-2 sm:p-8">
+    <div class="mt-8 grid gap-4 rounded-[var(--radius-card)] bg-akzent p-6 text-zart sm:grid-cols-2 sm:p-8">
       <div>
-        <h3 class="text-lg font-bold text-zart">Aufpreis</h3>
+        <h3 class="text-lg font-bold text-hell">Aufpreis</h3>
         <ul class="mt-2 space-y-1">
           {preise.aufpreise.map((a) => <li>{a.name}: <strong class="font-semibold">+ {chf(a.preis)}</strong></li>)}
         </ul>
       </div>
       <div>
-        <h3 class="text-lg font-bold text-zart">Hinweise</h3>
+        <h3 class="text-lg font-bold text-hell">Hinweise</h3>
         <ul class="mt-2 space-y-1">
           {preise.hinweise.map((h) => <li>{h}</li>)}
         </ul>

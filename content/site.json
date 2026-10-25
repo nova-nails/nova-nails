@@ -8,7 +8,15 @@
   },
   "booking": {
     "url": "",
-    "_url": "[TODO: Cal.com-Link der Inhaberin eintragen. Leer = «Termin buchen» führt zu WhatsApp/Anruf]"
+    "_url": "[TODO: Cal.com-Link der Inhaberin eintragen. Leer = «Termin buchen» führt zu WhatsApp/Anruf]",
+    "events": {
+      "Gelnägel neues Set": "",
+      "Auffüllen Gelnägel": "",
+      "Nagelverstärkung": "",
+      "Maniküre": "",
+      "Entfernen (Gel/Lack)": ""
+    },
+    "_events": "Optional: Cal.com-Event-Slug je Leistung (Name wie in preise.json), z. B. \"gelnaegel-neues-set\". Leer oder ohne booking.url = kein Direktlink. Anleitung: docs/cal-com-einrichtung.md"
   },
   "social": {
     "instagram": "",
@@ -51,12 +59,12 @@
   "uid": "",
   "hero": {
     "titel": "Deine Wohlfühl-Auszeit für die Hände",
-    "text": "Gelnägel, Auffüllen, Shellac und Maniküre in Buochs. Mach es dir bequem, ich bringe deine Nägel zum Strahlen.",
+    "text": "Gelnägel, Auffüllen, Gel-Lack und Maniküre in Buochs. Mach es dir bequem, ich bringe deine Nägel zum Strahlen.",
     "_entwurf": "Entwurf aus der Stimmung des Über-mich-Texts, von der Inhaberin bestätigen lassen"
   },
   "seo": {
     "titel": "Nova Nails – Nagelstudio in Buochs",
-    "beschreibung": "Nova Nails by Julia Tellenbach: Gelnägel, Auffüllen, Shellac und Maniküre in Buochs, Nidwalden. Termin online buchen."
+    "beschreibung": "Nova Nails by Julia Tellenbach: Gelnägel, Auffüllen, Gel-Lack und Maniküre in Buochs, Nidwalden. Termin online buchen."
   },
   "gestaltung": { "name": "Peter & Co Webdesign", "url": "https://peterco.ch" }
 }

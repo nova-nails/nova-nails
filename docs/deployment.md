@@ -22,15 +22,9 @@ Grundsatz: Alle Konten gehören Julia Tellenbach. Peter & Co wird nur eingeladen
 5. Optional E-Mail-Adresse über den Registrar (z. B. `hallo@novanails.ch`) → in `content/site.json` bei `email` eintragen.
 
 ## 4. Online-Buchung (Cal.com)
-Empfehlung: **Cal.com Free** auf Julias Konto, Region **EU** beim Anlegen wählen.
-1. Konto mit Julias E-Mail anlegen, Zeitzone Europe/Zurich.
-2. Verfügbarkeit: Mo–Fr 09:00–19:00.
-3. Event-Typen (Dauer aus `content/preise.json`): Gelnägel neues Set 120 Min., Auffüllen Gelnägel 90, Nagelverstärkung 60 (Spanne 30 Min.–1 Std., CHF 60–90: Event-Typ mit der längeren Dauer anlegen, damit nichts überbucht wird), Maniküre 30, Entfernen (Gel/Lack) 30.
-4. Buchungsfragen: Name, Telefon (für Rückfragen), optional Wunsch-Design. Bestätigung per E-Mail.
-5. Absageregel in die Beschreibung: kostenlos bis 24 Std. vorher, danach CHF 50.
-6. Profil-Link (z. B. `https://cal.com/novanails`) in `content/site.json` → `booking.url`. Danach führt «Termin buchen» dorthin (neuer Tab) und die Datenschutzerklärung zeigt den Cal.com-Abschnitt automatisch.
+Empfehlung: **Cal.com Free** auf Julias Konto, Region **EU**. Einrichtung Schritt für Schritt (Konto, Verfügbarkeit, Event-Typen, Buchungsfragen, Link eintragen): **`docs/cal-com-einrichtung.md`**.
 
-Einbindung nur als Link, kein Embed (keine Cookies, kein Banner).
+Sobald `booking.url` in `content/site.json` gesetzt ist, führen alle «Termin buchen»-Buttons (Header, Hero, Anfahrt, 404) dorthin (neuer Tab) und die Datenschutzerklärung zeigt den Cal.com-Abschnitt automatisch. Optional `booking.events` für Direktlinks je Leistung. Einbindung nur als Link, kein Embed (keine Cookies, kein Banner).
 
 Alternativen geprüft: SimplyBook.me (Free bis 50 Buchungen/Monat, aber Branding und Werbung), Calendly (Free nur 1 Event-Typ, USA). Keine ist besser als Cal.com Free mit EU-Region.
 
@@ -49,5 +43,6 @@ Solange `booking.url` leer ist: «Termin buchen» öffnet WhatsApp mit vorausgef
 | `schalter.showOpeningBanner` | Hinweis «Eröffnung November 2026» im Hero und in der Meta-Beschreibung |
 | `schalter.showGallery` | Galerie ein/aus (nur Fotos mit `freigegeben: true` aus `content/galerie.json`) |
 | `booking.url` | Buchungslink; leer = WhatsApp-Fallback |
+| `booking.events` | Cal.com-Slug je Leistung; leer = kein Direktlink auf der Leistungskarte |
 | `social.instagram`, `social.tiktok` | Links; leer = ausgeblendet |
 | `kursabschluss` | Datum; Preis-Label «Preis ab …» statt «Preis nach Ausbildung» |

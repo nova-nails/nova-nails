@@ -8,8 +8,8 @@ import SectionHead from '../SectionHead.astro';
     <dl class="mt-10 grid gap-x-10 gap-y-8 sm:grid-cols-2 lg:grid-cols-3">
       {faq.punkte.map((p) => (
         <div class="border-t-2 border-zart pt-4">
-          <dt class="font-display text-lg font-bold text-zart">{p.titel}</dt>
-          <dd class="mt-2 text-akzent">{p.text}</dd>
+          <dt class="font-display text-lg font-bold text-akzent">{p.titel}</dt>
+          <dd class="mt-2 text-zart">{p.text}</dd>
         </div>
       ))}
     </dl>

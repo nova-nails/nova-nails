@@ -18,6 +18,12 @@ export const booking = site.booking.url
   ? { href: site.booking.url, extern: true, viaTool: true }
   : { href: whatsappHref, extern: true, viaTool: false };
 
+/** Direktlink auf den Cal.com-Event-Typ einer Leistung; null ohne booking.url oder Slug. */
+export function bookingEventHref(leistung: string): string | null {
+  const slug = (site.booking.events as Record<string, string>)[leistung];
+  return site.booking.url && slug ? `${site.booking.url.replace(/\/$/, '')}/${slug}` : null;
+}
+
 export const adresseEinzeilig = `${site.adresse.strasse}, ${site.adresse.plz} ${site.adresse.ort}`;
 const q = encodeURIComponent(`${site.name}, ${adresseEinzeilig}`);
 export const mapsGoogle = `https://www.google.com/maps/search/?api=1&query=${q}`;

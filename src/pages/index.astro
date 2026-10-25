@@ -1,6 +1,5 @@
 ---
 import Base from '../layouts/Base.astro';
-import SignatureLine from '../components/SignatureLine.astro';
 import Hero from '../components/sections/Hero.astro';
 import Leistungen from '../components/sections/Leistungen.astro';
 import Ueber from '../components/sections/Ueber.astro';
@@ -12,7 +11,6 @@ import { nailSalonSchema } from '../lib/schema';
 ---
 <Base schema={nailSalonSchema(Astro.site)}>
   <Hero />
-  <div class="-mt-px bg-hell"><SignatureLine /></div>
   <Leistungen />
   <Ueber />
   <GutZuWissen />

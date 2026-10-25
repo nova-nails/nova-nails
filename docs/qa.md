@@ -1,5 +1,17 @@
 # Qualität
 
+## Runde 2 Anpassungen (Stand 2026-10-25, Build lokal, Lighthouse aktuell via npx)
+
+| Prüfung | Ergebnis |
+|---|---|
+| Lighthouse mobil `/` | Performance 100, Barrierefreiheit 96, Best Practices 100, SEO 100, CLS 0 |
+| Lighthouse desktop `/` | 100 / 96 / 100 / 100, CLS 0 |
+| Barrierefreiheit | einziger Befund `color-contrast` (gewollter Farbcode der Kundin) |
+| Header 320 / 375 / 390 / 1280 px | Burger, Logo, Button überlappen nicht; Logo-Mitte = Seitenmitte; keine horizontale Scrollbar (Playwright gemessen) |
+| Tastatur Burger | Tab erreicht Burger, Enter öffnet, Tab auf ersten Link, Fokusring 3 px sichtbar, Escape schliesst und fokussiert Burger; Klick ausserhalb und Link-Klick schliessen |
+| Buchung | Test-URL: alle «Termin buchen» (Header, Hero, Anfahrt, 404) und Direktlink umgeschaltet, Datenschutz-Abschnitt erscheint; Push mit leerer `booking.url` |
+| `grep -ri shellac` | keine Treffer in `src/`, `content/`, `dist/` |
+
 ## Runde 1 Anpassungen (Stand 2026-10-24, Build lokal, Lighthouse 12.8)
 
 | Prüfung | Ergebnis |

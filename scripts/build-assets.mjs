@@ -9,8 +9,8 @@ const trace = promisify(potrace.trace);
 const LOGO = 'brand/logo-original.png';
 const UEBER = 'brand/ueber-mich-original.jpeg';
 const BLUSH = '#F3CFCE';
-const PINK = '#FF5E8F';
-const BEERE = '#B0285A';
+const AKZENT = '#EC698F'; // Logo überall Akzent (Runde 2, 2026-10-25)
+const AKZENT_RGB = [0xec, 0x69, 0x8f];
 
 // 1) Herz-Linie freistellen: Linie (Grünkanal tief) schwarz, Rest weiss
 const HERZ = { left: 470, top: 255, width: 1080, height: 990 };
@@ -34,21 +34,21 @@ await writeFile('src/assets/brand/herz-path.json', JSON.stringify({ viewBox: vb,
 await writeFile(
   'brand/logo-entwurf.svg',
   `<!-- ENTWURF: aus Logo.png per potrace nachgezeichnet. [TODO: Inhaberin um SVG oder transparentes PNG aus Canva bitten, dann ersetzen] -->
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 1500" color="${PINK}">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 1500" color="${AKZENT}">
   <g fill="currentColor"><path fill-rule="evenodd" d="${d}"/></g>
-  <text x="540" y="1255" text-anchor="middle" font-family="Comfortaa, sans-serif" font-size="210" fill="#EC6A8F">Nova Nails</text>
-  <text x="540" y="1420" text-anchor="middle" font-family="Comfortaa, sans-serif" font-size="72" fill="#EC6A8F">by Julia Tellenbach</text>
+  <text x="540" y="1255" text-anchor="middle" font-family="Comfortaa, sans-serif" font-size="210" fill="${AKZENT}">Nova Nails</text>
+  <text x="540" y="1420" text-anchor="middle" font-family="Comfortaa, sans-serif" font-size="72" fill="${AKZENT}">by Julia Tellenbach</text>
 </svg>
 `,
 );
 
-// 2) Favicon: Herz-Linie verdickt (Stroke), Beere auf Blush
+// 2) Favicon: Herz-Linie verdickt (Stroke), Akzent auf Blush
 const fav = (size, pad) => {
   const s = HERZ.width + pad * 2;
   return Buffer.from(
     `<svg xmlns="http://www.w3.org/2000/svg" width="${size}" height="${size}" viewBox="${-pad} ${-pad - (HERZ.width - HERZ.height) / 2} ${s} ${s}">
 <rect x="${-pad}" y="${-pad - (HERZ.width - HERZ.height) / 2}" width="${s}" height="${s}" rx="${s * 0.22}" fill="${BLUSH}"/>
-<path fill-rule="evenodd" fill="${BEERE}" stroke="${BEERE}" stroke-width="${size < 64 ? 34 : 14}" stroke-linejoin="round" d="${d}"/></svg>`,
+<path fill-rule="evenodd" fill="${AKZENT}" stroke="${AKZENT}" stroke-width="${size < 64 ? 34 : 14}" stroke-linejoin="round" d="${d}"/></svg>`,
   );
 };
 await writeFile('public/favicon.svg', fav(64, 90).toString().replace(/width="64" height="64" /, ''));
@@ -63,11 +63,20 @@ ico.writeUInt16LE(1, 10); ico.writeUInt16LE(32, 12);
 ico.writeUInt32LE(png32.length, 14); ico.writeUInt32LE(22, 18);
 await writeFile('public/favicon.ico', Buffer.concat([ico, png32]));
 
-// 3) OG-Bild 1200×630: Originallogo (gleicher Blush-Hintergrund) mittig
-const logoCrop = await sharp(LOGO)
+// 3) OG-Bild 1200×630: Originallogo (gleicher Blush-Hintergrund) mittig, Linie und Schrift einheitlich Akzent.
+// Deckkraft je Pixel aus dem Grünkanal (Blush G=207, Pink G≈100), Kantenglättung bleibt erhalten.
+const { data: og, info: ogInfo } = await sharp(LOGO)
   .extract({ left: 400, top: 230, width: 1200, height: 1470 })
   .resize({ height: 560 })
-  .toBuffer();
+  .removeAlpha()
+  .raw({ depth: 'uchar' })
+  .toBuffer({ resolveWithObject: true });
+const blush = [0xf3, 0xcf, 0xce];
+for (let i = 0; i < og.length; i += 3) {
+  const a = Math.min(1, Math.max(0, (blush[1] - og[i + 1]) / (blush[1] - 100)));
+  for (let c = 0; c < 3; c++) og[i + c] = Math.round(blush[c] + (AKZENT_RGB[c] - blush[c]) * a);
+}
+const logoCrop = await sharp(og, { raw: { width: ogInfo.width, height: ogInfo.height, channels: 3 } }).png().toBuffer();
 const { width: lw } = await sharp(logoCrop).metadata();
 await sharp({ create: { width: 1200, height: 630, channels: 3, background: BLUSH } })
   .composite([{ input: logoCrop, left: Math.round((1200 - lw) / 2), top: 35 }])

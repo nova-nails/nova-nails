@@ -17,16 +17,15 @@ import julia from '../../assets/julia/julia-tellenbach.png';
       />
     </div>
     <div>
-      <p class="eyebrow text-akzent">Julia Tellenbach</p>
-      <h2 id="ueber-titel" class="mt-2 text-3xl font-bold text-akzent sm:text-4xl">{ueber.titel}</h2>
+      <h2 id="ueber-titel" class="text-3xl font-bold text-akzent sm:text-4xl">{ueber.titel}</h2>
       <div class="mt-6 space-y-4 text-lg text-akzent">
         {ueber.absaetze.map((a) => <p>{a}</p>)}
       </div>
       <ul class="mt-10 grid gap-4">
         {ueber.fakten.map((f) => (
           <li class="rounded-[var(--radius-card)] bg-akzent p-5">
-            <h3 class="text-base font-bold text-zart">{f.titel}</h3>
-            <p class="mt-1 text-[0.95rem] text-hell">{f.text}</p>
+            <h3 class="text-base font-bold text-hell">{f.titel}</h3>
+            <p class="mt-1 text-[0.95rem] text-zart">{f.text}</p>
           </li>
         ))}
       </ul>

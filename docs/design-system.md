@@ -3,7 +3,7 @@
 Live: `/styleguide` (noindex). Screenshots: `docs/screenshots/styleguide-*.png`.
 
 ## Abgrenzung zu Nailedbyyme
-Nailedbyyme ist weiss/nude mit Serif (Cormorant) und Fotos auf 8 Unterseiten; Nova Nails ist ein One-Pager mit flächigem Blush und Beere, runder Comfortaa aus dem Logo und der Logo-Linie (Herz, Finger, Zweig) als einzigem Motiv statt Fotos.
+Nailedbyyme ist weiss/nude mit Serif (Cormorant) und Fotos auf 8 Unterseiten; Nova Nails ist ein One-Pager mit flächigem Blush und Akzent-Pink, runder Comfortaa aus dem Logo und dem Logo-Herz (Herz, Finger, Zweig) als einzigem Motiv statt Fotos.
 
 ## Farben
 Palette der Inhaberin: `#FF5E8F` (signal), `#EC6A8F` (600), `#ED839F` (500), `#EE9CAE` (400), `#EFADB8` (300), `#F3CFCE` (200, Blush).
@@ -24,9 +24,9 @@ Die Kundin hat die Startseite farbig markiert. Diese drei Farben bestimmen seith
 
 | Token | Hex | Rolle |
 |---|---|---|
-| `akzent` | `#EC698F` | Text, Navigation, Wortmarke, Buttons, Kastenflächen, Footer, Kartenrand |
-| `hell` | `#F3CFCE` | alle Abschnittsflächen und Header, Text auf Akzent |
-| `zart` | `#F09CAF` | Titel in Kästen, Beschreibungen und Labels in Leistungskarten, Trennlinien |
+| `akzent` | `#EC698F` | Logo (Herz + Wortmarke), Text, Navigation, Buttons, Kastenflächen, Footer, Kartenrand, Titel «Gut zu wissen» |
+| `hell` | `#F3CFCE` | alle Abschnittsflächen und Header, Titel in Akzent-Kästen, Footer-Text und -Logo |
+| `zart` | `#F09CAF` | Text und Links in Akzent-Kästen, Text «Gut zu wissen», Beschreibungen und Labels in Leistungskarten, Trennlinien |
 
 **Kontrast – bewusster Entscheid der Kundin, mit Ramon abgesprochen:** Die Kombinationen erreichen kein WCAG AA und werden trotzdem genau so umgesetzt, nicht «verbessert».
 
@@ -35,9 +35,9 @@ Die Kundin hat die Startseite farbig markiert. Diese drei Farben bestimmen seith
 | Akzent auf Hell | 2.09 |
 | Akzent auf Weiss (Karten, Pille) | 3.01 |
 | Zart auf Weiss (Karten) | 2.08 |
-| Zart auf Hell (Gut zu wissen) | 1.45 |
-| Hell auf Akzent (Kästen, Buttons, Footer) | 2.09 |
-| Zart auf Akzent (Kastentitel) | 1.44 |
+| Zart auf Hell (Text Gut zu wissen) | 1.45 |
+| Hell auf Akzent (Kastentitel, Buttons, Footer) | 2.09 |
+| Zart auf Akzent (Kastentexte und -links) | 1.44 |
 | Fokusring `nova-950` auf Akzent / Hell | 4.90 / 10.26 |
 
 Alles andere an Barrierefreiheit bleibt Pflicht: Fokusring 3 px `nova-950` auf allen Flächen sichtbar, Semantik, Alt-Texte, Tastatur. Lighthouse Barrierefreiheit darum 95–96 statt 100 (nur Befund `color-contrast`).
@@ -52,8 +52,10 @@ Alles andere an Barrierefreiheit bleibt Pflicht: Fokusring 3 px `nova-950` auf a
 - Button «hell» (auf Akzent-Kästen, Anfahrt): Fläche Hell, Text Akzent, Rand Zart; Hover Fläche Weiss
 - Alle Buttons Pill-Form, min. 48 px hoch
 - Leistungskarte: weiss, Rand 2 px Akzent, Titel und Werte Akzent, Beschreibung und Labels Zart, Radius 24 px, kein Schatten. Preis als Spanne möglich (`preisVon`/`preisBis` → «CHF 60–90»)
-- Kästen (Preisphase, Aufpreis/Hinweise, Fakten Über mich, Anfahrt): Fläche Akzent, Titel Zart (Preisphase: Hell), Text Hell
-- Header: Fläche Hell (deckend), Wortmarke und Links Akzent, Herz Beere; Mobilmenü Fläche Hell, Rand Zart
+- Kästen Aufpreis/Hinweise, Fakten Über mich, Anfahrt (seit Runde 2): Fläche Akzent, Titel Hell, Text und Links Zart; Link-Hover Weiss. Preisphase-Kasten unverändert (Titel und Text Hell)
+- Gut zu wissen: Titel Akzent, Text Zart, Trennlinien Zart
+- Logo (seit Runde 2): Herz und Wortmarke überall Akzent (Header, 404, Styleguide, Favicon, Apple-Touch-Icon, OG-Bild); einzige Ausnahme Footer (Fläche Akzent): Hell. `Logo.astro` hat nur noch `tone="akzent"` (Standard) und `tone="hell"`
+- Header (seit Runde 2, alle Grössen): 3-Spalten-Grid `1fr auto 1fr`; links Burger (Rand/Icon Akzent), Mitte Logo exakt zentriert, rechts «Termin buchen». Menü klappt linksbündig unter dem Burger auf (Fläche Hell, Rand Zart, Links Akzent), schliesst bei Link-Klick, Escape (Fokus zurück auf Burger) und Klick ausserhalb. Unter 480 px: Seitenrand 12 px, Button kleiner und zweizeilig, Logo kleiner
 - Footer: Fläche Akzent, alles Hell
-- Linien-Signature: nur noch unter dem Hero (Fläche Hell), beim Scrollen gezeichnet (`pathLength="1"`, ohne `non-scaling-stroke`), bei `prefers-reduced-motion` sofort sichtbar
-- Hero: eine Spalte, Text links (Herz-Grafik auf Wunsch der Kundin entfernt)
+- Hero: eine Spalte, Text links (Herz-Grafik auf Wunsch der Kundin entfernt); Herz-Linie darunter in Runde 2 entfernt (Komponente `SignatureLine` gelöscht)
+- Leistungskarte: optional Link «Diese Leistung buchen» (nur mit `booking.url` + Slug in `booking.events`)

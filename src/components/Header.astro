@@ -11,23 +11,15 @@ const nav = [
 ];
 ---
 <header class="sticky top-0 z-40 border-b border-nova-300 bg-hell">
-  <div class="container-nova flex h-16 items-center justify-between gap-4">
-    <a href="/" class="rounded-full no-underline" aria-label="Nova Nails, zur Startseite"><Logo tone="akzent" /></a>
-    {!minimal && (
-      <nav aria-label="Hauptnavigation" class="hidden md:block">
-        <ul class="flex items-center gap-7">
-          {nav.map((n) => <li><a href={n.href} class="font-medium text-akzent no-underline hover:text-akzent hover:underline">{n.label}</a></li>)}
-        </ul>
-      </nav>
-    )}
-    <div class="flex items-center gap-2">
-      <BookingButton class="!min-h-11 !px-5 !text-[0.95rem]" />
+  <!-- 3 Spalten 1fr auto 1fr: Logo exakt zur Seite zentriert -->
+  <div class="container-nova header-grid grid h-16 grid-cols-[1fr_auto_1fr] items-center gap-2 sm:gap-4">
+    <div class="flex justify-start">
       {!minimal && (
-        <details class="nav-mobile relative md:hidden">
+        <details class="nav-menu relative">
           <summary class="flex h-11 w-11 cursor-pointer list-none items-center justify-center rounded-full border-2 border-akzent text-akzent" aria-label="Menü">
             <svg viewBox="0 0 24 24" class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16" /></svg>
           </summary>
-          <nav aria-label="Mobile Navigation" class="absolute right-0 mt-3 w-56 rounded-[var(--radius-card)] border border-zart bg-hell p-2">
+          <nav aria-label="Hauptnavigation" class="absolute left-0 mt-3 w-56 rounded-[var(--radius-card)] border border-zart bg-hell p-2">
             <ul>
               {nav.map((n) => <li><a href={n.href} class="block rounded-xl px-4 py-3 font-medium text-akzent no-underline hover:bg-white hover:text-akzent">{n.label}</a></li>)}
             </ul>
@@ -35,14 +27,32 @@ const nav = [
         </details>
       )}
     </div>
+    <a href="/" class="rounded-full no-underline" aria-label="Nova Nails, zur Startseite"><Logo /></a>
+    <div class="flex justify-end">
+      <BookingButton class="btn-header" />
+    </div>
   </div>
 </header>
+<style>
+  /* Schmale Handys: Seitenrand und Button kleiner, Beschriftung zweizeilig, damit das Logo zentriert Platz hat */
+  @media (max-width: 29.99rem) {
+    .header-grid { padding-inline: 0.75rem; }
+    :global(.btn-header) {
+      min-height: 2.75rem; max-width: 5.75rem; padding: 0.3rem 0.85rem;
+      font-size: 0.8rem; line-height: 1.1; white-space: normal; text-align: center;
+    }
+  }
+  @media (min-width: 30rem) {
+    :global(.btn-header) { min-height: 2.75rem; padding-inline: 1.25rem; font-size: 0.95rem; }
+  }
+</style>
 <script>
-  // Mobiles Menü nach Klick auf einen Anker schliessen
-  document.querySelectorAll<HTMLDetailsElement>('.nav-mobile').forEach((d) => {
+  // Menü schliessen: Klick auf einen Link, Escape, Klick ausserhalb
+  document.querySelectorAll<HTMLDetailsElement>('.nav-menu').forEach((d) => {
     d.addEventListener('click', (e) => {
       if ((e.target as HTMLElement).closest('a')) d.open = false;
     });
     document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && d.open) { d.open = false; d.querySelector('summary')?.focus(); } });
+    document.addEventListener('click', (e) => { if (d.open && !d.contains(e.target as Node)) d.open = false; });
   });
 </script>

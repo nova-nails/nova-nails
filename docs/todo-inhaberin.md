@@ -17,10 +17,10 @@ Damit die Website dir gehört, läuft alles auf deinen Namen. Alles ist gratis, 
 9. **Domain** (deine Internet-Adresse): novanails.ch oder nova-nails.ch, ca. CHF 10–20 pro Jahr.
 10. **GitHub** (hier liegt der «Bauplan» deiner Website): Gratis-Konto.
 11. **Netlify** (hier ist die Website online): Gratis-Konto, Login mit GitHub.
-12. **Cal.com** (Online-Buchung, deine Kundinnen wählen selbst einen freien Termin): Gratis-Konto. Braucht deine E-Mail-Adresse.
+12. **Cal.com** (Online-Buchung, deine Kundinnen wählen selbst einen freien Termin im Kalender): Gratis-Konto. Braucht deine E-Mail-Adresse. Anleitung Schritt für Schritt: `docs/cal-com-einrichtung.md`.
 
 ## Aus deinen Anpassungen (Runde 1)
-13. **Text oben auf der Seite:** Dort steht noch «Gelnägel, Auffüllen, Shellac und Maniküre». Die Karte «Shellac / Gel-Lack» ist jetzt in «Nagelverstärkung» zusammengefasst. Soll «Shellac» raus (auch in der Google-Beschreibung)?
+13. ~~**Text oben auf der Seite:** Begriff im Hero- und Google-Text~~ – erledigt in Runde 2 (2026-10-25): jetzt «Gel-Lack».
 
 ## Später
 14. **Instagram / TikTok:** Schick mir die Namen, sobald es die Konten gibt. Dann erscheinen die Links auf der Website.
