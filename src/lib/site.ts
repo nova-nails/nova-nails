@@ -13,10 +13,21 @@ export const preisphase = phase as Preisphase;
 export const telHref = `tel:${site.telefon.e164}`;
 export const whatsappHref = `https://wa.me/${site.whatsapp.nummer}?text=${encodeURIComponent(site.whatsapp.text)}`;
 
-/** Ziel von «Termin buchen»: Buchungstool, sonst WhatsApp (Fallback). */
+/** Ziel von «Termin buchen»: Sektion mit Cal.com-Kalender, sonst WhatsApp (Fallback). */
 export const booking = site.booking.url
-  ? { href: site.booking.url, extern: true, viaTool: true }
+  ? { href: '/#buchen', extern: false, viaTool: true }
   : { href: whatsappHref, extern: true, viaTool: false };
+
+/**
+ * Cal.com-Inline-Embed aus booking.url, z. B. https://cal.com/raxmon/nova-nails.
+ * Konten in der EU-Region laufen über cal.eu, das Embed dann über app.cal.eu.
+ */
+export const calEmbed = (() => {
+  if (!site.booking.url) return null;
+  const u = new URL(site.booking.url);
+  const app = `https://app.${u.hostname.replace(/^(app\.)?/, '')}`;
+  return { link: u.pathname.replace(/^\/|\/$/g, ''), origin: app, script: `${app}/embed/embed.js` };
+})();
 
 /** Direktlink auf den Cal.com-Event-Typ einer Leistung; null ohne booking.url oder Slug. */
 export function bookingEventHref(leistung: string): string | null {

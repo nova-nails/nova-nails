@@ -16,9 +16,10 @@ const stand = 'Oktober 2026';
 
   <h2>Kurz zusammengefasst</h2>
   <ul>
-    <li>Keine Cookies, kein Tracking, keine Analyse-Tools, keine Werbung.</li>
+    <li>Diese Website setzt selbst keine Cookies und nutzt kein Tracking, keine Analyse-Tools und keine Werbung.</li>
     <li>Schriften und Bilder liegen auf demselben Server wie die Website. Es werden keine Daten an Google Fonts o. ä. übertragen.</li>
-    <li>Karten, WhatsApp{site.booking.url && ' und die Online-Buchung'} sind nur als Links eingebunden. Daten fliessen erst, wenn du einen solchen Link anklickst.</li>
+    <li>Karten und WhatsApp sind nur als Links eingebunden. Daten fliessen erst, wenn du einen solchen Link anklickst.</li>
+    {site.booking.url && <li>Der Buchungskalender stammt von Cal.com und wird direkt auf der Seite geladen (siehe «Online-Buchung»).</li>}
   </ul>
 
   <h2>Hosting</h2>
@@ -28,7 +29,7 @@ const stand = 'Oktober 2026';
   {site.booking.url && (
     <>
       <h2>Online-Buchung (Cal.com)</h2>
-      <p>Für die Online-Buchung verlinke ich auf Cal.com (Cal.com, Inc., USA; Datenhaltung in der EU). Wenn du einen Termin buchst, gibst du dort deinen Namen, deine Kontaktangaben (z. B. Telefon), den gewünschten Termin und auf Wunsch eine Notiz an. Diese Daten nutze ich nur, um deinen Termin zu planen und dich bei Bedarf zu kontaktieren. Es gilt zusätzlich die <a href="https://cal.com/privacy">Datenschutzerklärung von Cal.com</a>.</p>
+      <p>Für die Online-Buchung ist auf der Startseite ein Kalender von Cal.com eingebunden (Cal.com, Inc., USA; Datenhaltung in der EU). Sobald du zum Abschnitt «Termin buchen» scrollst, lädt dein Browser den Kalender von den Servern von Cal.com. Dabei erhält Cal.com technische Daten wie deine IP-Adresse, Browser und die aufgerufene Seite und kann für die Funktion des Kalenders notwendige Cookies oder ähnliche Speicher setzen. Wenn du einen Termin buchst, gibst du dort deinen Namen, deine Kontaktangaben (z. B. Telefon), den gewünschten Termin und auf Wunsch eine Notiz an. Diese Daten nutze ich nur, um deinen Termin zu planen und dich bei Bedarf zu kontaktieren. Es gilt zusätzlich die <a href="https://cal.com/privacy">Datenschutzerklärung von Cal.com</a>.</p>
     </>
   )}
 

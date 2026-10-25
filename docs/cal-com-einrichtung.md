@@ -2,7 +2,9 @@
 
 Für Ramon und Julia, Schritt für Schritt. Dauer ca. 30 Minuten. Kosten: keine (Cal.com Free).
 
-Ergebnis: «Termin buchen» auf der Website öffnet Julias Buchungsseite. Dort wählen Kundinnen selbst einen freien Termin. Die Website verlinkt nur (kein Embed, keine Cookies, kein Banner).
+Ergebnis: Auf der Startseite gibt es die Sektion «Termin buchen» mit Julias Cal.com-Kalender (Inline-Embed). Kundinnen wählen dort direkt einen freien Termin. Alle «Termin buchen»-Buttons scrollen zu dieser Sektion. Der Kalender lädt erst kurz bevor die Sektion sichtbar wird (schnelle Startseite).
+
+Aktuell ist ein Beispiel-Link von Ramon eingetragen (`https://cal.com/raxmon/nova-nails`). Nach Schritt 1–4 durch Julias Link ersetzen.
 
 ## Voraussetzung
 - Julia hat eine eigene E-Mail-Adresse (siehe `docs/todo-inhaberin.md`, Punkt 2).
@@ -50,9 +52,9 @@ In jedem Event-Typ unter «Erweitert» → «Buchungsfragen»:
 Bestätigungen und Erinnerungen per E-Mail sind in Free enthalten.
 
 ## 5. Link in die Website eintragen
-1. In `content/site.json` bei `booking.url` den Profil-Link eintragen, z. B. `"url": "https://cal.com/novanails"`.
+1. In `content/site.json` bei `booking.url` den Profil-Link eintragen, z. B. `"url": "https://cal.com/novanails"` (Kalender zeigt dann alle Leistungen zur Auswahl). Bei einem Konto in der EU-Region lautet der Link `https://cal.eu/...`, das Embed stellt sich automatisch darauf ein.
 2. Optional Direktlinks je Leistung: unter `booking.events` den Slug aus der Tabelle oben eintragen (genau wie in Cal.com). Dann erscheint auf der Leistungskarte «Diese Leistung buchen». Leer = kein Direktlink.
-3. `npm run build` und kurz prüfen: «Termin buchen» (Header, Hero, Anfahrt) öffnet Cal.com in einem neuen Tab, die Datenschutzerklärung zeigt den Abschnitt «Online-Buchung (Cal.com)».
+3. `npm run build` und kurz prüfen: «Termin buchen» (Header, Hero, Anfahrt) scrollt zur Sektion mit dem Kalender, der Kalender zeigt Julias Termine, die Datenschutzerklärung zeigt den Abschnitt «Online-Buchung (Cal.com)».
 4. Committen und pushen:
    ```bash
    git add content/site.json && git commit -m "Online-Buchung: Cal.com-Link" && git push

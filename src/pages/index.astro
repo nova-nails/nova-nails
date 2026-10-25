@@ -5,6 +5,7 @@ import Leistungen from '../components/sections/Leistungen.astro';
 import Ueber from '../components/sections/Ueber.astro';
 import GutZuWissen from '../components/sections/GutZuWissen.astro';
 import Galerie from '../components/sections/Galerie.astro';
+import Buchen from '../components/sections/Buchen.astro';
 import Anfahrt from '../components/sections/Anfahrt.astro';
 import { site } from '../lib/site';
 import { nailSalonSchema } from '../lib/schema';
@@ -15,5 +16,6 @@ import { nailSalonSchema } from '../lib/schema';
   <Ueber />
   <GutZuWissen />
   {site.schalter.showGallery && <Galerie />}
+  {site.booking.url && <Buchen />}
   <Anfahrt />
 </Base>

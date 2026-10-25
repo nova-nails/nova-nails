@@ -1,10 +1,13 @@
 ---
-// «Termin buchen»: Buchungstool (booking.url) oder Fallback WhatsApp. Ziel nur hier festgelegt.
+// «Termin buchen»: Sektion mit Kalender (booking.url) oder Fallback WhatsApp. Ziel nur hier festgelegt.
 import { booking } from '../lib/site';
 interface Props { variant?: 'primary' | 'secondary' | 'hell'; class?: string; label?: string }
 const { variant = 'primary', class: cls = '', label = 'Termin buchen' } = Astro.props;
-const hinweis = booking.viaTool ? '(Online-Buchung, öffnet in neuem Tab)' : '(per WhatsApp, öffnet in neuem Tab)';
 ---
-<a href={booking.href} target="_blank" rel="noopener" class:list={['btn', `btn-${variant}`, cls]}>
-  {label}<span class="sr-only"> {hinweis}</span>
-</a>
+{booking.extern ? (
+  <a href={booking.href} target="_blank" rel="noopener" class:list={['btn', `btn-${variant}`, cls]}>
+    {label}<span class="sr-only"> (per WhatsApp, öffnet in neuem Tab)</span>
+  </a>
+) : (
+  <a href={booking.href} class:list={['btn', `btn-${variant}`, cls]}>{label}</a>
+)}

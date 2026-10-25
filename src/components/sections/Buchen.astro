@@ -1,0 +1,87 @@
+---
+// Online-Buchung: Cal.com-Kalender direkt auf der Seite. Lädt kurz bevor die Sektion sichtbar wird.
+import SectionHead from '../SectionHead.astro';
+import { site, calEmbed } from '../../lib/site';
+---
+{calEmbed && (
+  <section id="buchen" class="bg-hell py-16 sm:py-24" aria-labelledby="buchen-titel">
+    <div class="container-nova">
+      <SectionHead id="buchen-titel" eyebrow="Online-Buchung" titel="Termin buchen" farbe="text-akzent">
+        <p class="mt-4 text-lg text-akzent">Wähle einen freien Termin. Du bekommst die Bestätigung per E-Mail.</p>
+      </SectionHead>
+      <div
+        id="cal-inline"
+        class="cal-box mt-10 overflow-hidden rounded-[var(--radius-card)] border-2 border-akzent bg-white"
+        data-link={calEmbed.link}
+        data-origin={calEmbed.origin}
+        data-script={calEmbed.script}
+      >
+        <p class="cal-laden p-6 text-akzent">Kalender wird geladen …</p>
+      </div>
+      <p class="mt-4 text-akzent">
+        Kalender wird nicht angezeigt?
+        <a href={site.booking.url} target="_blank" rel="noopener" class="text-akzent">Direkt auf Cal.com buchen<span class="sr-only"> (neuer Tab)</span></a>
+      </p>
+    </div>
+  </section>
+)}
+
+<script>
+  // Offizieller Cal.com-Loader (Inline-Embed), Ziel aus data-* von #cal-inline
+  const el = document.getElementById('cal-inline');
+  if (el) {
+    const { link, origin, script } = el.dataset as Record<string, string>;
+    const start = () => {
+      const w = window as any;
+      (function (C: any, A: string, L: string) {
+        const p = (a: any, ar: any) => a.q.push(ar);
+        const d = C.document;
+        C.Cal = C.Cal || function (...ar: any[]) {
+          const cal = C.Cal;
+          if (!cal.loaded) {
+            cal.ns = {};
+            cal.q = cal.q || [];
+            d.head.appendChild(d.createElement('script')).src = A;
+            cal.loaded = true;
+          }
+          if (ar[0] === L) {
+            const api: any = (...a: any[]) => p(api, a);
+            const namespace = ar[1];
+            api.q = api.q || [];
+            if (typeof namespace === 'string') {
+              cal.ns[namespace] = cal.ns[namespace] || api;
+              p(cal.ns[namespace], ar);
+              p(cal, ['initNamespace', namespace]);
+            } else p(cal, ar);
+            return;
+          }
+          p(cal, ar);
+        };
+      })(w, script, 'init');
+      w.Cal('init', 'nova', { origin });
+      w.Cal.ns.nova('inline', {
+        elementOrSelector: '#cal-inline',
+        calLink: link,
+        config: { layout: 'month_view', theme: 'light' },
+      });
+      w.Cal.ns.nova('ui', {
+        theme: 'light',
+        cssVarsPerTheme: { light: { 'cal-brand': '#EC698F' }, dark: { 'cal-brand': '#EC698F' } },
+        hideEventTypeDetails: false,
+        layout: 'month_view',
+      });
+      w.Cal.ns.nova('on', { action: 'linkReady', callback: () => el.querySelector('.cal-laden')?.remove() });
+    };
+    // Erst laden, wenn die Sektion in die Nähe kommt (oder per «Termin buchen» angesprungen wird)
+    const io = new IntersectionObserver((e) => {
+      if (e.some((x) => x.isIntersecting)) { io.disconnect(); start(); }
+    }, { rootMargin: '800px 0px' });
+    io.observe(el);
+  }
+</script>
+
+<style>
+  /* Platz reservieren, damit beim Laden nichts springt */
+  .cal-box { min-height: 640px; }
+  @media (min-width: 768px) { .cal-box { min-height: 560px; } }
+</style>

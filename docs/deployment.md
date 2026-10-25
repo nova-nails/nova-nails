@@ -24,7 +24,7 @@ Grundsatz: Alle Konten gehören Julia Tellenbach. Peter & Co wird nur eingeladen
 ## 4. Online-Buchung (Cal.com)
 Empfehlung: **Cal.com Free** auf Julias Konto, Region **EU**. Einrichtung Schritt für Schritt (Konto, Verfügbarkeit, Event-Typen, Buchungsfragen, Link eintragen): **`docs/cal-com-einrichtung.md`**.
 
-Sobald `booking.url` in `content/site.json` gesetzt ist, führen alle «Termin buchen»-Buttons (Header, Hero, Anfahrt, 404) dorthin (neuer Tab) und die Datenschutzerklärung zeigt den Cal.com-Abschnitt automatisch. Optional `booking.events` für Direktlinks je Leistung. Einbindung nur als Link, kein Embed (keine Cookies, kein Banner).
+Sobald `booking.url` in `content/site.json` gesetzt ist, erscheint auf der Startseite die Sektion «Termin buchen» mit dem Cal.com-Kalender (Inline-Embed, lädt beim Hinscrollen), alle «Termin buchen»-Buttons (Header, Hero, Anfahrt, 404) springen dorthin und die Datenschutzerklärung zeigt den Cal.com-Abschnitt automatisch. Optional `booking.events` für Direktlinks je Leistung. Leer = Buttons führen zu WhatsApp.
 
 Alternativen geprüft: SimplyBook.me (Free bis 50 Buchungen/Monat, aber Branding und Werbung), Calendly (Free nur 1 Event-Typ, USA). Keine ist besser als Cal.com Free mit EU-Region.
 
