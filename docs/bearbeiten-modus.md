@@ -1,6 +1,6 @@
 # Bearbeiten-Modus (Peter & Co Editor)
 
-Julia ändert Texte, Preise und ihr Porträt direkt auf der echten Seite unter **`/bearbeiten`**: antippen, tippen, «Veröffentlichen». Ein Klick ergibt **einen** Commit und damit **einen** Deploy. Ersetzt Keystatic und Tina (Branches `keystatic`, `tina`, Vergleich dort in `docs/cms-vergleich.md`).
+Julia ändert Texte, Preise und ihr Porträt direkt auf der echten Seite unter **`/bearbeiten`**: antippen, tippen, «Veröffentlichen». Ein Klick ergibt **einen** Commit und damit **einen** Deploy. Ersetzt Keystatic und Tina (Branches am 2026-10-27 gelöscht; Vergleich: Vault `40-Wissen/cms-vergleich-keystatic-tina`).
 
 Stand 2026-10-27: Branch `editor`, lokal und gegen GitHub (`editor-test`) getestet. Netlify ist eingerichtet (Branch-Deploy, Variablen), **der Test auf dem Netlify-Branch-Deploy steht noch aus** (Einrichtung, Schritt 6).
 
