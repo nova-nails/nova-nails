@@ -2,7 +2,7 @@
 
 Julia ändert Texte, Preise und ihr Porträt direkt auf der echten Seite unter **`/bearbeiten`**: antippen, tippen, «Veröffentlichen». Ein Klick ergibt **einen** Commit und damit **einen** Deploy. Ersetzt Keystatic und Tina (Branches `keystatic`, `tina`, Vergleich dort in `docs/cms-vergleich.md`).
 
-Stand 2026-10-27: Branch `editor`, lokal und gegen GitHub (`editor-test`) getestet. **Netlify-Branch-Deploy noch nicht getestet**, dafür fehlen die Variablen (siehe Einrichtung).
+Stand 2026-10-27: Branch `editor`, lokal und gegen GitHub (`editor-test`) getestet. Netlify ist eingerichtet (Branch-Deploy, Variablen), **der Test auf dem Netlify-Branch-Deploy steht noch aus** (Einrichtung, Schritt 6).
 
 ## Aufbau
 
@@ -23,6 +23,7 @@ peter-und-co-editor/          wiederverwendbar, nichts Nova-spezifisches
   build/                      pe.ts (vorbereiten, inhalte, seite, passwort), build-info.ts
   dev/server.ts               lokaler Server (Fake-GitHub mit echten Builds oder echtes GitHub)
 netlify/functions/pe-*.ts     dünne Adapter (3 Zeilen), Pfade /api/pe/*
+.github/workflows/build-pruefen.yml   baut bei Push auf main/editor wie Netlify, Mail bei Fehler
 pe.config.ts                  seitenspezifisch: welche Felder, Limits, Bildformate
 content/texte.json            neu: Abschnitts-Titel/Einleitungen, die vorher fest im Code standen
 src/pages/bearbeiten.astro    gleiche Startseite (src/components/Startseite.astro) + Editor
@@ -64,35 +65,48 @@ Beim Öffnen von `/bearbeiten` vergleicht der Editor den eingebetteten Build-Com
 | Falsches Passwort / zu viele Versuche | «E-Mail oder Passwort stimmt nicht.» / «Bitte warte 15 Minuten» | `pe-fehler-login.png` |
 | Buchstabe im Preis, leeres Feld, zu lang | «Bitte nur eine Zahl, z. B. 40» / «Dieses Feld darf nicht leer sein.» / «Mehr Platz hat es hier nicht.» | `pe-4-preis.png` |
 
-Technische Details stehen nur in der Konsole bzw. im Function-Log. **Bau-Fehler erkennen:** Mit `PE_NETLIFY_TOKEN` sofort über die Netlify-API, sonst nach 10 Minuten Wartezeit. «Ramon ist informiert» stimmt nur, wenn die Netlify-Benachrichtigung eingerichtet ist (unten).
+Technische Details stehen nur in der Konsole bzw. im Function-Log. **Bau-Fehler erkennen:** Mit `PE_NETLIFY_TOKEN` sofort über die Netlify-API, sonst nach 10 Minuten Wartezeit. «Ramon ist informiert» stimmt dank der GitHub Action `Build prüfen` (Einrichtung, Schritt 5).
 
 ## Einrichtung Netlify (Branch-Deploy `editor` zuerst)
-1. **Branch-Deploy:** Site configuration → Build & deploy → Branches and deploy contexts → Branch deploys: «Let me add individual branches» → `editor`. Branch-Deploys kosten keine Credits.
-2. **GitHub-Token:** github.com → Settings → Developer settings → Fine-grained tokens → Generate. Repository access: *Only select repositories* → `nova-nails`. Permissions: *Contents: Read and write* (sonst nichts). Ablauf: 1 Jahr, Termin notieren.
-3. **Passwort:** lokal `npm run pe:passwort` (Eingabe bleibt unsichtbar, gespeichert wird nur der Hash). Gibt `PE_PASSWORT_HASH` und `PE_SESSION_SECRET` aus.
-4. **Umgebungsvariablen** (Site configuration → Environment variables, Scope *Functions*, für den Test nur Kontext *Branch deploys*):
+Menünamen Stand Oktober 2026: Netlify sagt jetzt *Project configuration* (früher *Site configuration*) und *Developer settings* (früher *Build & deploy*).
 
-| Variable | Wert |
-|---|---|
-| `PE_EMAIL` | Julias E-Mail (Login) |
-| `PE_PASSWORT_HASH` | aus `npm run pe:passwort` |
-| `PE_SESSION_SECRET` | aus `npm run pe:passwort` (nur einmal setzen; ein Wechsel meldet alle ab) |
-| `PE_GITHUB_TOKEN` | Fine-grained Token aus Schritt 2 |
-| `PE_GITHUB_REPO` | optional, sonst aus `REPOSITORY_URL` (z. B. `raxmon04/nova-nails`) |
-| `PE_BRANCH` | optional, sonst der Branch des Deploys (`editor` bzw. `main`) |
-| `PE_NETLIFY_TOKEN` | optional: Personal access token, damit ein kaputter Bau sofort erkannt wird |
+1. **Branch-Deploy:** Project configuration → Developer settings → links *Branches and deploy contexts* → **Configure** → Branch deploys: «Let me add individual branches» → genau `editor` eintragen (ohne `/*`, das würde nur `editor/…` treffen) → Save. Production branch `main` und Deploy Previews bleiben, wie sie sind. Branch-Deploys kosten keine Credits.
+2. **GitHub-Token:** github.com → Settings → Developer settings → Personal access tokens → Fine-grained tokens → Generate new token.
+   - Name z. B. `nova-nails`, Resource owner `raxmon04`, Expiration *Custom* auf 1 Jahr (Termin im Kalender notieren).
+   - Repository access: *Only select repositories* → `raxmon04/nova-nails`.
+   - Permissions: **Add permissions** → nur **Contents** anhaken → in der Liste von *Read-only* auf **Read and write** stellen. *Metadata: Read-only* kommt automatisch dazu und ist Pflicht. Sonst nichts.
+   - Generate token, Token sofort kopieren (wird nur einmal angezeigt) und im Passwortmanager ablegen.
+3. **Passwort:** lokal `npm run pe:passwort`. Gefragt ist **Julias Login-Passwort** für `/bearbeiten` (mind. 10 Zeichen, am besten im Passwortmanager generieren und dort mit Julias E-Mail speichern). Die Eingabe bleibt unsichtbar, gespeichert wird nur der Hash. Ausgabe: `PE_PASSWORT_HASH` und `PE_SESSION_SECRET`. Beide Werte nicht in Chats oder Mails kopieren, das Passwort Julia persönlich oder über einen sicheren Weg geben.
+4. **Umgebungsvariablen:** Project configuration → Environment variables → Add a variable → Add a single variable.
+   - Bei allen Secrets **«Contains secret values»** anhaken. Netlify stellt dann selbst auf *Specific scopes* (Builds, Functions, Runtime; Post processing ist für Secrets gesperrt) und auf *Different value for each deploy context* mit demselben Wert überall um. Das passt so. Dass *Specific scopes* sonst «Upgrade to unlock» zeigt, spielt keine Rolle.
+   - Ohne Secret-Haken (nur `PE_EMAIL`): *All scopes* und *Same value for all deploy contexts*.
+   - **Local development (Netlify CLI)** leer lassen, lokal läuft alles über `npm run pe:dev`.
+   - Die Werte gelten gleich für alle Kontexte, auch Production. Das schadet nicht, solange `main` den Editor-Code noch nicht hat, und Schritt 7 wird einfacher.
 
-5. **Benachrichtigung:** Site configuration → Notifications → Emails → «Deploy failed» → Ramons Adresse.
-6. Neu deployen, dann `https://editor--<site>.netlify.app/bearbeiten` öffnen und testen: anmelden, Text, Preis, Foto vom Handy, Veröffentlichen, Konflikt (parallel pushen), Flugmodus, falsches Passwort.
-7. Erst danach: Variablen auch für *Production* setzen und `editor` nach `main` mergen.
+| Variable            | Secret | Wert                                                                        |
+| ------------------- | ------ | --------------------------------------------------------------------------- |
+| `PE_EMAIL`          | nein   | Julias E-Mail (Login)                                                       |
+| `PE_PASSWORT_HASH`  | ja     | aus `npm run pe:passwort`                                                   |
+| `PE_SESSION_SECRET` | ja     | aus `npm run pe:passwort` (nur einmal setzen; ein Wechsel meldet alle ab)   |
+| `PE_GITHUB_TOKEN`   | ja     | Fine-grained Token aus Schritt 2                                            |
+| `PE_NETLIFY_TOKEN`  | ja     | empfohlen, siehe unten                                                      |
+| `PE_GITHUB_REPO`    | –      | **weglassen**: Netlify liefert das Repo über `REPOSITORY_URL` mit. Nur setzen, wenn das Repo umzieht (z. B. `julia/nova-nails`). |
+| `PE_BRANCH`         | –      | **weglassen**: Standard ist der Branch des Deploys, also `editor` auf `editor--novanails.netlify.app` und `main` auf der Live-Seite. |
+
+**`PE_NETLIFY_TOKEN`:** Damit fragt der Editor die Netlify-API nach dem Deploy-Status. Mit Token sieht Julia einen kaputten Bau nach etwa einer Minute, ohne erst nach 10 Minuten Wartezeit. Erstellen: Netlify unten links Avatar → User settings → Applications → Personal access tokens → New access token, Name `nova-nails-editor`, Ablauf 1 Jahr. Achtung: Ein Netlify-Token lässt sich nicht auf ein Projekt beschränken und hat Zugriff aufs ganze Netlify-Konto. Er liegt nur als Secret in den Functions. Wer das nicht will, lässt ihn weg.
+
+5. **Benachrichtigung bei kaputtem Bau:** Die Netlify-Mail «Deploy failed» gibt es nur im Pro-Plan. Ersatz ist die GitHub Action `.github/workflows/build-pruefen.yml`: Sie baut bei jedem Push auf `main` und `editor` mit `npm run build` genau wie Netlify (Änderungen nur an `docs/` oder `*.md` ausgenommen). Schlägt der Build fehl, schickt GitHub eine Mail an den Auslöser. Veröffentlichungen aus dem Editor laufen über den Token aus Schritt 2, Auslöser ist also der Besitzer des Tokens (jetzt Ramon). Einmal prüfen: github.com → Settings → Notifications → **Actions**: «Only notify for failed workflows» und *Email* eingeschaltet. Kosten: ca. 1–2 Minuten pro Build von 2000 Gratis-Minuten pro Monat (private Repos). Manuell starten: Repo → Actions → «Build prüfen» → Run workflow.
+6. Neu deployen (auf `editor` pushen oder Deploys → Trigger deploy), dann `https://editor--novanails.netlify.app/bearbeiten` öffnen und testen: anmelden, Text, Preis, Foto vom Handy, Veröffentlichen, Konflikt (parallel pushen), Flugmodus, falsches Passwort. Dabei prüfen, ob die Action `Build prüfen` nach Julias Test-Veröffentlichung grün durchläuft.
+7. Erst danach `editor` nach `main` mergen. Die Variablen gelten schon für Production (Schritt 4), dort ist nichts mehr zu tun.
 
 **Passwort zurücksetzen:** `npm run pe:passwort` → neuen `PE_PASSWORT_HASH` in Netlify eintragen → neu deployen. Alte Sitzungen werden damit ungültig, weil der Hash im Cookie-Fingerabdruck steckt.
 
-**Token erneuern / Repo an Julia übertragen:** Nach dem Transfer (`docs/deployment.md`) einen neuen Fine-grained Token im **Konto von Julia** (oder als Collaborator mit Zugriff) für das übertragene Repo erstellen, `PE_GITHUB_TOKEN` und gegebenenfalls `PE_GITHUB_REPO` ersetzen und den alten Token löschen.
+**Token erneuern / Repo an Julia übertragen:** Nach dem Transfer (`docs/deployment.md`) einen neuen Fine-grained Token im **Konto von Julia** (oder als Collaborator mit Zugriff) für das übertragene Repo erstellen, `PE_GITHUB_TOKEN` und `PE_GITHUB_REPO` ersetzen und den alten Token löschen. Die Fehler-Mails der Action gehen immer an den Besitzer des Tokens, mit dem der Editor committet. Soll Ramon sie weiter bekommen, erstellt er den Token als Collaborator selbst.
 
 ## Kosten
 - Netlify Free: jede Veröffentlichung auf `main` ist ein Production-Deploy (15 von 300 Credits pro Monat, ≈ 20 pro Monat). Ab 15 Veröffentlichungen im Monat zeigt der Editor den Sammel-Hinweis. Der Zähler (Netlify Blobs) zählt nur Veröffentlichungen aus dem Editor, nicht Ramons Pushes.
 - Functions und Blobs bleiben weit innerhalb des Free-Plans.
+- GitHub Actions (`Build prüfen`): ca. 1–2 Minuten pro Push, weit unter den 2000 Gratis-Minuten pro Monat.
 
 ## Hosting wechseln (geplant: Cloudflare; alternativ AWS)
 Der Kern (`peter-und-co-editor/core`, `client`, `astro`, `build`) bleibt. Ersetzt werden nur die Adapter:
