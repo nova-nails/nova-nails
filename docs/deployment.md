@@ -7,12 +7,13 @@ Grundsatz: Alle Konten gehören Julia Tellenbach. Peter & Co wird nur eingeladen
 2. Repo `raxmon04/nova-nails` an sie übertragen: GitHub → Settings → Danger Zone → Transfer ownership → ihr Benutzername. Repo bleibt privat.
 3. Julia lädt `raxmon04` als Collaborator (Write) ein.
 4. Lokal Remote anpassen: `git remote set-url origin https://github.com/<julia>/nova-nails.git`
+5. Bearbeiten-Modus: neuen Fine-grained Token für das übertragene Repo erstellen, `PE_GITHUB_TOKEN` (und `PE_GITHUB_REPO`) in Netlify ersetzen, alten Token löschen (`docs/bearbeiten-modus.md`).
 
 ## 2. Netlify
 1. Julia legt ein Netlify-Konto an (Free, Login mit GitHub).
 2. «Add new site» → «Import from Git» → GitHub → `nova-nails`. Build-Einstellungen kommen aus `netlify.toml` (`npm run build`, `dist`, Node 24).
 3. Peter & Co als Team-Mitglied einladen (Free-Plan: nur falls verfügbar, sonst Deploy über GitHub-Push).
-4. Keine Umgebungsvariablen nötig.
+4. Umgebungsvariablen nur für den Bearbeiten-Modus (`PE_*`, Scope Functions), Einrichtung und Benachrichtigung bei Bau-Fehlern: `docs/bearbeiten-modus.md`.
 
 ## 3. Domain
 1. Verfügbarkeit prüfen: `novanails.ch`, Alternative `nova-nails.ch` (z. B. bei Infomaniak oder Hostpoint, ca. CHF 10–20/Jahr).

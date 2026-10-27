@@ -18,10 +18,11 @@ Damit die Website dir gehört, läuft alles auf deinen Namen. Alles ist gratis, 
 10. **GitHub** (hier liegt der «Bauplan» deiner Website): Gratis-Konto.
 11. **Netlify** (hier ist die Website online): Gratis-Konto, Login mit GitHub.
 12. **Cal.com** (Online-Buchung, deine Kundinnen wählen selbst einen freien Termin im Kalender): Gratis-Konto. Braucht deine E-Mail-Adresse. Anleitung Schritt für Schritt: `docs/cal-com-einrichtung.md`.
+13. **Website selbst bearbeiten:** Unter `deine-domain.ch/bearbeiten` änderst du Texte, Preise und dein Foto direkt auf der Seite, am Handy oder am Computer. Ramon gibt dir beim Übergeben dein Passwort. Kurze Anleitung mit Bildern: `docs/anleitung-julia-bearbeiten.md`.
 
 ## Aus deinen Anpassungen (Runde 1)
-13. ~~**Text oben auf der Seite:** Begriff im Hero- und Google-Text~~ – erledigt in Runde 2 (2026-10-25): jetzt «Gel-Lack».
+14. ~~**Text oben auf der Seite:** Begriff im Hero- und Google-Text~~ – erledigt in Runde 2 (2026-10-25): jetzt «Gel-Lack».
 
 ## Später
-14. **Instagram / TikTok:** Schick mir die Namen, sobald es die Konten gibt. Dann erscheinen die Links auf der Website.
-15. **Google-Unternehmensprofil** (damit du bei Google Maps erscheinst): Entscheidest du später.
+15. **Instagram / TikTok:** Schick mir die Namen, sobald es die Konten gibt. Dann erscheinen die Links auf der Website.
+16. **Google-Unternehmensprofil** (damit du bei Google Maps erscheinst): Entscheidest du später.

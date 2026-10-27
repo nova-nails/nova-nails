@@ -85,7 +85,7 @@ const befehl = process.argv[2];
 if (befehl === 'vorbereiten') {
   mkdirSync(join(root, 'peter-und-co-editor/generated'), { recursive: true });
   const info = buildInfo();
-  writeFileSync(join(root, 'peter-und-co-editor/generated/build-info.json'), `${JSON.stringify(info, null, 2)}\n`);
+  writeFileSync(join(root, 'peter-und-co-editor/generated/build-info.ts'), `// Beim Build erzeugt (pe.ts vorbereiten), nicht bearbeiten.\nexport default ${JSON.stringify(info, null, 2)};\n`);
   console.log(`✓ Build-Info: ${info.repo || '(kein Repo)'} · ${info.branch} · ${info.commit.slice(0, 7)}`);
   pruefeInhalte();
 } else if (befehl === 'inhalte') pruefeInhalte();

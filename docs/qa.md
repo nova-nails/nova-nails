@@ -1,5 +1,16 @@
 # Qualität
 
+## Bearbeiten-Modus (Stand 2026-10-27, Branch `editor`, lokal)
+| Prüfung | Ergebnis |
+|---|---|
+| Öffentliche Seiten vs. `main` | `index`, `impressum`, `datenschutz`, `404`, `styleguide`, `robots.txt`, Sitemap, CSS **byte-identisch** → Lighthouse unverändert 100/96/100/100, CLS 0 |
+| `npm run pe:abnahme` (Chromium, 390 px) | 29/29: Text + Preis + Foto (EXIF gedreht, zugeschnitten, 1078×1200 WebP) in einem Commit, alle Fehlerfälle mit Text geprüft, Ablauf 6 s lokal (Netlify-Deploy ca. 1 Min.) |
+| `npm run pe:sicherheit` | 37/37: ohne Sitzung, falscher CSRF, fremde Origin, Formular-POST, Pfade ausserhalb des Schemas, `__proto__`, neue Einträge, HTML, Limits, Bildformat/-grösse/-verhältnis, Rate-Limit |
+| `npm run pe:limits` | alle Felder bis zum Limit gefüllt: 390 und 1280 px ohne Überlauf |
+| `npm run pe:axe` | Editor (Anmeldung, Hinweis, Leiste, Feld-Fenster): 0 Befunde. Startseite: nur bekannter `color-contrast` |
+| GitHub (`editor-test`) | ein Commit mit 3 JSON-Dateien + neuem Foto, altes gelöscht, Nachricht «Julia: Hero-Titel, Preis (Maniküre), Porträt», Konflikt 409, «behalten» ok |
+| Nicht getestet | Netlify-Branch-Deploy, Netlify Blobs, echtes iPhone/Safari |
+
 ## Runde 2 Anpassungen (Stand 2026-10-25, Build lokal, Lighthouse aktuell via npx)
 
 | Prüfung | Ergebnis |
