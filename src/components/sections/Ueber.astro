@@ -1,31 +1,34 @@
 ---
 import { Image } from 'astro:assets';
 import ueber from '../../../content/ueber.json';
-import julia from '../../assets/julia/julia-tellenbach.png';
+import { portrait } from '../../lib/bilder';
+import { peFuer } from '../../../peter-und-co-editor/astro/pe';
+const pe = peFuer(Astro.url);
 ---
 <section id="ueber-mich" class="bg-hell py-16 sm:py-24" aria-labelledby="ueber-titel">
   <div class="container-nova grid items-start gap-12 md:grid-cols-[0.8fr_1.2fr]">
     <div class="flex justify-center md:sticky md:top-28">
       <!-- [TODO: Originalfoto in voller Auflösung bei der Inhaberin anfragen] -->
       <Image
-        src={julia}
+        src={portrait}
         alt={ueber.bildAlt}
         widths={[280, 444]}
         sizes="(min-width: 768px) 300px, 280px"
         class="sticker h-auto w-[280px] md:w-[300px]"
         loading="lazy"
+        data-pe={pe('ueber.json#bild')}
       />
     </div>
     <div>
-      <h2 id="ueber-titel" class="text-3xl font-bold text-akzent sm:text-4xl">{ueber.titel}</h2>
+      <h2 id="ueber-titel" class="text-3xl font-bold text-akzent sm:text-4xl" data-pe={pe('ueber.json#titel')}>{ueber.titel}</h2>
       <div class="mt-6 space-y-4 text-lg text-akzent">
-        {ueber.absaetze.map((a) => <p>{a}</p>)}
+        {ueber.absaetze.map((a, i) => <p data-pe={pe(`ueber.json#absaetze.${i}`)}>{a.split('\n').map((z, j) => (j ? <><br />{z}</> : z))}</p>)}
       </div>
       <ul class="mt-10 grid gap-4">
-        {ueber.fakten.map((f) => (
+        {ueber.fakten.map((f, i) => (
           <li class="rounded-[var(--radius-card)] bg-akzent p-5">
-            <h3 class="text-base font-bold text-hell">{f.titel}</h3>
-            <p class="mt-1 text-[0.95rem] text-zart">{f.text}</p>
+            <h3 class="text-base font-bold text-hell" data-pe={pe(`ueber.json#fakten.${i}.titel`)}>{f.titel}</h3>
+            <p class="mt-1 text-[0.95rem] text-zart" data-pe={pe(`ueber.json#fakten.${i}.text`)}>{f.text}</p>
           </li>
         ))}
       </ul>

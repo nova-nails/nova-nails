@@ -5,3 +5,8 @@ dist/
 .env.*
 .DS_Store
 .netlify/
+
+# Bearbeiten-Modus: beim Build erzeugt
+peter-und-co-editor/generated/
+.pe-dev/
+peter-und-co-editor/dev/test-zugang.json

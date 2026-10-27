@@ -1,21 +1,8 @@
 ---
 import Base from '../layouts/Base.astro';
-import Hero from '../components/sections/Hero.astro';
-import Leistungen from '../components/sections/Leistungen.astro';
-import Ueber from '../components/sections/Ueber.astro';
-import GutZuWissen from '../components/sections/GutZuWissen.astro';
-import Galerie from '../components/sections/Galerie.astro';
-import Buchen from '../components/sections/Buchen.astro';
-import Anfahrt from '../components/sections/Anfahrt.astro';
-import { site } from '../lib/site';
+import Startseite from '../components/Startseite.astro';
 import { nailSalonSchema } from '../lib/schema';
 ---
 <Base schema={nailSalonSchema(Astro.site)}>
-  <Hero />
-  <Leistungen />
-  <Ueber />
-  <GutZuWissen />
-  {site.schalter.showGallery && <Galerie />}
-  {site.booking.url && <Buchen />}
-  <Anfahrt />
+  <Startseite />
 </Base>

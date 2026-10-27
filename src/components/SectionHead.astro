@@ -1,10 +1,12 @@
 ---
-// farbe: Textfarbe für Eyebrow und Titel, z. B. 'text-akzent'
-interface Props { id: string; eyebrow?: string; titel: string; center?: boolean; farbe?: string }
-const { id, eyebrow, titel, center = false, farbe = '' } = Astro.props;
+// farbe: Textfarbe für Eyebrow und Titel, z. B. 'text-akzent'. peEyebrow/peTitel: Feld im Bearbeiten-Modus.
+import { peFuer } from '../../peter-und-co-editor/astro/pe';
+interface Props { id: string; eyebrow?: string; titel: string; center?: boolean; farbe?: string; peEyebrow?: string; peTitel?: string }
+const { id, eyebrow, titel, center = false, farbe = '', peEyebrow, peTitel } = Astro.props;
+const pe = peFuer(Astro.url);
 ---
 <div class:list={['max-w-2xl', center && 'mx-auto text-center']}>
-  {eyebrow && <p class:list={['eyebrow', farbe]}>{eyebrow}</p>}
-  <h2 id={id} class:list={['mt-2 text-3xl font-bold sm:text-4xl', farbe]}>{titel}</h2>
+  {eyebrow && <p class:list={['eyebrow', farbe]} data-pe={pe(peEyebrow)}>{eyebrow}</p>}
+  <h2 id={id} class:list={['mt-2 text-3xl font-bold sm:text-4xl', farbe]} data-pe={pe(peTitel)}>{titel}</h2>
   <slot />
 </div>

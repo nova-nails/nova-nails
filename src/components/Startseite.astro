@@ -1,0 +1,18 @@
+---
+// Inhalt der Startseite. Gleich für / und /bearbeiten (dort mit data-pe-Attributen).
+import Hero from './sections/Hero.astro';
+import Leistungen from './sections/Leistungen.astro';
+import Ueber from './sections/Ueber.astro';
+import GutZuWissen from './sections/GutZuWissen.astro';
+import Galerie from './sections/Galerie.astro';
+import Buchen from './sections/Buchen.astro';
+import Anfahrt from './sections/Anfahrt.astro';
+import { site } from '../lib/site';
+---
+<Hero />
+<Leistungen />
+<Ueber />
+<GutZuWissen />
+{site.schalter.showGallery && <Galerie />}
+{site.booking.url && <Buchen />}
+<Anfahrt />

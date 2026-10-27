@@ -1,10 +1,25 @@
 {
   "titel": "Gut zu wissen",
   "punkte": [
-    { "titel": "Bezahlung", "text": "Bar oder TWINT. Kartenzahlung ist noch nicht möglich." },
-    { "titel": "Absage", "text": "Kostenlos bis 24 Stunden vor dem Termin. Bei späterer Absage oder wenn du nicht erscheinst, verrechne ich CHF 50." },
-    { "titel": "Termine", "text": "Montag bis Freitag, 09:00–19:00 Uhr, nur nach Vereinbarung." },
-    { "titel": "Antwortzeit", "text": "Ich antworte in der Regel innerhalb von 2–3 Stunden." },
-    { "titel": "Auffüllen", "text": "Damit deine Nägel schön bleiben, empfehle ich alle 3–4 Wochen einen Termin zum Auffüllen." }
+    {
+      "titel": "Bezahlung",
+      "text": "Bar oder TWINT. Kartenzahlung ist noch nicht möglich."
+    },
+    {
+      "titel": "Absage",
+      "text": "Kostenlos bis 24 Stunden vor dem Termin. Bei späterer Absage oder wenn du nicht erscheinst, verrechne ich CHF 50."
+    },
+    {
+      "titel": "Termine",
+      "text": "Montag bis Freitag, 09:00–19:00 Uhr, nur nach Vereinbarung."
+    },
+    {
+      "titel": "Antwortzeit",
+      "text": "Ich antworte in der Regel innerhalb von 2–3 Stunden."
+    },
+    {
+      "titel": "Auffüllen",
+      "text": "Damit deine Nägel schön bleiben, empfehle ich alle 3–4 Wochen einen Termin zum Auffüllen."
+    }
   ]
 }

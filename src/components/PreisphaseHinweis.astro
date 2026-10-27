@@ -1,16 +1,19 @@
 ---
 // Nur in Preisphase «ausbildung» sichtbar (Schalter in content/site.json).
 import preise from '../../content/preise.json';
+import texte from '../../content/texte.json';
 import HerzLinie from './HerzLinie.astro';
 import { preisphase } from '../lib/site';
+import { peFuer } from '../../peter-und-co-editor/astro/pe';
+const pe = peFuer(Astro.url);
 ---
 {preisphase === 'ausbildung' && (
   <aside class="relative overflow-hidden rounded-[var(--radius-card)] bg-akzent p-6 text-hell sm:p-8" aria-labelledby="preisphase-titel">
     <HerzLinie class="pointer-events-none absolute -right-6 -bottom-8 w-40 text-zart sm:w-48" />
     <div class="relative max-w-xl">
-      <p class="eyebrow text-hell">Während meiner Ausbildung</p>
-      <h3 id="preisphase-titel" class="mt-2 text-2xl font-bold text-hell sm:text-3xl">{preise.ausbildung.titel}</h3>
-      <p class="mt-3 text-hell">{preise.ausbildung.text}</p>
+      <p class="eyebrow text-hell" data-pe={pe('texte.json#preisphase.eyebrow')}>{texte.preisphase.eyebrow}</p>
+      <h3 id="preisphase-titel" class="mt-2 text-2xl font-bold text-hell sm:text-3xl" data-pe={pe('preise.json#ausbildung.titel')}>{preise.ausbildung.titel}</h3>
+      <p class="mt-3 text-hell" data-pe={pe('preise.json#ausbildung.text')}>{preise.ausbildung.text}</p>
     </div>
   </aside>
 )}

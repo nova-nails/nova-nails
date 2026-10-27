@@ -2,10 +2,13 @@
 import SectionHead from '../SectionHead.astro';
 import BookingButton from '../BookingButton.astro';
 import { site, telHref, whatsappHref, mapsGoogle, mapsApple, socials } from '../../lib/site';
+import texte from '../../../content/texte.json';
+import { peFuer } from '../../../peter-und-co-editor/astro/pe';
+const pe = peFuer(Astro.url);
 ---
 <section id="anfahrt" class="bg-hell py-16 sm:py-24" aria-labelledby="anfahrt-titel">
   <div class="container-nova">
-    <SectionHead id="anfahrt-titel" eyebrow="Anfahrt & Termine" titel="So findest du mich" farbe="text-akzent" />
+    <SectionHead id="anfahrt-titel" eyebrow={texte.anfahrt.eyebrow} titel={texte.anfahrt.titel} farbe="text-akzent" peEyebrow="texte.json#anfahrt.eyebrow" peTitel="texte.json#anfahrt.titel" />
     <div class="mt-10 grid gap-5 md:grid-cols-3">
       <div class="card kasten border-akzent bg-akzent p-6 text-zart">
         <h3 class="text-xl font-bold text-hell">Adresse</h3>
@@ -13,7 +16,7 @@ import { site, telHref, whatsappHref, mapsGoogle, mapsApple, socials } from '../
           {site.name}<br />{site.adresse.strasse}<br />{site.adresse.plz} {site.adresse.ort}
         </address>
         <ul class="mt-4 space-y-1 text-[0.98rem]">
-          {site.anreise.map((a) => <li>{a}</li>)}
+          {site.anreise.map((a, i) => <li data-pe={pe(`site.json#anreise.${i}`)}>{a}</li>)}
         </ul>
         <p class="mt-4 flex flex-wrap gap-x-4 gap-y-1">
           <a href={mapsGoogle} target="_blank" rel="noopener">Google Maps<span class="sr-only"> (neuer Tab)</span></a>
@@ -22,8 +25,8 @@ import { site, telHref, whatsappHref, mapsGoogle, mapsApple, socials } from '../
       </div>
       <div class="card kasten border-akzent bg-akzent p-6 text-zart">
         <h3 class="text-xl font-bold text-hell">Termine</h3>
-        <p class="mt-3">{site.zeiten.text}</p>
-        <p>{site.zeiten.hinweis}</p>
+        <p class="mt-3" data-pe={pe('site.json#zeiten.text')}>{site.zeiten.text}</p>
+        <p data-pe={pe('site.json#zeiten.hinweis')}>{site.zeiten.hinweis}</p>
         <BookingButton variant="hell" class="mt-6" />
       </div>
       <div class="card kasten border-akzent bg-akzent p-6 text-zart">
@@ -34,7 +37,7 @@ import { site, telHref, whatsappHref, mapsGoogle, mapsApple, socials } from '../
           {site.email && <li>E-Mail: <a href={`mailto:${site.email}`}>{site.email}</a></li>}
           {socials.map((s) => <li><a href={s.url} target="_blank" rel="noopener">{s.name}<span class="sr-only"> (neuer Tab)</span></a></li>)}
         </ul>
-        <p class="mt-4">{site.antwortzeit}</p>
+        <p class="mt-4" data-pe={pe('site.json#antwortzeit')}>{site.antwortzeit}</p>
       </div>
     </div>
   </div>

@@ -9,10 +9,21 @@
     "Ich freue mich riesig darauf, dich kennenzulernen und deine Nagelträume wahr werden zu lassen!"
   ],
   "fakten": [
-    { "titel": "Wie ich dazu kam", "text": "Ich wollte schon immer etwas Kreatives machen. Die Leidenschaft fürs Nägelmachen habe ich durch meine Schwester entdeckt." },
-    { "titel": "Erfahrung", "text": "Ich mache seit 2 Jahren Nägel und bilde mich aktuell im Online-Kurs der Lynis Nail Academy weiter.", "_todo": "[TODO: Schreibweise Kursanbieter bestätigen]" },
-    { "titel": "Das ist mir wichtig", "text": "Hygiene, Zeit für jede Kundin, eine schonende Behandlung und kreative Designs." }
+    {
+      "titel": "Wie ich dazu kam",
+      "text": "Ich wollte schon immer etwas Kreatives machen. Die Leidenschaft fürs Nägelmachen habe ich durch meine Schwester entdeckt."
+    },
+    {
+      "titel": "Erfahrung",
+      "text": "Ich mache seit 2 Jahren Nägel und bilde mich aktuell im Online-Kurs der Lynis Nail Academy weiter.",
+      "_todo": "[TODO: Schreibweise Kursanbieter bestätigen]"
+    },
+    {
+      "titel": "Das ist mir wichtig",
+      "text": "Hygiene, Zeit für jede Kundin, eine schonende Behandlung und kreative Designs."
+    }
   ],
   "_fakten": "Entwurf aus dem Fragebogen, von der Inhaberin bestätigen lassen",
+  "bild": "julia-tellenbach.png",
   "bildAlt": "Julia Tellenbach, Inhaberin von Nova Nails"
 }

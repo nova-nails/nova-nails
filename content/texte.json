@@ -1,0 +1,29 @@
+{
+  "_hinweis": "Überschriften und Einleitungen der Startseite (änderbar im Bearbeiten-Modus).",
+  "leistungen": {
+    "eyebrow": "Leistungen",
+    "titel": "Leistungen & Preise",
+    "intro": "Alles für gepflegte, glänzende Nägel. Dauer und Preis auf einen Blick.",
+    "aufpreisTitel": "Aufpreis",
+    "hinweiseTitel": "Hinweise"
+  },
+  "preisphase": {
+    "eyebrow": "Während meiner Ausbildung"
+  },
+  "gutZuWissen": {
+    "eyebrow": "Regeln & Infos"
+  },
+  "galerie": {
+    "eyebrow": "Galerie",
+    "titel": "Meine Arbeiten"
+  },
+  "buchen": {
+    "eyebrow": "Online-Buchung",
+    "titel": "Termin buchen",
+    "intro": "Wähle einen freien Termin. Du bekommst die Bestätigung per E-Mail."
+  },
+  "anfahrt": {
+    "eyebrow": "Anfahrt & Termine",
+    "titel": "So findest du mich"
+  }
+}

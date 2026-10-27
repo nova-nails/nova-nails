@@ -1,0 +1,26 @@
+---
+// Werkzeuge des Bearbeiten-Modus: Daten für den Browser (Felder, Originalwerte, Stand) + Editor-Skript.
+import { readFileSync } from 'node:fs';
+import { join } from 'node:path';
+import { alleFelder, bezeichnung, parsePfad, type PeConfig } from '../core/schema';
+import { buildInfo } from '../build/build-info';
+
+interface Props { config: PeConfig }
+const { config } = Astro.props;
+
+const dateien = [...new Set(Object.keys(config.felder).map((k) => k.split('#')[0]))];
+const inhalte = Object.fromEntries(dateien.map((d) => [d, JSON.parse(readFileSync(join(process.cwd(), config.contentDir, d), 'utf8'))]));
+const felder: Record<string, unknown> = {};
+for (const f of alleFelder(config, inhalte)) {
+  const { typ, max, verhaeltnis, maxPx, altVorlage, altFeld } = f.def;
+  const p = parsePfad(f.pfad)!;
+  const altPfad = typ === 'bild' && altFeld ? `${p.datei}#${[...p.teile.slice(0, -1), altFeld].join('.')}` : undefined;
+  felder[f.pfad] = { typ, label: bezeichnung(config, inhalte, f.pfad), max, verhaeltnis, maxPx, altVorlage, altPfad, wert: f.wert };
+}
+const daten = JSON.stringify({ site: config.site, commit: buildInfo().commit, felder }).replace(/</g, '\\u003c');
+---
+<script type="application/json" id="pe-daten" set:html={daten}></script>
+<script>
+  import { starte } from '../client/editor';
+  starte();
+</script>

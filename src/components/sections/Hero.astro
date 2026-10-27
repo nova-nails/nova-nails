@@ -1,6 +1,9 @@
 ---
 import BookingButton from '../BookingButton.astro';
+import PeText from '../../../peter-und-co-editor/astro/PeText.astro';
+import { peFuer } from '../../../peter-und-co-editor/astro/pe';
 import { site, telHref } from '../../lib/site';
+const pe = peFuer(Astro.url);
 ---
 <section class="relative overflow-hidden bg-hell" aria-labelledby="hero-titel">
   <div class="container-nova py-16 sm:py-24 md:py-32">
@@ -8,15 +11,15 @@ import { site, telHref } from '../../lib/site';
       {site.schalter.showOpeningBanner && (
         <p class="inline-flex items-center gap-2 rounded-full bg-white px-4 py-2 font-display text-sm font-bold text-akzent">
           <span class="h-2 w-2 rounded-full bg-hell" aria-hidden="true"></span>
-          Eröffnung {site.eroeffnung}
+          Eröffnung <PeText f="site.json#eroeffnung" v={site.eroeffnung} />
         </p>
       )}
       <h1 id="hero-titel" class="mt-6 text-akzent">
         <span class="block text-5xl font-bold sm:text-6xl lg:text-8xl">{site.name}</span>
         <span class="mt-2 block font-display text-xl font-normal sm:text-2xl lg:text-3xl">{site.untertitel}</span>
       </h1>
-      <p class="mt-8 font-display text-2xl font-bold text-akzent sm:text-3xl lg:text-4xl">{site.hero.titel}</p>
-      <p class="mt-4 max-w-xl text-lg text-akzent sm:text-xl">{site.hero.text}</p>
+      <p class="mt-8 font-display text-2xl font-bold text-akzent sm:text-3xl lg:text-4xl" data-pe={pe('site.json#hero.titel')}>{site.hero.titel}</p>
+      <p class="mt-4 max-w-xl text-lg text-akzent sm:text-xl" data-pe={pe('site.json#hero.text')}>{site.hero.text}</p>
       <p class="mt-4 flex items-center gap-2 font-medium text-akzent">
         <svg viewBox="0 0 24 24" class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s7-6.1 7-11.5A7 7 0 0 0 5 9.5C5 14.9 12 21 12 21Z" /><circle cx="12" cy="9.5" r="2.5" /></svg>
         {site.adresse.ort} {site.adresse.kanton}, {site.adresse.region}

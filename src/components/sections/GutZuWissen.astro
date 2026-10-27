@@ -1,15 +1,18 @@
 ---
 import faq from '../../../content/faq.json';
+import texte from '../../../content/texte.json';
 import SectionHead from '../SectionHead.astro';
+import { peFuer } from '../../../peter-und-co-editor/astro/pe';
+const pe = peFuer(Astro.url);
 ---
 <section id="gut-zu-wissen" class="bg-hell py-16 sm:py-24" aria-labelledby="wissen-titel">
   <div class="container-nova">
-    <SectionHead id="wissen-titel" eyebrow="Regeln & Infos" titel={faq.titel} farbe="text-akzent" />
+    <SectionHead id="wissen-titel" eyebrow={texte.gutZuWissen.eyebrow} titel={faq.titel} farbe="text-akzent" peEyebrow="texte.json#gutZuWissen.eyebrow" peTitel="faq.json#titel" />
     <dl class="mt-10 grid gap-x-10 gap-y-8 sm:grid-cols-2 lg:grid-cols-3">
-      {faq.punkte.map((p) => (
+      {faq.punkte.map((p, i) => (
         <div class="border-t-2 border-zart pt-4">
-          <dt class="font-display text-lg font-bold text-akzent">{p.titel}</dt>
-          <dd class="mt-2 text-zart">{p.text}</dd>
+          <dt class="font-display text-lg font-bold text-akzent" data-pe={pe(`faq.json#punkte.${i}.titel`)}>{p.titel}</dt>
+          <dd class="mt-2 text-zart" data-pe={pe(`faq.json#punkte.${i}.text`)}>{p.text}</dd>
         </div>
       ))}
     </dl>

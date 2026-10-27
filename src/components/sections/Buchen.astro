@@ -2,12 +2,15 @@
 // Online-Buchung: Cal.com-Kalender direkt auf der Seite. Lädt kurz bevor die Sektion sichtbar wird.
 import SectionHead from '../SectionHead.astro';
 import { site, calEmbed } from '../../lib/site';
+import texte from '../../../content/texte.json';
+import { peFuer } from '../../../peter-und-co-editor/astro/pe';
+const pe = peFuer(Astro.url);
 ---
 {calEmbed && (
   <section id="buchen" class="bg-hell py-16 sm:py-24" aria-labelledby="buchen-titel">
     <div class="container-nova">
-      <SectionHead id="buchen-titel" eyebrow="Online-Buchung" titel="Termin buchen" farbe="text-akzent">
-        <p class="mt-4 text-lg text-akzent">Wähle einen freien Termin. Du bekommst die Bestätigung per E-Mail.</p>
+      <SectionHead id="buchen-titel" eyebrow={texte.buchen.eyebrow} titel={texte.buchen.titel} farbe="text-akzent" peEyebrow="texte.json#buchen.eyebrow" peTitel="texte.json#buchen.titel">
+        <p class="mt-4 text-lg text-akzent" data-pe={pe('texte.json#buchen.intro')}>{texte.buchen.intro}</p>
       </SectionHead>
       <div
         id="cal-inline"

@@ -5,20 +5,30 @@
   "private": true,
   "scripts": {
     "dev": "astro dev",
-    "build": "astro build",
+    "build": "node peter-und-co-editor/build/pe.ts vorbereiten && astro build && node peter-und-co-editor/build/pe.ts seite",
     "preview": "astro preview",
     "check": "astro check",
-    "assets": "node scripts/build-assets.mjs"
+    "assets": "node scripts/build-assets.mjs",
+    "pe:check": "node peter-und-co-editor/build/pe.ts inhalte && astro build && node peter-und-co-editor/build/pe.ts seite",
+    "pe:passwort": "node peter-und-co-editor/build/pe.ts passwort",
+    "pe:dev": "node peter-und-co-editor/dev/server.ts",
+    "pe:abnahme": "node scripts/pe-abnahme.mjs",
+    "pe:sicherheit": "node scripts/pe-sicherheit.mjs",
+    "pe:limits": "node scripts/pe-limits.mjs",
+    "pe:axe": "node scripts/pe-axe.mjs"
   },
   "dependencies": {
     "@astrojs/sitemap": "^3.7.4",
     "@fontsource-variable/comfortaa": "^5.3.0",
     "@fontsource-variable/figtree": "^5.3.0",
+    "@netlify/blobs": "^10.7.13",
     "@tailwindcss/vite": "^4.3.3",
     "astro": "^7.4.2",
     "tailwindcss": "^4.3.3"
   },
   "devDependencies": {
+    "@axe-core/playwright": "^4.14.0",
+    "playwright": "^1.64.1",
     "potrace": "^2.1.8",
     "sharp": "^0.35.5"
   }

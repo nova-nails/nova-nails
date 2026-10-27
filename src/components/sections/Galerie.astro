@@ -3,15 +3,18 @@
 import { Image } from 'astro:assets';
 import SectionHead from '../SectionHead.astro';
 import { fotos } from '../../lib/galerie';
+import texte from '../../../content/texte.json';
+import { peFuer } from '../../../peter-und-co-editor/astro/pe';
+const pe = peFuer(Astro.url);
 ---
 {fotos.length > 0 && (
   <section id="galerie" class="bg-nova-50 py-16 sm:py-24" aria-labelledby="galerie-titel">
     <div class="container-nova">
-      <SectionHead id="galerie-titel" eyebrow="Galerie" titel="Meine Arbeiten" />
+      <SectionHead id="galerie-titel" eyebrow={texte.galerie.eyebrow} titel={texte.galerie.titel} peEyebrow="texte.json#galerie.eyebrow" peTitel="texte.json#galerie.titel" />
       <ul class="mt-10 grid grid-cols-2 gap-4 md:grid-cols-3">
         {fotos.map((f) => (
           <li class="overflow-hidden rounded-[var(--radius-card)]">
-            <Image src={f.src} alt={f.alt} widths={[400, 800]} sizes="(min-width: 768px) 33vw, 50vw" class="aspect-square h-auto w-full object-cover" loading="lazy" />
+            <Image src={f.src} alt={f.alt} widths={[400, 800]} sizes="(min-width: 768px) 33vw, 50vw" class="aspect-square h-auto w-full object-cover" loading="lazy" data-pe={pe(`galerie.json#fotos.${f.index}.datei`)} />
           </li>
         ))}
       </ul>

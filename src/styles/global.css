@@ -1,4 +1,6 @@
 @import 'tailwindcss';
+/* Bearbeiten-Modus hat eigenes CSS: nicht nach Tailwind-Klassen durchsuchen */
+@source not '../../peter-und-co-editor';
 
 /*
   Nova Nails – Design-Tokens

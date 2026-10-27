@@ -1,0 +1,11 @@
+---
+// Bearbeiten-Modus (Peter & Co Editor): dieselbe Startseite mit data-pe, darüber die Werkzeuge. noindex, no-store (netlify.toml).
+import Base from '../layouts/Base.astro';
+import Startseite from '../components/Startseite.astro';
+import Editor from '../../peter-und-co-editor/astro/Editor.astro';
+import config from '../../pe.config';
+---
+<Base title="Bearbeiten" noindex>
+  <Startseite />
+  <Editor config={config} />
+</Base>

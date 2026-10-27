@@ -1,34 +1,41 @@
 ---
 import preise from '../../../content/preise.json';
+import texte from '../../../content/texte.json';
 import SectionHead from '../SectionHead.astro';
 import ServiceCard from '../ServiceCard.astro';
 import PreisphaseHinweis from '../PreisphaseHinweis.astro';
+import PeText from '../../../peter-und-co-editor/astro/PeText.astro';
+import { peFuer, peAktiv } from '../../../peter-und-co-editor/astro/pe';
 import { site, preisphase, chf, bookingEventHref } from '../../lib/site';
 const preisLabel =
   preisphase === 'ausbildung' ? (site.kursabschluss ? `Preis ab ${site.kursabschluss}` : 'Preis nach Ausbildung') : 'Preis';
+const pe = peFuer(Astro.url);
+const bearbeiten = peAktiv(Astro.url);
 ---
 <section id="leistungen" class="bg-hell py-16 sm:py-24" aria-labelledby="leistungen-titel">
   <div class="container-nova">
-    <SectionHead id="leistungen-titel" eyebrow="Leistungen" titel="Leistungen & Preise" farbe="text-akzent">
-      <p class="mt-4 text-lg text-akzent">Alles für gepflegte, glänzende Nägel. Dauer und Preis auf einen Blick.</p>
+    <SectionHead id="leistungen-titel" eyebrow={texte.leistungen.eyebrow} titel={texte.leistungen.titel} farbe="text-akzent" peEyebrow="texte.json#leistungen.eyebrow" peTitel="texte.json#leistungen.titel">
+      <p class="mt-4 text-lg text-akzent" data-pe={pe('texte.json#leistungen.intro')}>{texte.leistungen.intro}</p>
     </SectionHead>
     {preisphase === 'ausbildung' && <div class="mt-10"><PreisphaseHinweis /></div>}
     <ul class="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-      {preise.leistungen.map((l) => (
-        <ServiceCard name={l.name} beschreibung={l.beschreibung} dauer={l.dauer} preisVon={l.preisVon} preisBis={l.preisBis} preisLabel={preisLabel} buchenHref={bookingEventHref(l.name)} />
+      {preise.leistungen.map((l, i) => (
+        <ServiceCard name={l.name} beschreibung={l.beschreibung} dauer={l.dauer} preisVon={l.preisVon} preisBis={l.preisBis} preisLabel={preisLabel} buchenHref={bookingEventHref(l.name)} peBasis={`preise.json#leistungen.${i}`} />
       ))}
     </ul>
     <div class="mt-8 grid gap-4 rounded-[var(--radius-card)] bg-akzent p-6 text-zart sm:grid-cols-2 sm:p-8">
       <div>
-        <h3 class="text-lg font-bold text-hell">Aufpreis</h3>
+        <h3 class="text-lg font-bold text-hell" data-pe={pe('texte.json#leistungen.aufpreisTitel')}>{texte.leistungen.aufpreisTitel}</h3>
         <ul class="mt-2 space-y-1">
-          {preise.aufpreise.map((a) => <li>{a.name}: <strong class="font-semibold">+ {chf(a.preis)}</strong></li>)}
+          {preise.aufpreise.map((a, i) => bearbeiten
+            ? <li><span data-pe={`preise.json#aufpreise.${i}.name`}>{a.name}</span>: <strong class="font-semibold">+ CHF <PeText f={`preise.json#aufpreise.${i}.preis`} v={a.preis} /></strong></li>
+            : <li>{a.name}: <strong class="font-semibold">+ {chf(a.preis)}</strong></li>)}
         </ul>
       </div>
       <div>
-        <h3 class="text-lg font-bold text-hell">Hinweise</h3>
+        <h3 class="text-lg font-bold text-hell" data-pe={pe('texte.json#leistungen.hinweiseTitel')}>{texte.leistungen.hinweiseTitel}</h3>
         <ul class="mt-2 space-y-1">
-          {preise.hinweise.map((h) => <li>{h}</li>)}
+          {preise.hinweise.map((h, i) => <li data-pe={pe(`preise.json#hinweise.${i}`)}>{h}</li>)}
         </ul>
       </div>
     </div>

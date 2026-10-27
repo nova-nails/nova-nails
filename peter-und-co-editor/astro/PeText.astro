@@ -1,0 +1,7 @@
+---
+// Teil eines Textes änderbar machen (z. B. Zahl im Preis). Öffentlich: nur der Wert, ohne Hülle.
+import { peAktiv } from './pe';
+interface Props { f: string; v: string | number }
+const { f, v } = Astro.props;
+---
+{peAktiv(Astro.url) ? <span data-pe={f}>{v}</span> : v}

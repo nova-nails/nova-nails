@@ -44,9 +44,24 @@
   "zeiten": {
     "text": "Montag bis Freitag, 09:00–19:00 Uhr",
     "hinweis": "Nur nach Vereinbarung",
-    "schema": [{ "tage": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"], "von": "09:00", "bis": "19:00" }]
+    "schema": [
+      {
+        "tage": [
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday"
+        ],
+        "von": "09:00",
+        "bis": "19:00"
+      }
+    ]
   },
-  "telefon": { "anzeige": "079 282 33 99", "e164": "+41792823399" },
+  "telefon": {
+    "anzeige": "079 282 33 99",
+    "e164": "+41792823399"
+  },
   "whatsapp": {
     "nummer": "41792823399",
     "text": "Hallo Julia, ich möchte gerne einen Termin bei Nova Nails buchen."
@@ -66,5 +81,8 @@
     "titel": "Nova Nails – Nagelstudio in Buochs",
     "beschreibung": "Nova Nails by Julia Tellenbach: Gelnägel, Auffüllen, Gel-Lack und Maniküre in Buochs, Nidwalden. Termin online buchen."
   },
-  "gestaltung": { "name": "Peter & Co Webdesign", "url": "https://peterco.ch" }
+  "gestaltung": {
+    "name": "Peter & Co Webdesign",
+    "url": "https://peterco.ch"
+  }
 }
