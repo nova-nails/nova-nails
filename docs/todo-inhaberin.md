@@ -4,7 +4,7 @@ Hallo Julia! Deine Website ist fast fertig. Damit sie online gehen kann, brauche
 
 ## Für die Website
 1. **Logo als Datei:** Lade dein Logo in Canva als SVG oder als PNG mit transparentem Hintergrund herunter und schick es mir.
-2. **E-Mail-Adresse:** Welche E-Mail darf auf die Website? Die braucht es fürs Impressum und fürs Buchungstool. Tipp: Mit deiner Domain bekommst du eine eigene Adresse, z. B. hallo@novanails.ch.
+2. **E-Mail-Adresse:** Welche E-Mail darf auf die Website? Die braucht es fürs Impressum und fürs Buchungstool. Tipp: Mit deiner Domain bekommst du eine eigene Adresse, z. B. hallo@novanails-buochs.ch.
 3. **Ende deiner Ausbildung:** Ab wann gelten deine normalen Preise? Bis dahin steht auf der Website «Zahl, was es dir wert ist».
 4. **Bushaltestelle:** Wie heisst die Haltestelle in der Nähe deines Studios?
 5. **Fotos:** Dein Porträt in voller Grösse (das aus der Canva-Grafik ist zu klein) und später 6–12 Fotos deiner Nägel, direkt vom Handy (Originale). Nur Fotos, die online dürfen.
@@ -14,7 +14,7 @@ Hallo Julia! Deine Website ist fast fertig. Damit sie online gehen kann, brauche
 
 ## Konten (machen wir zusammen, ca. 30 Minuten)
 Damit die Website dir gehört, läuft alles auf deinen Namen. Alles ist gratis, ausser der Domain.
-9. **Domain** (deine Internet-Adresse): novanails.ch oder nova-nails.ch, ca. CHF 10–20 pro Jahr.
+9. **Domain** (deine Internet-Adresse): novanails-buochs.ch (entschieden), ca. CHF 10–20 pro Jahr.
 10. **GitHub** (hier liegt der «Bauplan» deiner Website): Gratis-Konto.
 11. **Netlify** (hier ist die Website online): Gratis-Konto, Login mit GitHub.
 12. **Cal.com** (Online-Buchung, deine Kundinnen wählen selbst einen freien Termin im Kalender): Gratis-Konto. Braucht deine E-Mail-Adresse. Anleitung Schritt für Schritt: `docs/cal-com-einrichtung.md`.

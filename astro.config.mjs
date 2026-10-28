@@ -4,8 +4,8 @@ import tailwindcss from '@tailwindcss/vite';
 import sitemap from '@astrojs/sitemap';
 
 export default defineConfig({
-  // [TODO: Domain festlegen – Wunsch novanails.ch, Alternative nova-nails.ch]
-  site: 'https://www.novanails.ch',
+  // Domain der Inhaberin (Entscheid 2026-10-28)
+  site: 'https://www.novanails-buochs.ch',
   // Einheitliche URLs ohne Schrägstrich (Canonical und Sitemap identisch)
   trailingSlash: 'never',
   build: { format: 'file' },

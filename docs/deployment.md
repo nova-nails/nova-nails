@@ -16,11 +16,11 @@ Grundsatz: Alle Konten gehören Julia Tellenbach. Peter & Co wird nur eingeladen
 4. Umgebungsvariablen nur für den Bearbeiten-Modus (`PE_*`, Scope Functions), Einrichtung und Benachrichtigung bei Bau-Fehlern: `docs/bearbeiten-modus.md`.
 
 ## 3. Domain
-1. Verfügbarkeit prüfen: `novanails.ch`, Alternative `nova-nails.ch` (z. B. bei Infomaniak oder Hostpoint, ca. CHF 10–20/Jahr).
+1. Domain: **`novanails-buochs.ch`** (Wunsch der Inhaberin, 2026-10-28), bei Infomaniak, ca. CHF 10–20/Jahr.
 2. Auf Julias Namen und Adresse registrieren.
 3. In Netlify: Domain management → Add domain → DNS beim Registrar setzen (A-Record bzw. CNAME `www` laut Netlify-Anleitung). HTTPS aktiviert Netlify automatisch.
-4. Falls die Domain nicht `www.novanails.ch` ist: `site` in `astro.config.mjs` anpassen (Canonical, Sitemap, OG-Bild).
-5. Optional E-Mail-Adresse über den Registrar (z. B. `hallo@novanails.ch`) → in `content/site.json` bei `email` eintragen.
+4. `site` in `astro.config.mjs` steht auf `https://www.novanails-buochs.ch` (Canonical, Sitemap, OG-Bild). In Netlify `www.novanails-buochs.ch` als Primary Domain setzen, `novanails-buochs.ch` leitet weiter.
+5. Optional E-Mail-Adresse über den Registrar (z. B. `hallo@novanails-buochs.ch`) → in `content/site.json` bei `email` eintragen.
 
 ## 4. Online-Buchung (Cal.com)
 Empfehlung: **Cal.com Free** auf Julias Konto, Region **EU**. Einrichtung Schritt für Schritt (Konto, Verfügbarkeit, Event-Typen, Buchungsfragen, Link eintragen): **`docs/cal-com-einrichtung.md`**.
