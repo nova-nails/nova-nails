@@ -5,7 +5,7 @@ import sitemap from '@astrojs/sitemap';
 
 export default defineConfig({
   // Domain der Inhaberin (Entscheid 2026-10-28)
-  site: 'https://www.novanails-buochs.ch',
+  site: 'https://www.novanails-studio.ch',
   // Einheitliche URLs ohne Schrägstrich (Canonical und Sitemap identisch)
   trailingSlash: 'never',
   build: { format: 'file' },

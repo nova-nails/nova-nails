@@ -12,7 +12,7 @@ Aktuell ist ein Beispiel-Link von Ramon eingetragen (`https://cal.com/raxmon/nov
 ## 1. Konto anlegen
 1. Auf <https://cal.com/signup> mit **Julias E-Mail-Adresse** registrieren (nicht mit Google, damit der Kalender unabhängig bleibt).
 2. **Region EU** wählen (Datenhaltung in der EU, wird beim Anlegen gefragt und lässt sich später nicht ändern).
-3. Benutzername: Vorschlag **`novanails`** → Buchungsseite `https://cal.com/novanails`. Falls vergeben: `nova-nails` oder `novanails-buochs`.
+3. Benutzername: Vorschlag **`novanails`** → Buchungsseite `https://cal.com/novanails`. Falls vergeben: `nova-nails` oder `novanails-studio`.
 4. Name: «Nova Nails by Julia Tellenbach». Sprache Deutsch.
 5. Zeitzone **Europe/Zurich**.
 
