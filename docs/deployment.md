@@ -4,7 +4,7 @@ Grundsatz: Alle Konten gehören Julia Tellenbach. Peter & Co wird nur eingeladen
 
 ## 1. GitHub
 1. Julia legt ein GitHub-Konto an (Gratis, ihre E-Mail-Adresse).
-2. Repo `raxmon04/nova-nails` an sie übertragen: GitHub → Settings → Danger Zone → Transfer ownership → ihr Benutzername. Repo bleibt privat.
+2. Repo an Julias GitHub-Konto `nova-nails` übertragen (erledigt 2026-10-29): `nova-nails/nova-nails`, privat, `raxmon04` ist Collaborator (Write).
 3. Julia lädt `raxmon04` als Collaborator (Write) ein.
 4. Lokal Remote anpassen: `git remote set-url origin https://github.com/<julia>/nova-nails.git`
 5. Bearbeiten-Modus: neuen Fine-grained Token für das übertragene Repo erstellen, `PE_GITHUB_TOKEN` (und `PE_GITHUB_REPO`) in Netlify ersetzen, alten Token löschen (`docs/bearbeiten-modus.md`).

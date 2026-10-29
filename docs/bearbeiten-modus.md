@@ -73,7 +73,7 @@ Menünamen Stand Oktober 2026: Netlify sagt jetzt *Project configuration* (früh
 1. **Deploy:** Der Editor läuft direkt auf der Production (`main`). Keine Branch-Deploys nötig.
 2. **GitHub-Token:** github.com → Settings → Developer settings → Personal access tokens → Fine-grained tokens → Generate new token.
    - Name z. B. `nova-nails`, Resource owner `raxmon04`, Expiration *Custom* auf 1 Jahr (Termin im Kalender notieren).
-   - Repository access: *Only select repositories* → `raxmon04/nova-nails`.
+   - Repository access: *Only select repositories* → `nova-nails/nova-nails`.
    - Permissions: **Add permissions** → nur **Contents** anhaken → in der Liste von *Read-only* auf **Read and write** stellen. *Metadata: Read-only* kommt automatisch dazu und ist Pflicht. Sonst nichts.
    - Generate token, Token sofort kopieren (wird nur einmal angezeigt) und im Passwortmanager ablegen.
 3. **Passwort:** lokal `npm run pe:passwort`. Gefragt ist **Julias Login-Passwort** für `/bearbeiten` (mind. 10 Zeichen, am besten im Passwortmanager generieren und dort mit Julias E-Mail speichern). Die Eingabe bleibt unsichtbar, gespeichert wird nur der Hash. Ausgabe: `PE_PASSWORT_HASH` und `PE_SESSION_SECRET`. Beide Werte nicht in Chats oder Mails kopieren, das Passwort Julia persönlich oder über einen sicheren Weg geben.
@@ -133,7 +133,7 @@ npm run pe:sicherheit          # manipulierte Anfragen (zuletzt ausführen: sper
 ```
 `pe:dev` kopiert den Arbeitsstand nach `.pe-dev/repo` (eigenes Git-Repo). Jede Veröffentlichung wird dort wirklich gebaut (wie ein Deploy). Gegen echtes GitHub:
 ```bash
-PE_GITHUB_TOKEN=… PE_GITHUB_REPO=raxmon04/nova-nails PE_BRANCH=editor-test npm run pe:dev -- --github --port 4336
+PE_GITHUB_TOKEN=… PE_GITHUB_REPO=nova-nails/nova-nails PE_BRANCH=editor-test npm run pe:dev -- --github --port 4336
 ```
 
 ## Offen / bekannt
