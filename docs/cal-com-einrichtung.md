@@ -37,7 +37,7 @@ Je Leistung aus `content/preise.json` einen Event-Typ anlegen. Bei jedem Event-T
 Einstellungen in jedem Event-Typ:
 - **Ort:** «Persönlich» → Beckenriederstrasse 28, 6374 Buochs
 - **Pufferzeit:** 15 Min. nach dem Termin (Aufräumen, Desinfektion)
-- **Mindestvorlauf:** 12 Std. (niemand bucht kurzfristig für in einer Stunde)
+- **Mindestvorlauf:** 2 Std. (seit 2026-10-29, vorher 12 Std.)
 - **Beschreibung:** Kurztext aus `content/preise.json` plus Absageregel:
   > Absage kostenlos bis 24 Std. vorher, danach CHF 50.
 - **Keine Online-Zahlung** (Zahlungs-App nicht verbinden). Bezahlt wird im Studio.
