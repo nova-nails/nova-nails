@@ -7,14 +7,14 @@
     "showGallery": false
   },
   "booking": {
-    "url": "https://cal.com/raxmon/nova-nails",
-    "_url": "[TODO: Beispiel-Link von Ramon, durch Cal.com-Link der Inhaberin ersetzen (cal.com oder cal.eu). Gesetzt = Kalender in Sektion «Termin buchen». Leer = «Termin buchen» führt zu WhatsApp]",
+    "url": "https://cal.com/nova-nails",
+    "_url": "Julias Cal.com-Profil (seit 2026-10-29). Gesetzt = Kalender in Sektion «Termin buchen». Leer = «Termin buchen» führt zu WhatsApp",
     "events": {
-      "Gelnägel neues Set": "",
-      "Auffüllen Gelnägel": "",
-      "Nagelverstärkung": "",
-      "Maniküre": "",
-      "Entfernen (Gel/Lack)": ""
+      "Gelnägel neues Set": "gelnagel-neues-set",
+      "Auffüllen Gelnägel": "auffullen-gelnagel",
+      "Nagelverstärkung": "nagelverstarkung",
+      "Maniküre": "manikure",
+      "Entfernen (Gel/Lack)": "entfernen-gel-lack"
     },
     "_events": "Optional: Cal.com-Event-Slug je Leistung (Name wie in preise.json), z. B. \"gelnaegel-neues-set\". Leer oder ohne booking.url = kein Direktlink. Anleitung: docs/cal-com-einrichtung.md"
   },
