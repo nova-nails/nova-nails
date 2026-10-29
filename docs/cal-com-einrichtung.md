@@ -11,7 +11,7 @@ Aktuell ist ein Beispiel-Link von Ramon eingetragen (`https://cal.com/raxmon/nov
 
 ## 1. Konto anlegen
 1. Auf <https://cal.com/signup> mit **Julias E-Mail-Adresse** registrieren (nicht mit Google, damit der Kalender unabhängig bleibt).
-2. **Region EU** wählen (Datenhaltung in der EU, wird beim Anlegen gefragt und lässt sich später nicht ändern).
+2. Region: cal.eu nimmt keine Anmeldungen mehr an (Stand 2026-10-29). Konto auf cal.com, Datenhaltung international, die Datenschutzerklärung nennt die USA-Übermittlung.
 3. Benutzername: Vorschlag **`novanails`** → Buchungsseite `https://cal.com/novanails`. Falls vergeben: `nova-nails` oder `novanails-studio`.
 4. Name: «Nova Nails by Julia Tellenbach». Sprache Deutsch.
 5. Zeitzone **Europe/Zurich**.
@@ -52,7 +52,7 @@ In jedem Event-Typ unter «Erweitert» → «Buchungsfragen»:
 Bestätigungen und Erinnerungen per E-Mail sind in Free enthalten.
 
 ## 5. Link in die Website eintragen
-1. In `content/site.json` bei `booking.url` den Profil-Link eintragen, z. B. `"url": "https://cal.com/novanails"` (Kalender zeigt dann alle Leistungen zur Auswahl). Bei einem Konto in der EU-Region lautet der Link `https://cal.eu/...`, das Embed stellt sich automatisch darauf ein.
+1. In `content/site.json` bei `booking.url` den Profil-Link eintragen, z. B. `"url": "https://cal.com/novanails"` (Kalender zeigt dann alle Leistungen zur Auswahl). 
 2. Optional Direktlinks je Leistung: unter `booking.events` den Slug aus der Tabelle oben eintragen (genau wie in Cal.com). Dann erscheint auf der Leistungskarte «Diese Leistung buchen». Leer = kein Direktlink.
 3. `npm run build` und kurz prüfen: «Termin buchen» (Header, Hero, Anfahrt) scrollt zur Sektion mit dem Kalender, der Kalender zeigt Julias Termine, die Datenschutzerklärung zeigt den Abschnitt «Online-Buchung (Cal.com)».
 4. Committen und pushen:

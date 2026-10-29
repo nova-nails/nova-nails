@@ -7,14 +7,14 @@
     "showGallery": false
   },
   "booking": {
-    "url": "https://cal.com/nova-nails",
+    "url": "https://cal.com/novanails",
     "_url": "Julias Cal.com-Profil (seit 2026-10-29). Gesetzt = Kalender in Sektion «Termin buchen». Leer = «Termin buchen» führt zu WhatsApp",
     "events": {
-      "Gelnägel neues Set": "gelnagel-neues-set",
-      "Auffüllen Gelnägel": "auffullen-gelnagel",
-      "Nagelverstärkung": "nagelverstarkung",
-      "Maniküre": "manikure",
-      "Entfernen (Gel/Lack)": "entfernen-gel-lack"
+      "Gelnägel neues Set": "gelnaegel-neues-set",
+      "Auffüllen Gelnägel": "auffuellen-gelnaegel",
+      "Nagelverstärkung": "nagelverstaerkung",
+      "Maniküre": "manikuere",
+      "Entfernen (Gel/Lack)": "entfernen"
     },
     "_events": "Optional: Cal.com-Event-Slug je Leistung (Name wie in preise.json), z. B. \"gelnaegel-neues-set\". Leer oder ohne booking.url = kein Direktlink. Anleitung: docs/cal-com-einrichtung.md"
   },
