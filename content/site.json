@@ -67,8 +67,8 @@
     "text": "Hallo Julia, ich möchte gerne einen Termin bei Nova Nails buchen."
   },
   "antwortzeit": "Ich antworte in der Regel innerhalb von 2–3 Stunden.",
-  "email": "",
-  "_email": "[TODO: E-Mail-Adresse der Inhaberin, z. B. über die neue Domain]",
+  "email": "kontakt@novanails-studio.ch",
+  "_email": "Postfach der Inhaberin bei Infomaniak (Gratis-Mail)",
   "rechtsform": "",
   "_rechtsform": "[TODO: Rechtsform bestätigen – aktuell keine, geplant Einzelunternehmen. Leer = Zeile ausgeblendet]",
   "uid": "",

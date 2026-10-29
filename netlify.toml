@@ -2,6 +2,8 @@
 [build]
   command = "npm run build"
   publish = "dist"
+  # Kein Build, wenn sich nur Doku (docs/, *.md) geändert hat (spart Netlify-Credits)
+  ignore = "git diff --quiet $CACHED_COMMIT_REF $COMMIT_REF -- . ':!docs' ':!*.md'"
 
 [build.environment]
   NODE_VERSION = "24"

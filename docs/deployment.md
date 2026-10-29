@@ -4,7 +4,7 @@ Grundsatz: Alle Konten gehören Julia Tellenbach. Peter & Co wird nur eingeladen
 
 ## 1. GitHub
 1. Julia legt ein GitHub-Konto an (Gratis, ihre E-Mail-Adresse).
-2. Repo an Julias GitHub-Konto `nova-nails` übertragen (erledigt 2026-10-29): `nova-nails/nova-nails`, privat, `raxmon04` ist Collaborator (Write).
+2. Repo an Julias GitHub-Konto `nova-nails` übertragen (erledigt 2026-10-29): `nova-nails/nova-nails`, öffentlich, `raxmon04` ist Collaborator (Write).
 3. Julia lädt `raxmon04` als Collaborator (Write) ein.
 4. Lokal Remote anpassen: `git remote set-url origin https://github.com/<julia>/nova-nails.git`
 5. Bearbeiten-Modus: neuen Fine-grained Token für das übertragene Repo erstellen, `PE_GITHUB_TOKEN` (und `PE_GITHUB_REPO`) in Netlify ersetzen, alten Token löschen (`docs/bearbeiten-modus.md`).
@@ -47,3 +47,6 @@ Solange `booking.url` leer ist: «Termin buchen» öffnet WhatsApp mit vorausgef
 | `booking.events` | Cal.com-Slug je Leistung; leer = kein Direktlink auf der Leistungskarte |
 | `social.instagram`, `social.tiktok` | Links; leer = ausgeblendet |
 | `kursabschluss` | Datum; Preis-Label «Preis ab …» statt «Preis nach Ausbildung» |
+
+## 7. Hinweis Netlify-Free
+Auf dem Free-Plan ist bei **privaten** Repos nur ein Git-Contributor erlaubt (Deploy sonst «unrecognized Git contributor»). Deshalb ist das Repo `nova-nails/nova-nails` seit 2026-10-29 **öffentlich** (geprüft: keine Secrets, keine privaten Daten in Dateien und History). Doku-Commits (`docs/`, `*.md`) lösen dank `ignore` in `netlify.toml` keinen Build aus.
