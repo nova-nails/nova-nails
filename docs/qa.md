@@ -1,6 +1,6 @@
 # Qualität
 
-## Bearbeiten-Modus (Stand 2026-10-27, Branch `editor`, lokal)
+## Bearbeiten-Modus (Stand 2026-10-27, Branch `editor` (seit 2026-10-29 auf `main`), lokal)
 | Prüfung | Ergebnis |
 |---|---|
 | Öffentliche Seiten vs. `main` | `index`, `impressum`, `datenschutz`, `404`, `styleguide`, `robots.txt`, Sitemap, CSS **byte-identisch** → Lighthouse unverändert 100/96/100/100, CLS 0 |

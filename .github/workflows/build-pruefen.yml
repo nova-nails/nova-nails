@@ -1,4 +1,4 @@
-# Baut die Seite bei jedem Push auf main und editor genau wie Netlify (npm run build).
+# Baut die Seite bei jedem Push auf main genau wie Netlify (npm run build).
 # Schlägt der Build fehl, schickt GitHub dem Auslöser eine Mail. Das gilt auch für
 # Veröffentlichungen aus dem Editor, weil diese mit dem Token aus PE_GITHUB_TOKEN committen.
 # Ersatz für die Netlify-Mail «Deploy failed» (nur im Pro-Plan).
@@ -6,7 +6,7 @@ name: Build prüfen
 
 on:
   push:
-    branches: [main, editor]
+    branches: [main]
     paths-ignore:
       - 'docs/**'
       - '**/*.md'

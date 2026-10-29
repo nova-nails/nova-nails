@@ -2,7 +2,7 @@
 
 Julia ändert Texte, Preise und ihr Porträt direkt auf der echten Seite unter **`/bearbeiten`**: antippen, tippen, «Veröffentlichen». Ein Klick ergibt **einen** Commit und damit **einen** Deploy. Ersetzt Keystatic und Tina (Branches am 2026-10-27 gelöscht; Vergleich: Vault `40-Wissen/cms-vergleich-keystatic-tina`).
 
-Stand 2026-10-27: Branch `editor`, lokal und gegen GitHub (`editor-test`) getestet. Netlify ist eingerichtet (Branch-Deploy, Variablen), **der Test auf dem Netlify-Branch-Deploy steht noch aus** (Einrichtung, Schritt 6).
+Stand 2026-10-29: Der Editor liegt auf `main` (Branch `editor` ist gemergt und gelöscht). Lokal und gegen GitHub getestet. **Der Test auf Netlify (Production auf `main`) steht noch aus** (Einrichtung, Schritt 6).
 
 ## Aufbau
 
@@ -67,10 +67,10 @@ Beim Öffnen von `/bearbeiten` vergleicht der Editor den eingebetteten Build-Com
 
 Technische Details stehen nur in der Konsole bzw. im Function-Log. **Bau-Fehler erkennen:** Mit `PE_NETLIFY_TOKEN` sofort über die Netlify-API, sonst nach 10 Minuten Wartezeit. «Ramon ist informiert» stimmt dank der GitHub Action `Build prüfen` (Einrichtung, Schritt 5).
 
-## Einrichtung Netlify (Branch-Deploy `editor` zuerst)
+## Einrichtung Netlify (Production auf `main`)
 Menünamen Stand Oktober 2026: Netlify sagt jetzt *Project configuration* (früher *Site configuration*) und *Developer settings* (früher *Build & deploy*).
 
-1. **Branch-Deploy:** Project configuration → Developer settings → links *Branches and deploy contexts* → **Configure** → Branch deploys: «Let me add individual branches» → genau `editor` eintragen (ohne `/*`, das würde nur `editor/…` treffen) → Save. Production branch `main` und Deploy Previews bleiben, wie sie sind. Branch-Deploys kosten keine Credits.
+1. **Deploy:** Der Editor läuft direkt auf der Production (`main`). Keine Branch-Deploys nötig.
 2. **GitHub-Token:** github.com → Settings → Developer settings → Personal access tokens → Fine-grained tokens → Generate new token.
    - Name z. B. `nova-nails`, Resource owner `raxmon04`, Expiration *Custom* auf 1 Jahr (Termin im Kalender notieren).
    - Repository access: *Only select repositories* → `raxmon04/nova-nails`.
@@ -91,12 +91,12 @@ Menünamen Stand Oktober 2026: Netlify sagt jetzt *Project configuration* (früh
 | `PE_GITHUB_TOKEN`   | ja     | Fine-grained Token aus Schritt 2                                            |
 | `PE_NETLIFY_TOKEN`  | ja     | empfohlen, siehe unten                                                      |
 | `PE_GITHUB_REPO`    | –      | **weglassen**: Netlify liefert das Repo über `REPOSITORY_URL` mit. Nur setzen, wenn das Repo umzieht (z. B. `julia/nova-nails`). |
-| `PE_BRANCH`         | –      | **weglassen**: Standard ist der Branch des Deploys, also `editor` auf `editor--novanails.netlify.app` und `main` auf der Live-Seite. |
+| `PE_BRANCH`         | –      | **weglassen**: Standard ist der Branch des Deploys, also `main` auf der Live-Seite. |
 
 **`PE_NETLIFY_TOKEN`:** Damit fragt der Editor die Netlify-API nach dem Deploy-Status. Mit Token sieht Julia einen kaputten Bau nach etwa einer Minute, ohne erst nach 10 Minuten Wartezeit. Erstellen: Netlify unten links Avatar → User settings → Applications → Personal access tokens → New access token, Name `nova-nails-editor`, Ablauf 1 Jahr. Achtung: Ein Netlify-Token lässt sich nicht auf ein Projekt beschränken und hat Zugriff aufs ganze Netlify-Konto. Er liegt nur als Secret in den Functions. Wer das nicht will, lässt ihn weg.
 
 5. **Benachrichtigung bei kaputtem Bau:** Die Netlify-Mail «Deploy failed» gibt es nur im Pro-Plan. Ersatz ist die GitHub Action `.github/workflows/build-pruefen.yml`: Sie baut bei jedem Push auf `main` und `editor` mit `npm run build` genau wie Netlify (Änderungen nur an `docs/` oder `*.md` ausgenommen). Schlägt der Build fehl, schickt GitHub eine Mail an den Auslöser. Veröffentlichungen aus dem Editor laufen über den Token aus Schritt 2, Auslöser ist also der Besitzer des Tokens (jetzt Ramon). Einmal prüfen: github.com → Settings → Notifications → **Actions**: «Only notify for failed workflows» und *Email* eingeschaltet. Kosten: ca. 1–2 Minuten pro Build von 2000 Gratis-Minuten pro Monat (private Repos). Manuell starten: Repo → Actions → «Build prüfen» → Run workflow.
-6. Neu deployen (auf `editor` pushen oder Deploys → Trigger deploy), dann `https://editor--novanails.netlify.app/bearbeiten` öffnen und testen: anmelden, Text, Preis, Foto vom Handy, Veröffentlichen, Konflikt (parallel pushen), Flugmodus, falsches Passwort. Dabei prüfen, ob die Action `Build prüfen` nach Julias Test-Veröffentlichung grün durchläuft.
+6. Neu deployen (Deploys → Trigger deploy), dann `https://www.novanails-studio.ch/bearbeiten` (bzw. die `.netlify.app`-Adresse) öffnen und testen: anmelden, Text, Preis, Foto vom Handy, Veröffentlichen, Konflikt (parallel pushen), Flugmodus, falsches Passwort. Dabei prüfen, ob die Action `Build prüfen` nach Julias Test-Veröffentlichung grün durchläuft.
 7. Erst danach `editor` nach `main` mergen. Die Variablen gelten schon für Production (Schritt 4), dort ist nichts mehr zu tun.
 
 **Passwort zurücksetzen:** `npm run pe:passwort` → neuen `PE_PASSWORT_HASH` in Netlify eintragen → neu deployen. Alte Sitzungen werden damit ungültig, weil der Hash im Cookie-Fingerabdruck steckt.
