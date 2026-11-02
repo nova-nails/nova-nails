@@ -3,7 +3,7 @@
   "schalter": {
     "preisphase": "ausbildung",
     "_preisphase": "\"ausbildung\" = Zahl, was es dir wert ist (reguläre Preise darunter) | \"regulaer\" = nur Preisliste",
-    "showOpeningBanner": true,
+    "showOpeningBanner": false,
     "showGallery": false
   },
   "booking": {
