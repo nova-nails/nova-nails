@@ -19,7 +19,7 @@
     "_events": "Optional: Cal.com-Event-Slug je Leistung (Name wie in preise.json), z. B. \"gelnaegel-neues-set\". Leer oder ohne booking.url = kein Direktlink. Anleitung: docs/cal-com-einrichtung.md"
   },
   "social": {
-    "instagram": "",
+    "instagram": "https://www.instagram.com/nova_nails_official/",
     "tiktok": "",
     "_social": "Vollständige Profil-URL eintragen, sobald vorhanden. Leer = ausgeblendet."
   },
@@ -27,8 +27,8 @@
   "inhaberin": "Julia Tellenbach",
   "untertitel": "by Julia Tellenbach",
   "eroeffnung": "November 2026",
-  "kursabschluss": "",
-  "_kursabschluss": "[TODO: Datum Kursabschluss, z. B. «1. März 2027». Leer = «nach meiner Ausbildung»]",
+  "kursabschluss": "31. Dezember 2026",
+  "_kursabschluss": "Kursabschluss laut Julia (Abnahme 2026-11-02). Leer = «nach meiner Ausbildung»",
   "adresse": {
     "strasse": "Beckenriederstrasse 28",
     "plz": "6374",
@@ -38,9 +38,8 @@
   },
   "anreise": [
     "1 Parkplatz direkt beim Studio",
-    "Bushaltestelle ca. 5 Minuten zu Fuss"
+    "Bushaltestelle «Buochs Post» ca. 5 Minuten zu Fuss"
   ],
-  "_anreise": "[TODO: Name der Bushaltestelle ergänzen]",
   "zeiten": {
     "text": "Montag bis Freitag, 09:00–19:00 Uhr",
     "hinweis": "Nur nach Vereinbarung",
