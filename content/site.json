@@ -39,7 +39,7 @@
     "Bushaltestelle «Buochs Post» ca. 5 Minuten zu Fuss"
   ],
   "zeiten": {
-    "text": "Montag bis Freitag, 09:00–19:00 Uhr",
+    "text": "Montag bis Freitag, 09:00–19:00 Uhr, Samstag 09:00–13:00 Uhr",
     "hinweis": "Nur nach Vereinbarung",
     "schema": [
       {
@@ -52,6 +52,13 @@
         ],
         "von": "09:00",
         "bis": "19:00"
+      },
+      {
+        "tage": [
+          "Saturday"
+        ],
+        "von": "09:00",
+        "bis": "13:00"
       }
     ]
   },
