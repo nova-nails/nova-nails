@@ -8,7 +8,6 @@ const config: PeConfig = {
   contentDir: 'content',
   felder: {
     // Hero
-    'site.json#eroeffnung': { typ: 'text', label: 'Eröffnung', max: 30 },
     'site.json#hero.titel': { typ: 'text', label: 'Hero-Titel', max: 80 },
     'site.json#hero.text': { typ: 'text', label: 'Hero-Text', max: 220 },
 

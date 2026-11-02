@@ -3,7 +3,6 @@
   "schalter": {
     "preisphase": "ausbildung",
     "_preisphase": "\"ausbildung\" = Zahl, was es dir wert ist (reguläre Preise darunter) | \"regulaer\" = nur Preisliste",
-    "showOpeningBanner": false,
     "showGallery": false
   },
   "booking": {
@@ -26,7 +25,6 @@
   "name": "Nova Nails",
   "inhaberin": "Julia Tellenbach",
   "untertitel": "by Julia Tellenbach",
-  "eroeffnung": "November 2026",
   "kursabschluss": "31. Dezember 2026",
   "_kursabschluss": "Kursabschluss laut Julia (Abnahme 2026-11-02). Leer = «nach meiner Ausbildung»",
   "adresse": {
