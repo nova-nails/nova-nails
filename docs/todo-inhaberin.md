@@ -25,4 +25,4 @@ Damit die Website dir gehört, läuft alles auf deinen Namen. Alles ist gratis, 
 
 ## Später
 15. ~~**Instagram**~~ – erledigt: nova_nails_official verlinkt. TikTok folgt, falls es das Konto gibt.
-16. **Google-Unternehmensprofil:** Vorerst nicht gewünscht (Entscheid 2026-11-02). Die Search Console wird deshalb noch nicht eingerichtet.
+16. **Google-Unternehmensprofil:** Entscheid offen. Julia braucht dafür eine Erklärung (siehe Abnahmeprotokoll, Abschnitt D). Search Console erst danach.
