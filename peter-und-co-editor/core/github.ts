@@ -10,6 +10,8 @@ export interface DateiAenderung {
 
 export interface RepoZugriff {
   head(): Promise<string>;
+  /** Dateien, die zwischen zwei Commits geändert wurden (optional; fehlt es, gilt jeder neue Commit als Änderung). */
+  geaendert?(von: string, bis: string): Promise<string[]>;
   datei(sha: string, pfad: string): Promise<string | null>;
   /** Wirft VeraltetFehler, wenn der Branch inzwischen weitergegangen ist. */
   commit(basis: string, dateien: DateiAenderung[], nachricht: string, autor: { name: string; email: string }): Promise<string>;
@@ -41,6 +43,12 @@ export function githubRepo(o: { token: string; repo: string; branch: string; fet
   return {
     async head() {
       return (await rufe<{ object: { sha: string } }>('GET', `/git/ref/${ref}`)).object.sha;
+    },
+    async geaendert(von, bis) {
+      const r = await rufe<{ files?: { filename: string }[]; total_commits: number }>('GET', `/compare/${von}...${bis}`);
+      // shortcut: GitHub liefert max. 300 Dateien; bei mehr gilt der Vergleich als unvollständig, siehe api.ts (Fehler = wie bisher warten)
+      if (r.files && r.files.length >= 300) throw new RepoFehler('compare zu gross');
+      return (r.files ?? []).map((x) => x.filename);
     },
     async datei(sha, pfad) {
       const r = await f(`${basis}/contents/${pfad.split('/').map(encodeURIComponent).join('/')}?ref=${sha}`, { headers: kopf('application/vnd.github.raw+json') });

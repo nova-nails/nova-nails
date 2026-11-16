@@ -38,6 +38,9 @@ const monatSchluessel = (d = new Date()) => `veroeffentlicht:${d.toISOString().s
 const gleich = (a: unknown, b: unknown) => JSON.stringify(a) === JSON.stringify(b);
 
 /** Gleiche Herkunft, JSON und (falls vom Browser gesendet) Sec-Fetch-Site → schützt zusammen mit SameSite=Strict und dem CSRF-Header. */
+/** Gleiche Regel wie `ignore` in netlify.toml: nur docs/ und *.md. */
+export const nurDoku = (pfad: string) => pfad.startsWith('docs/') || pfad.endsWith('.md');
+
 function fremdeAnfrage(req: Request): boolean {
   const origin = req.headers.get('origin');
   const site = req.headers.get('sec-fetch-site');
@@ -102,7 +105,13 @@ export function erstelleApi(config: PeConfig, env: ApiUmgebung) {
     const z = pruefeZugang(req, false);
     if (z) return z;
     const commit = new URL(req.url).searchParams.get('commit');
-    const [head, monat] = await Promise.all([env.repo.head(), env.kv.get<number>(monatSchluessel())]);
+    const [echterHead, monat] = await Promise.all([env.repo.head(), env.kv.get<number>(monatSchluessel())]);
+    // Doku-Commits baut Netlify nie (netlify.toml `ignore`): nicht darauf warten, sonst hängt der Editor ewig auf «wird online gestellt».
+    let head = echterHead;
+    if (commit && /^[0-9a-f]{7,40}$/.test(commit) && commit !== echterHead && env.repo.geaendert) {
+      const dateien = await env.repo.geaendert(commit, echterHead).catch(() => null);
+      if (dateien && dateien.every(nurDoku)) head = commit;
+    }
     const deploy = commit && /^[0-9a-f]{7,40}$/.test(commit) && env.deploy ? await env.deploy.stand(commit).catch(() => null) : null;
     return json(200, { head, monat: monat ?? 0, deploy });
   }
